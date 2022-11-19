@@ -1,8 +1,0 @@
-Model\Funcionario.class
-Model\Treino.class
-View\TelaPrincipal.class
-Controller\Controller.class
-Model\Equipamento.class
-ConnectionFactory\ConnectionFactory.class
-Model\Cliente.class
-Model\Exercicios.class

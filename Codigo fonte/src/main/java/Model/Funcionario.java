@@ -1,31 +1,13 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package Model;
 
-public class Funcionario extends Pessoa{    
-    private final String especialidade;
-    private final String turno;
-    private final int cargaHoraria;
-
-    public Funcionario(String especialidade, String turno, int cargaHoraria, 
-            int id, float peso, float altura, String nome, String dataNasc, 
-            String cpf, String observacoes) {
-        super(id, peso, altura, nome, dataNasc, cpf, observacoes);
-        this.especialidade = especialidade;
-        this.turno = turno;
-        this.cargaHoraria = cargaHoraria;
-    }
-
-    public String getEspecialidade() {
-        return especialidade;
-    }
-
-    public String getTurno() {
-        return turno;
-    }
-
-    public int getCargaHoraria() {
-        return cargaHoraria;
-    }
-    
+/**
+ *
+ * @author laboratorio
+ */
+public class Funcionario {
     
 }

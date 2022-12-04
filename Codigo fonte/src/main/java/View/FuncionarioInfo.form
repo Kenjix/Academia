@@ -3,6 +3,7 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="title" type="java.lang.String" value="Editar funcionario"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -92,13 +93,17 @@
                           <Component id="jLabel46" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextFieldEmail" alignment="0" min="-2" pref="524" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jFormattedTextFieldCpf" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jFormattedTextFieldCpf" min="-2" pref="200" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jLabelStoreFuncID" min="-2" pref="45" max="-2" attributes="0"/>
+                      </Group>
                       <Component id="jLabel26" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jButtonCancelarFuncionario" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jButtonSalvarEditarFuncio" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonSalvarEditarFunc" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane4" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
@@ -109,9 +114,9 @@
                                   <Component id="jComboBoxTurno" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jComboBoxCargaHoraria" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
-                                  <Component id="jLabel52" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jLabel52" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <Component id="jComboBoxCargaHoraria" min="-2" pref="128" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -126,14 +131,19 @@
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Component id="jLabel22" min="-2" pref="23" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTextFieldNome" min="-2" pref="28" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="34" pref="34" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="jTextFieldNome" min="-2" pref="28" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jFormattedTextFieldCpf" min="-2" pref="28" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <Component id="jFormattedTextFieldCpf" alignment="1" min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="jLabelStoreFuncID" min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
@@ -196,7 +206,7 @@
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButtonCancelarFuncionario" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButtonSalvarEditarFuncio" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonSalvarEditarFunc" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="41" max="32767" attributes="0"/>
               </Group>
@@ -415,6 +425,7 @@
             <Component class="javax.swing.JTextArea" name="jTextAreaObserva">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
+                <Property name="lineWrap" type="boolean" value="true"/>
                 <Property name="rows" type="int" value="5"/>
               </Properties>
             </Component>
@@ -434,7 +445,7 @@
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButtonSalvarEditarFuncio">
+        <Component class="javax.swing.JButton" name="jButtonSalvarEditarFunc">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="66" type="rgb"/>
@@ -447,6 +458,8 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Salvar"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelStoreFuncID">
         </Component>
       </SubComponents>
     </Container>

@@ -11,9 +11,7 @@ import javax.swing.JOptionPane;
 public class FuncionarioDAO {
 
     public boolean inserirFuncionario(Funcionario f) {
-        String query = "INSERT INTO funcionario (nome, cpf, dataNasc, peso, altura,"
-                + "observacoes, cargaHoraria, turno, email, telefone, celular, especialidade)"
-                + "values (? , ? , ?, ?, ?, ? , ? , ?, ?, ?, ?, ?);";
+        String query = "CALL insereFunc(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         Connection con = null;
         PreparedStatement pst = null;
@@ -23,17 +21,17 @@ public class FuncionarioDAO {
 
             pst.setString(1, f.getNome());
             pst.setString(2, f.getCpf());
-            pst.setString(3, f.getDataNasc());
-            pst.setString(4, String.valueOf(f.getPeso()));
-            pst.setString(5, String.valueOf(f.getAltura()));
-            pst.setString(6, f.getObservacoes());
-            pst.setString(7, String.valueOf(f.getCargaHoraria()));
-            pst.setString(8, f.getTurno());
-            pst.setString(9, f.getEmail());
-            pst.setString(10, f.getTelefone());
-            pst.setString(11, f.getCelular());
+            pst.setString(3, f.getTelefone());
+            pst.setString(4, f.getCelular());
+            pst.setString(5, f.getEmail());            
+            pst.setString(6, f.getDataNasc());
+            pst.setString(7, String.valueOf(f.getPeso()));
+            pst.setString(8, String.valueOf(f.getAltura()));
+            pst.setString(9, f.getObservacoes());
+            pst.setString(10, String.valueOf(f.getCargaHoraria()));
+            pst.setString(11, f.getTurno());       
             pst.setString(12, f.getEspecialidade());
-            pst.execute();
+            pst.execute();            
             return true;
         } catch (SQLException e) {
             if(e.getErrorCode() == 1062){
@@ -116,7 +114,7 @@ public ArrayList<Funcionario> listarFuncionarios(){
     public ArrayList<Funcionario> listarFuncionarios(String pesquisa){
         ArrayList<Funcionario> list = new ArrayList();
         String query = "SELECT id, nome, cpf, dataNasc, email, telefone, celular,"
-                + "peso, altura, observacao, cargahoraria, turno, especialidade "
+                + "peso, altura, observacoes, cargahoraria, turno, especialidade "
                 + "FROM funcionario WHERE nome LIKE ?;";
         Connection con = null;
         PreparedStatement pst = null;
@@ -169,8 +167,8 @@ public ArrayList<Funcionario> listarFuncionarios(){
     }
     
     public Funcionario getFuncionario(int id){
-        String query = "SELECT nome, cpf, dataNasc, email, telefone, celular,"
-                + "peso, altura, observacao, cargahoraria, turno, especialidade "
+        String query = "SELECT id, nome, cpf, dataNasc, email, telefone, celular,"
+                + "peso, altura, observacoes, cargahoraria, turno, especialidade "
                 + "FROM funcionario WHERE id = ?;";
         
         Connection con = null;
@@ -181,8 +179,7 @@ public ArrayList<Funcionario> listarFuncionarios(){
             pst = con.prepareStatement(query);
             pst.setString(1, String.valueOf(id));
             rs = pst.executeQuery();
-            
-            int idF = 0;
+                        
             String nome = "";
             String cpf = "";
             String dataNasc = "";
@@ -195,9 +192,10 @@ public ArrayList<Funcionario> listarFuncionarios(){
             int cargaHoraria = 0;
             String turno = "";
             String especialidade = ""; 
+            int idF = 0;
             
-            while(rs.next()){
-                idF = Integer.parseInt(rs.getString(1)) ;
+            while(rs.next()){  
+                idF = rs.getInt(1);
                 nome = rs.getString(2);
                 cpf = rs.getString(3);
                 dataNasc = rs.getString(4);
@@ -210,9 +208,10 @@ public ArrayList<Funcionario> listarFuncionarios(){
                 cargaHoraria = Integer.parseInt(rs.getString(11));
                 turno = rs.getString(12);
                 especialidade = rs.getString(13);  
-            }            
+            }
             Funcionario func = new Funcionario(especialidade, turno, cargaHoraria, idF,
-            peso, altura, nome, dataNasc, cpf, telefone, celular,email, observacoes);            
+                        peso, altura, nome, dataNasc, cpf, telefone, celular, 
+                        email, observacoes);            
             return func;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
@@ -237,10 +236,10 @@ public ArrayList<Funcionario> listarFuncionarios(){
     }  
     
     //UPDATE
-    public void editarFuncionario(Funcionario funcionario){
+    public boolean editarFuncionario(Funcionario funcionario){
         String query = "UPDATE funcionario SET  nome = ?, cpf = ?,  dataNasc = ?, peso = ?, altura = ?, "
-                + " observacoes = ?, cargaHoraria = ?, turno = ?, especialidade = ?, email, telefone, celular "
-                + "Where id = ?;";       
+                + " observacoes = ?, cargaHoraria = ?, turno = ?, especialidade = ?, email = ?, telefone = ?, celular = ? "
+                + "WHERE id = ?;";       
         Connection con = null;
         PreparedStatement pst = null;
         
@@ -261,8 +260,10 @@ public ArrayList<Funcionario> listarFuncionarios(){
             pst.setString(12, funcionario.getCelular());
             pst.setString(13, String.valueOf(funcionario.getId()));                        
             pst.execute();
+            return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());            
+            JOptionPane.showMessageDialog(null, "Erro código: " + e.getMessage()); 
+            return false;
         } finally {
             if (pst != null) {
                 try {

@@ -7,6 +7,7 @@ import java.awt.Frame;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -15,14 +16,28 @@ public class FuncionarioInfo extends javax.swing.JDialog {
     public FuncionarioInfo(java.awt.Frame parent, boolean modal) {
         super((Frame) null, modal);
         initComponents();
+        jLabelStoreFuncID.setVisible(false);
+    }
+    
+    public void limparCampos(){
+        jTextFieldNome.setText("");
+        jFormattedTextFieldCpf.setValue(null);
+        jTextFieldPeso.setText("");
+        jTextFieldAltura.setText("");
+        jTextFieldEmail.setText("");
+        jTextFieldEspecialidade.setText("");
+        jComboBoxTurno.setSelectedIndex(0);
+        jComboBoxCargaHoraria.setSelectedIndex(0);
+        jTextAreaObserva.setText("");
+        jDateChooserDataNasc.setCalendar(null);        
     }
 
     public JButton getjButtonCancelarFuncionario() {
         return jButtonCancelarFuncionario;
     }
 
-    public JButton getjButtonSalvarEditarFuncio() {
-        return jButtonSalvarEditarFuncio;
+    public JButton getjButtonSalvarEditarFunc() {
+        return jButtonSalvarEditarFunc;
     }
 
     public JComboBox<String> getjComboBoxCargaHoraria() {
@@ -73,7 +88,9 @@ public class FuncionarioInfo extends javax.swing.JDialog {
         return jTextFieldPeso;
     }
 
-    
+    public JLabel getjLabelStoreFuncID() {
+        return jLabelStoreFuncID;
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -110,9 +127,11 @@ public class FuncionarioInfo extends javax.swing.JDialog {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextAreaObserva = new javax.swing.JTextArea();
         jButtonCancelarFuncionario = new javax.swing.JButton();
-        jButtonSalvarEditarFuncio = new javax.swing.JButton();
+        jButtonSalvarEditarFunc = new javax.swing.JButton();
+        jLabelStoreFuncID = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Editar funcionario");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Editar Informações de Funcionário"));
 
@@ -190,6 +209,7 @@ public class FuncionarioInfo extends javax.swing.JDialog {
         jLabel53.setText("Observação:");
 
         jTextAreaObserva.setColumns(20);
+        jTextAreaObserva.setLineWrap(true);
         jTextAreaObserva.setRows(5);
         jScrollPane4.setViewportView(jTextAreaObserva);
 
@@ -198,10 +218,10 @@ public class FuncionarioInfo extends javax.swing.JDialog {
         jButtonCancelarFuncionario.setForeground(new java.awt.Color(255, 255, 255));
         jButtonCancelarFuncionario.setText("Cancelar");
 
-        jButtonSalvarEditarFuncio.setBackground(new java.awt.Color(102, 102, 102));
-        jButtonSalvarEditarFuncio.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
-        jButtonSalvarEditarFuncio.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonSalvarEditarFuncio.setText("Salvar");
+        jButtonSalvarEditarFunc.setBackground(new java.awt.Color(102, 102, 102));
+        jButtonSalvarEditarFunc.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
+        jButtonSalvarEditarFunc.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSalvarEditarFunc.setText("Salvar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -243,13 +263,16 @@ public class FuncionarioInfo extends javax.swing.JDialog {
                                 .addComponent(jFormattedTextFieldCel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addComponent(jLabel46, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jTextFieldEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jFormattedTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jFormattedTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelStoreFuncID, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel26)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jButtonCancelarFuncionario)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonSalvarEditarFuncio))
+                            .addComponent(jButtonSalvarEditarFunc))
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                             .addComponent(jTextFieldEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -258,9 +281,9 @@ public class FuncionarioInfo extends javax.swing.JDialog {
                                 .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jComboBoxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(34, 34, 34)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jComboBoxCargaHoraria, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jComboBoxCargaHoraria, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(149, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -269,13 +292,16 @@ public class FuncionarioInfo extends javax.swing.JDialog {
                 .addGap(31, 31, 31)
                 .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel26)
-                        .addGap(34, 34, 34))
-                    .addComponent(jFormattedTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel26)
+                                .addGap(34, 34, 34))
+                            .addComponent(jFormattedTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabelStoreFuncID, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -324,7 +350,7 @@ public class FuncionarioInfo extends javax.swing.JDialog {
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCancelarFuncionario)
-                    .addComponent(jButtonSalvarEditarFuncio))
+                    .addComponent(jButtonSalvarEditarFunc))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
@@ -345,7 +371,7 @@ public class FuncionarioInfo extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelarFuncionario;
-    private javax.swing.JButton jButtonSalvarEditarFuncio;
+    private javax.swing.JButton jButtonSalvarEditarFunc;
     private javax.swing.JComboBox<String> jComboBoxCargaHoraria;
     private javax.swing.JComboBox<String> jComboBoxTurno;
     private com.toedter.calendar.JDateChooser jDateChooserDataNasc;
@@ -364,6 +390,7 @@ public class FuncionarioInfo extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabelStoreFuncID;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextArea jTextAreaObserva;

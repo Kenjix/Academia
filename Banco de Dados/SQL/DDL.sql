@@ -88,7 +88,8 @@ CREATE TABLE treinos (
 
 --Procedure para geracao de matriculas de clientes
 DELIMITER $$
-CREATE PROCEDURE insereCliente(	IN nome VARCHAR(60), 
+CREATE PROCEDURE insereCliente(	
+				IN nome VARCHAR(60), 
 				IN cpf VARCHAR(14), 
 				IN dataNasc DATE, 
 				IN peso FLOAT, 
@@ -120,6 +121,33 @@ CREATE PROCEDURE insereCliente(	IN nome VARCHAR(60),
 			END IF;
 			INSERT INTO cliente (matricula, nome, cpf, telefone, celular, email, dataNasc, peso, altura, dataInicio, objetivo, observacoes, foto) 
 			VALUES (matriculaGerada, nome, cpfFormatado, telFormatado, celFormatado, email, dataNasc, peso, altura, dataInicio, objetivo, observacoes, foto);
+	END$$
+DELIMITER ;
+
+--Procedure para geracao formatacao de campos de funcionario
+DELIMITER $$
+CREATE PROCEDURE insereFunc(
+				IN nome VARCHAR(60), 
+				IN cpf VARCHAR(14), 
+                IN telefone VARCHAR(13), 
+                IN celular VARCHAR(14),
+                IN email VARCHAR(60),
+				IN dataNasc DATE, 
+				IN peso FLOAT, 
+				IN altura FLOAT,
+				IN observacoes TEXT,
+                IN cargaHoraria INT,
+                IN turno VARCHAR(20),
+                IN especialidade VARCHAR(50))
+	BEGIN
+		DECLARE cpfFormatado VARCHAR(11);
+        DECLARE telFormatado VARCHAR(13);
+        DECLARE celFormatado VARCHAR(14); 
+		SET cpfFormatado = (select replace(replace(cpf,'.',''),'-',''));
+        SET telFormatado = (select replace(replace(replace(telefone,'(',''),')',''),'-',''));
+        SET celFormatado = (select replace(replace(replace(celular,'(',''),')',''),'-',''));
+		INSERT INTO funcionario (nome, cpf, telefone, celular, email, dataNasc, peso, altura, observacoes, cargaHoraria, turno, especialidade) 
+		VALUES (nome, cpfFormatado, telFormatado, celFormatado, email, dataNasc, peso, altura, observacoes, cargaHoraria, turno, especialidade);
 	END$$
 DELIMITER ;
 

@@ -125,7 +125,7 @@ public class ClienteController {
                     dataNasc, cpf, tel, cel, email, observacao), path)) {
                 JOptionPane.showMessageDialog(telaPrincipal, "Usuário " + nome
                         + " Cadastrado com sucesso", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
-                telaPrincipal.limparCampos();
+                telaPrincipal.limparCamposCliente();
                 File f = new File(path);
                 f.delete();
                 removeFotoCli();

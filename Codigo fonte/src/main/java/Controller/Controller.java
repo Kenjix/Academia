@@ -26,7 +26,6 @@ public class Controller {
 
         telaPrincipal.getjButtonCadastrarFuncio().addActionListener(e -> exibeTela(telaPrincipal.getCRUDFuncio(), telaPrincipal.getCadFuncio()));
         telaPrincipal.getjButtonListarFuncio().addActionListener(e -> exibeTela(telaPrincipal.getCRUDFuncio(), telaPrincipal.getListFuncio()));
-        telaPrincipal.getjButtonDeletarFuncio().addActionListener(e -> exibeTela(telaPrincipal.getCRUDFuncio(), telaPrincipal.getDelFuncio()));
 
         telaPrincipal.getjButtonCadastrarEquipamento().addActionListener(e -> exibeTela(telaPrincipal.getCRUDEquipa(), telaPrincipal.getCadEquipa()));
         telaPrincipal.getjButtonListarEquipamento().addActionListener(e -> exibeTela(telaPrincipal.getCRUDEquipa(), telaPrincipal.getListEquipa()));
@@ -41,7 +40,7 @@ public class Controller {
         telaPrincipal.getjButtonDeletarTreino().addActionListener(e -> exibeTela(telaPrincipal.getCRUDTreino(), telaPrincipal.getDelTreino()));
         
         telaPrincipal.getjButtonEditarCliente().addActionListener(e -> exibeCliente());
-        telaPrincipal.getjButtonVisuCompleFuncionario().addActionListener(e -> exibeFuncionario());
+        telaPrincipal.getjButtonEditarFunc().addActionListener(e -> exibeFuncionario());
     }
 
     private void exibeTela(JPanel panel, JPanel navegacao) {

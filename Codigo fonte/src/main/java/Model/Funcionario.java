@@ -24,8 +24,6 @@ public class Funcionario extends Pessoa{
         this.cargaHoraria = cargaHoraria;
     }
     
-    
-    
     public String getEspecialidade() {
         return especialidade;
     }

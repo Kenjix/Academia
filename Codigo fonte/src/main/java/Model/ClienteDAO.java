@@ -45,7 +45,6 @@ public class ClienteDAO {
             if(e.getErrorCode() == 1062){
                 JOptionPane.showMessageDialog(null, "Erro: " + e.getErrorCode()+ " - CPF já existe");
             } else {
-                System.out.println(c.getTelefone());
                 JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
             }            
             return false;

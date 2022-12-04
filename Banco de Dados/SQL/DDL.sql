@@ -151,8 +151,20 @@ DELIMITER ;
 
 --Trigger para formatar cpf em updates e contato
 DELIMITER $$
-CREATE TRIGGER trigger_update_formatarCpfContato
+CREATE TRIGGER trigger_update_formatarCpfContatoCli
 BEFORE UPDATE ON cliente
+FOR EACH ROW
+	BEGIN
+		SET NEW.celular = replace(replace(replace(NEW.celular,'(',''),')',''),'-','');
+		SET NEW.telefone = replace(replace(replace(NEW.telefone,'(',''),')',''),'-','');
+		SET NEW.cpf = replace(replace(NEW.cpf,'.',''),'-','');
+	END$$
+DELIMITER ;
+
+--Trigger para formatar cpf em updates e contato
+DELIMITER $$
+CREATE TRIGGER trigger_update_formatarCpfContatoFunc
+BEFORE UPDATE ON funcionario
 FOR EACH ROW
 	BEGIN
 		SET NEW.celular = replace(replace(replace(NEW.celular,'(',''),')',''),'-','');

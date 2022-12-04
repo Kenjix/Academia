@@ -26,7 +26,7 @@ public class FuncionarioController {
     }
 
     public void initClienteController() {
-        telaPrincipal.getjButtonSalvarFuncionario().addActionListener(e -> CadastrarFuncionario());
+        telaPrincipal.getjButtonSalvarFuncio().addActionListener(e -> CadastrarFuncionario());
         telaPrincipal.getjButtonListarFuncio().addActionListener(e -> listarFuncionarios());
         telaPrincipal.getjButtonListarFuncio().addActionListener(e -> listarFuncionarios());
         telaPrincipal.getjButtonVisuCompleFuncionario().addActionListener(e -> getFuncionario());
@@ -57,6 +57,14 @@ public class FuncionarioController {
             JOptionPane.showMessageDialog(telaPrincipal, "O campo Nome é obrigatório",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             telaPrincipal.getjTextFieldNomeFuncionario().requestFocus();
+        } else if (telaPrincipal.getjComboBoxCargaHorariaFuncionario().getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(telaPrincipal, "Selecione a carga horária",
+                    "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
+            telaPrincipal.getjComboBoxCargaHorariaFuncionario().requestFocus();
+        } else if (telaPrincipal.getjComboBoxTurnoFuncionario().getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(telaPrincipal, "Selecione o turno",
+                    "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
+            telaPrincipal.getjComboBoxTurnoFuncionario().requestFocus();
         } else if (!editValidCpf) {
             JOptionPane.showMessageDialog(telaPrincipal, "O campo CPF é obrigatório",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);

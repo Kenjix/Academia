@@ -201,10 +201,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         return jButtonDeletarFuncionario;
     }
 
-    public JButton getjButtonSalvarFuncionario() {
-        return jButtonSalvarFuncionario;
+    public JButton getjButtonSalvarFuncio() {
+        return jButtonSalvarFuncio;
     }
-
+    
     public JComboBox<String> getjComboBoxCargaHorariaFuncionario() {
         return jComboBoxCargaHorariaFuncionario;
     }
@@ -486,7 +486,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jComboBoxCargaHorariaFuncionario = new javax.swing.JComboBox<>();
         jComboBoxTurnoFuncionario = new javax.swing.JComboBox<>();
         jButtonCancelarFuncionario = new javax.swing.JButton();
-        jButtonSalvarFuncionario = new javax.swing.JButton();
+        jButtonSalvarFuncio = new javax.swing.JButton();
         jTextFieldEspecialidadeFuncionario = new javax.swing.JTextField();
         jFormattedTextFieldCelFuncionario = new javax.swing.JFormattedTextField();
         jLabel49 = new javax.swing.JLabel();
@@ -874,7 +874,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButtonPesquisarCliente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPaneClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         CRUDClient.add(listCliente, "card3");
@@ -1291,10 +1291,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtonCancelarFuncionario.setForeground(new java.awt.Color(255, 255, 255));
         jButtonCancelarFuncionario.setText("Cancelar");
 
-        jButtonSalvarFuncionario.setBackground(new java.awt.Color(102, 102, 102));
-        jButtonSalvarFuncionario.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
-        jButtonSalvarFuncionario.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonSalvarFuncionario.setText("Salvar");
+        jButtonSalvarFuncio.setBackground(new java.awt.Color(102, 102, 102));
+        jButtonSalvarFuncio.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
+        jButtonSalvarFuncio.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSalvarFuncio.setText("Salvar");
 
         jTextFieldEspecialidadeFuncionario.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
 
@@ -1347,7 +1347,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGroup(cadFuncioLayout.createSequentialGroup()
                             .addComponent(jButtonCancelarFuncionario)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonSalvarFuncionario))
+                            .addComponent(jButtonSalvarFuncio))
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, cadFuncioLayout.createSequentialGroup()
                             .addComponent(jTextFieldEspecialidadeFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1415,14 +1415,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addGroup(cadFuncioLayout.createSequentialGroup()
                         .addComponent(jLabel50)
                         .addGap(34, 34, 34)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel53)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addGroup(cadFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCancelarFuncionario)
-                    .addComponent(jButtonSalvarFuncionario))
+                    .addComponent(jButtonSalvarFuncio))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
@@ -1556,7 +1555,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         jPanelPessoaLayout.setVerticalGroup(
             jPanelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 758, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 741, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Pessoa", jPanelPessoa);
@@ -2338,7 +2337,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonRemoverFoto;
     private javax.swing.JButton jButtonSalvarCliente;
     private javax.swing.JButton jButtonSalvarEquipamento;
-    private javax.swing.JButton jButtonSalvarFuncionario;
+    private javax.swing.JButton jButtonSalvarFuncio;
     private javax.swing.JButton jButtonSalvarTreino;
     private javax.swing.JButton jButtonVisuCompleFuncionario;
     private javax.swing.JComboBox<String> jComboBoxCargaHorariaFuncionario;

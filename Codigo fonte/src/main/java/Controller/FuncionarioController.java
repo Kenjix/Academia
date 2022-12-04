@@ -28,9 +28,10 @@ public class FuncionarioController {
     public void initFuncionarioController() {
         telaPrincipal.getjButtonSalvarFuncio().addActionListener(e -> CadastrarFuncionario());
         telaPrincipal.getjButtonListarFuncio().addActionListener(e -> listarFuncionarios());
-        telaPrincipal.getjButtonListarFuncio().addActionListener(e -> listarFuncionarios());
-        telaPrincipal.getjButtonVisuCompleFuncionario().addActionListener(e -> getFuncionario());
-        //telaPrincipal.getjButtonPesquisarFuncionario().addActionListener(e -> getFuncionario(telaPrincipal.getjTextFieldPesquisarFuncionario().getText()));
+        telaPrincipal.getjButtonEditarFunc().addActionListener(e -> getFuncionario());
+        telaPrincipal.getjButtonPesquisarFunc().addActionListener(e -> getFuncionario(telaPrincipal.getjTextFieldPesquisarFunc().getText()));
+        telaPrincipal.getjButtonDeletarFunc().addActionListener(e -> removerFuncionario());
+        funcionarioInfo.getjButtonSalvarEditarFunc().addActionListener(e -> editarFunc());
     }
 
     //Cadastra funcionario atraves dos dados dos campos
@@ -112,6 +113,7 @@ public class FuncionarioController {
                     nome, dataNasc, cpf, tel, cel, email, observacao))) {
                 JOptionPane.showMessageDialog(telaPrincipal, "Funcionário " + nome
                         + " Cadastrado com sucesso", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+                telaPrincipal.limparCamposFunc();
             }
         }
     }
@@ -120,6 +122,7 @@ public class FuncionarioController {
     private void listarFuncionarios() {
         String contato = "";
         ArrayList<Funcionario> lista = dao.listarFuncionarios();
+
         if (lista != null) {
             DefaultTableModel modelo = (DefaultTableModel) telaPrincipal.getjTableAtivosFuncionario().getModel();
             modelo.setRowCount(0);
@@ -127,18 +130,19 @@ public class FuncionarioController {
             for (int i = 0; i < lista.size(); i++) {
                 contato = "";
                 if (!lista.get(i).getTelefone().contains("null")) {
-                    contato = lista.get(i).getTelefone();
+                    String tel = lista.get(i).getTelefone();
+                    contato = "(" + tel.substring(0, 2) + ")" + tel.substring(2, 6) + "-" + tel.substring(6, 10);
                 } else if (!lista.get(i).getCelular().contains("null")) {
-                    contato = lista.get(i).getCelular();
+                    String cel = lista.get(i).getCelular();
+                    contato = "(" + cel.substring(0, 2) + ")" + cel.substring(2, 6) + "-" + cel.substring(6, 11);
                 }
                 modelo.addRow(new Object[]{
                     lista.get(i).getId(),
                     lista.get(i).getNome(),
                     contato,
-                    lista.get(i).getEmail()});
+                    lista.get(i).getEspecialidade()});
             }
         }
-
     }
 
     //Busca funcionario por id
@@ -151,16 +155,35 @@ public class FuncionarioController {
                 int id = Integer.parseInt(String.valueOf(tabela.getValueAt(linha, 0)));
                 Funcionario func = dao.getFuncionario(id);
                 Date dataNasc = formatoData.parse(func.getDataNasc());
-
-//                funcionarioInfo.getjTextFieldFuncionarioNome().setText(func.getNome());
-//                funcionarioInfo.getjDateChooserFuncionarioDataNasc().setDate(dataNasc);
-//                funcionarioInfo.getjFormattedTextFieldFuncionarioCpf().setText(func.getCpf());
-//                funcionarioInfo.getjTextFieldClienteFuncionarioPeso().setText(String.valueOf(func.getPeso()));
-//                funcionarioInfo.getjTextFieldClienteFuncionarioAltura().setText(String.valueOf(func.getAltura()));
-//                funcionarioInfo.getjTextFieldClienteFuncionarioEmail().setText(func.getEmail());
-//                funcionarioInfo.getjFormattedTextFieldFuncionarioTel().setText(func.getTelefone());
-//                funcionarioInfo.getjFormattedTextFieldFuncionarioCel().setText(func.getCelular());
-//                funcionarioInfo.getjTextAreaFuncionarioObservacoes().setText(func.getObservacoes());
+                funcionarioInfo.getjLabelStoreFuncID().setText(String.valueOf(func.getId()));
+                funcionarioInfo.getjTextFieldNome().setText(func.getNome());
+                funcionarioInfo.getjDateChooserDataNasc().setDate(dataNasc);
+                funcionarioInfo.getjFormattedTextFieldCpf().setText(func.getCpf());
+                funcionarioInfo.getjTextFieldPeso().setText(String.valueOf(func.getPeso()));
+                funcionarioInfo.getjTextFieldAltura().setText(String.valueOf(func.getAltura()));
+                funcionarioInfo.getjTextFieldEmail().setText(func.getEmail());
+                funcionarioInfo.getjFormattedTextFieldTel().setText(func.getTelefone());
+                funcionarioInfo.getjFormattedTextFieldCel().setText(func.getCelular());
+                funcionarioInfo.getjTextFieldEspecialidade().setText(func.getEspecialidade());
+                funcionarioInfo.getjTextAreaObserva().setText(func.getObservacoes());
+                String turno = func.getTurno();
+                if (turno.equals("Manhã")) {
+                    funcionarioInfo.getjComboBoxTurno().setSelectedIndex(1);
+                } else if (turno.equals("Tarde")) {
+                    funcionarioInfo.getjComboBoxTurno().setSelectedIndex(2);
+                } else if ((turno.equals("Noite"))) {
+                    funcionarioInfo.getjComboBoxTurno().setSelectedIndex(3);
+                }
+                int cargaHoraria = func.getCargaHoraria();
+                if (cargaHoraria == 4) {
+                    funcionarioInfo.getjComboBoxCargaHoraria().setSelectedIndex(1);
+                } else if (cargaHoraria == 8) {
+                    funcionarioInfo.getjComboBoxCargaHoraria().setSelectedIndex(2);
+                } else if (cargaHoraria == 20) {
+                    funcionarioInfo.getjComboBoxCargaHoraria().setSelectedIndex(3);
+                } else if (cargaHoraria == 40) {
+                    funcionarioInfo.getjComboBoxCargaHoraria().setSelectedIndex(4);
+                }
             } catch (ParseException ex) {
                 JOptionPane.showMessageDialog(telaPrincipal, "Erro ao obter data de nascimento\n" + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             }
@@ -179,18 +202,108 @@ public class FuncionarioController {
             for (int i = 0; i < lista.size(); i++) {
                 contato = "";
                 if (!lista.get(i).getTelefone().contains("null")) {
-                    contato = lista.get(i).getTelefone();
+                    String tel = lista.get(i).getTelefone();
+                    contato = "(" + tel.substring(0, 2) + ")" + tel.substring(2, 6) + "-" + tel.substring(6, 10);
                 } else if (!lista.get(i).getCelular().contains("null")) {
-                    contato = lista.get(i).getCelular();
+                    String cel = lista.get(i).getCelular();
+                    contato = "(" + cel.substring(0, 2) + ")" + cel.substring(2, 6) + "-" + cel.substring(6, 11);
                 }
                 modelo.addRow(new Object[]{
                     lista.get(i).getId(),
                     lista.get(i).getNome(),
                     contato,
-                    lista.get(i).getEmail()});
+                    lista.get(i).getEspecialidade()});
             }
         }
+    }
 
+    private void editarFunc() {
+        //Atribuicao de dados
+        String id = funcionarioInfo.getjLabelStoreFuncID().getText();
+        String nome = funcionarioInfo.getjTextFieldNome().getText();
+        String cpf = String.valueOf(funcionarioInfo.getjFormattedTextFieldCpf().getText());
+        String peso = funcionarioInfo.getjTextFieldPeso().getText();
+        String altura = funcionarioInfo.getjTextFieldAltura().getText();
+        String email = funcionarioInfo.getjTextFieldEmail().getText();
+        String tel = String.valueOf(funcionarioInfo.getjFormattedTextFieldTel().getValue()).trim();
+        String cel = String.valueOf(funcionarioInfo.getjFormattedTextFieldCel().getValue()).trim();
+        String observacao = funcionarioInfo.getjTextAreaObserva().getText();
+        String cargaHoraria = String.valueOf(funcionarioInfo.getjComboBoxCargaHoraria().getSelectedItem());
+        String turno = String.valueOf(funcionarioInfo.getjComboBoxTurno().getSelectedItem());
+        String especialidade = funcionarioInfo.getjTextFieldEspecialidade().getText();
+        String dataNasc = "";
+        SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd");
+        if (funcionarioInfo.getjDateChooserDataNasc().getDate() != null) {
+            dataNasc = formatoData.format(funcionarioInfo.getjDateChooserDataNasc().getDate());
+        }
+
+        //Validacao de dados
+        final boolean editValidCpf = funcionarioInfo.getjFormattedTextFieldCpf().isEditValid();
+        if (nome.isEmpty()) {
+            JOptionPane.showMessageDialog(funcionarioInfo, "O campo Nome é obrigatório",
+                    "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
+            funcionarioInfo.getjTextFieldNome().requestFocus();
+        } else if (!editValidCpf || cpf.isBlank()) {
+            JOptionPane.showMessageDialog(funcionarioInfo, "O campo CPF é obrigatório",
+                    "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
+            funcionarioInfo.getjFormattedTextFieldCpf().requestFocus();
+        } else if (dataNasc.isEmpty()) {
+            JOptionPane.showMessageDialog(funcionarioInfo, "O campo Data de Nascimento é obrigatório",
+                    "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
+            funcionarioInfo.getjDateChooserDataNasc().requestFocus();
+        } else if (peso.isEmpty()) {
+            JOptionPane.showMessageDialog(funcionarioInfo, "O campo Peso é obrigatório",
+                    "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
+            funcionarioInfo.getjTextFieldPeso().requestFocus();
+        } else if (!peso.matches("^[0-9]{1,2}([,.][0-9]{1,2})?$")) {
+            JOptionPane.showMessageDialog(funcionarioInfo, "Dados de peso inválidos",
+                    "Campo inválido", JOptionPane.ERROR_MESSAGE);
+            funcionarioInfo.getjTextFieldPeso().requestFocus();
+        } else if (altura.isEmpty()) {
+            JOptionPane.showMessageDialog(funcionarioInfo, "O campo Altura é obrigatório",
+                    "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
+            funcionarioInfo.getjTextFieldAltura().requestFocus();
+        } else if (!altura.matches("^[0-9]{1,2}([,.][0-9]{1,2})?$")) {
+            JOptionPane.showMessageDialog(funcionarioInfo, "Dados de altura inválidos",
+                    "Campo inválido", JOptionPane.ERROR_MESSAGE);
+        } else if (email.isEmpty()) {
+            JOptionPane.showMessageDialog(funcionarioInfo, "O campo E-mail é obrigatporio",
+                    "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
+            funcionarioInfo.getjTextFieldEmail().requestFocus();
+        } else if (!validaEmail(email)) {
+            JOptionPane.showMessageDialog(funcionarioInfo, "E-mail inválido",
+                    "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
+            funcionarioInfo.getjTextFieldEmail().requestFocus();
+        } else if (tel.contains("null") && cel.contains("null")) {
+            JOptionPane.showMessageDialog(funcionarioInfo, "Contato obrigatório",
+                    "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
+            funcionarioInfo.getjFormattedTextFieldTel().requestFocus();
+        } else {
+            //Execucao
+            if (dao.editarFuncionario(new Funcionario(especialidade, turno, Integer.parseInt(cargaHoraria), Integer.parseInt(id),
+                    Float.parseFloat(peso), Float.parseFloat(altura), nome, dataNasc, cpf, tel, cel, email, observacao))) {
+                JOptionPane.showMessageDialog(null, "Funcionário " + nome + " Alterado com sucesso", "Editar funcionário", JOptionPane.INFORMATION_MESSAGE);
+            }
+            telaPrincipal.getjTextFieldPesquisarFunc().setText("");
+            listarFuncionarios();
+            funcionarioInfo.dispose();
+        }
+    }
+
+    private void removerFuncionario() {
+        JTable tabela = telaPrincipal.getjTableListarFuncionario();
+        int linha = tabela.getSelectedRow();
+        if (linha != -1) {
+            int id = Integer.parseInt(String.valueOf(tabela.getValueAt(linha, 0)));
+            int showConfirmDialog = JOptionPane.showConfirmDialog(null, "DELETAR O FUNCIONÁRIO: " + tabela.getValueAt(linha, 1));
+            if (showConfirmDialog == 0) {
+                if (dao.deletarFuncionario(id)) {
+                    JOptionPane.showMessageDialog(telaPrincipal, "Funcionário excluido com sucesso", "Excluir", JOptionPane.INFORMATION_MESSAGE);
+                    telaPrincipal.getjTextFieldPesquisarFunc().setText("");
+                    listarFuncionarios();
+                }
+            }
+        }
     }
 
     //Valia String com padrao de email

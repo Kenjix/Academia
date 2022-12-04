@@ -14,7 +14,7 @@ public class Funcionario extends Pessoa{
         this.turno = turno;
         this.cargaHoraria = cargaHoraria;
     }
-
+    
     public Funcionario(String especialidade, String turno, int cargaHoraria, 
             float peso, float altura, String nome, String dataNasc, String cpf, 
             String telefone, String celular, String email, String observacoes) {

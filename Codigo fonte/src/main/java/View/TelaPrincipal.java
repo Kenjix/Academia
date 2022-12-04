@@ -19,7 +19,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         initComponents();
     }
 
-    public void limparCampos() {
+    public void limparCamposCliente() {
         jTextFieldNome.setText("");
         jFormattedTextFieldCpf.setValue("");
         jDateChooserDataNasc.setCalendar(null);
@@ -30,6 +30,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jFormattedTextFieldCel.setValue(null);
         jTextFieldObjetivo.setText("");
         jTextAreaObserv.setText("");
+    }
+    
+    public void limparCamposFunc(){
+        jTextFieldNomeFuncionario.setText("");
+        jFormattedTextFieldCpfFuncionario.setValue(null);
+        jTextFieldPesoFuncionario.setText("");
+        jTextFieldAlturaFuncionario.setText("");        
+        jFormattedTextFieldTelFuncionario.setValue(null);
+        jFormattedTextFieldCelFuncionario.setValue(null);
+        jTextFieldEmailFuncionario.setText("");
+        jTextFieldEspecialidadeFuncionario.setText("");
+        jComboBoxTurnoFuncionario.setSelectedIndex(0);
+        jComboBoxCargaHorariaFuncionario.setSelectedIndex(0);
+        jTextAreaObservaFuncionario.setText("");
+        jDateChooserDataNascFuncionario.setCalendar(null);   
     }
 
     //Cliente
@@ -173,10 +188,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         return jButtonListarFuncio;
     }
 
-    public JButton getjButtonDeletarFuncio() {
-        return jButtonDeletarFuncio;
-    }
-
     public JPanel getCRUDFuncio() {
         return CRUDFuncio;
     }
@@ -189,16 +200,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         return listFuncio;
     }
 
-    public JPanel getDelFuncio() {
-        return delFuncio;
-    }
-
     public JButton getjButtonCancelarFuncionario() {
         return jButtonCancelarFuncionario;
-    }
-
-    public JButton getjButtonDesativarFuncionario() {
-        return jButtonDeletarFuncionario;
     }
 
     public JButton getjButtonSalvarFuncio() {
@@ -252,19 +255,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public JTextField getjTextFieldPesoFuncionario() {
         return jTextFieldPesoFuncionario;
     }
-
-    public JButton getjButtonDeletarFuncionario() {
-        return jButtonDeletarFuncionario;
-    }
-
-    public JButton getjButtonVisuCompleFuncionario() {
-        return jButtonVisuCompleFuncionario;
-    }
-
-    public JTable getjTableFuncionarioDeletar() {
-        return jTableFuncionarioDeletar;
-    }
-
+    
     public JTable getjTableListarFuncionario() {
         return jTableListarFuncionario;
     }
@@ -368,6 +359,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         return jButtonAtualizar;
     }
 
+    public JButton getjButtonPesquisarFunc() {
+        return jButtonPesquisarFunc;
+    }
+
+    public JTextField getjTextFieldPesquisarFunc() {
+        return jTextFieldPesquisarFunc;
+    }
+
+    public JButton getjButtonDeletarFunc() {
+        return jButtonDeletarFunc;
+    }
+    
+    public JButton getjButtonEditarFunc() {
+        return jButtonEditarFunc;
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -391,6 +397,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         delCliente = new javax.swing.JPanel();
         jScrollPaneAtivos1 = new javax.swing.JScrollPane();
         jTableDeletar = new javax.swing.JTable();
+        jTableDeletar.getTableHeader().setEnabled(false);
         jButtonDelCliente = new javax.swing.JButton();
         jTextFieldPesquisarClienteDel = new javax.swing.JTextField();
         jButtonPesquisarClienteDel = new javax.swing.JButton();
@@ -454,8 +461,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         jButtonListarFuncio = new javax.swing.JButton();
         jLabel23 = new javax.swing.JLabel();
-        jButtonDeletarFuncio = new javax.swing.JButton();
-        jLabel21 = new javax.swing.JLabel();
         CRUDFuncio = new javax.swing.JPanel();
         inicioFunc = new javax.swing.JPanel();
         cadFuncio = new javax.swing.JPanel();
@@ -493,11 +498,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         listFuncio = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTableListarFuncionario = new javax.swing.JTable();
-        jButtonVisuCompleFuncionario = new javax.swing.JButton();
-        delFuncio = new javax.swing.JPanel();
-        jScrollPaneAtivos3 = new javax.swing.JScrollPane();
-        jTableFuncionarioDeletar = new javax.swing.JTable();
-        jButtonDeletarFuncionario = new javax.swing.JButton();
+        jTableListarFuncionario.getTableHeader().setEnabled(false);
+        jButtonDeletarFunc = new javax.swing.JButton();
+        jTextFieldPesquisarFunc = new javax.swing.JTextField();
+        jButtonPesquisarFunc = new javax.swing.JButton();
+        jButtonEditarFunc = new javax.swing.JButton();
         jPanelEquip = new javax.swing.JPanel();
         jPanelMenuEquipa = new javax.swing.JPanel();
         jButtonCadastrarEquipamento = new javax.swing.JButton();
@@ -638,19 +643,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanelMenuClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonCadastrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(160, 160, 160)
                 .addGroup(jPanelMenuClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelMenuClientLayout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(jButtonListarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(163, 163, 163))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMenuClientLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(152, 152, 152)))
+                    .addComponent(jButtonListarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15))
+                .addGap(150, 150, 150)
                 .addGroup(jPanelMenuClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonDeletarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(220, Short.MAX_VALUE))
         );
         jPanelMenuClientLayout.setVerticalGroup(
             jPanelMenuClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -662,7 +663,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addComponent(jButtonDeletarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonListarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelMenuClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelMenuClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel17)
                             .addComponent(jLabel15)))
                     .addGroup(jPanelMenuClientLayout.createSequentialGroup()
@@ -1164,33 +1165,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel23.setText("Visualizar e Editar");
 
-        jButtonDeletarFuncio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/deletar.png"))); // NOI18N
-
-        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel21.setText("Deletar");
-
         javax.swing.GroupLayout jPanelMenuFuncioLayout = new javax.swing.GroupLayout(jPanelMenuFuncio);
         jPanelMenuFuncio.setLayout(jPanelMenuFuncioLayout);
         jPanelMenuFuncioLayout.setHorizontalGroup(
             jPanelMenuFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMenuFuncioLayout.createSequentialGroup()
-                .addGap(218, 218, 218)
+                .addGap(338, 338, 338)
                 .addGroup(jPanelMenuFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonCadastrarFuncio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(161, 161, 161)
                 .addGroup(jPanelMenuFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelMenuFuncioLayout.createSequentialGroup()
-                        .addGap(168, 168, 168)
-                        .addComponent(jButtonListarFuncio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(159, 159, 159))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMenuFuncioLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(149, 149, 149)))
-                .addGroup(jPanelMenuFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonDeletarFuncio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonListarFuncio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelMenuFuncioLayout.setVerticalGroup(
@@ -1199,13 +1186,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanelMenuFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButtonCadastrarFuncio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonListarFuncio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonDeletarFuncio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonListarFuncio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelMenuFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
-                    .addComponent(jLabel23)
-                    .addComponent(jLabel21))
+                    .addComponent(jLabel23))
                 .addGap(18, 18, 18))
         );
 
@@ -1283,6 +1268,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel53.setText("Observação:");
 
         jTextAreaObservaFuncionario.setColumns(20);
+        jTextAreaObservaFuncionario.setLineWrap(true);
         jTextAreaObservaFuncionario.setRows(5);
         jScrollPane4.setViewportView(jTextAreaObservaFuncionario);
 
@@ -1318,60 +1304,58 @@ public class TelaPrincipal extends javax.swing.JFrame {
         cadFuncioLayout.setHorizontalGroup(
             cadFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cadFuncioLayout.createSequentialGroup()
-                .addGap(238, 238, 238)
-                .addGroup(cadFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(243, 243, 243)
+                .addGroup(cadFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldNomeFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(cadFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(cadFuncioLayout.createSequentialGroup()
-                            .addGroup(cadFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel31)
-                                .addComponent(jDateChooserDataNascFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(cadFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(cadFuncioLayout.createSequentialGroup()
-                                    .addComponent(jLabel35)
-                                    .addGap(67, 67, 67)
-                                    .addComponent(jLabel45))
-                                .addGroup(cadFuncioLayout.createSequentialGroup()
-                                    .addComponent(jTextFieldPesoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTextFieldAlturaFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(cadFuncioLayout.createSequentialGroup()
-                            .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(399, 399, 399))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, cadFuncioLayout.createSequentialGroup()
-                            .addGroup(cadFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel47)
-                                .addComponent(jFormattedTextFieldTelFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(cadFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadFuncioLayout.createSequentialGroup()
-                                    .addComponent(jLabel49)
-                                    .addGap(135, 135, 135))
-                                .addComponent(jFormattedTextFieldCelFuncionario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(jLabel46, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextFieldEmailFuncionario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel22)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadFuncioLayout.createSequentialGroup()
+                        .addGroup(cadFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel31)
+                            .addComponent(jDateChooserDataNascFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(cadFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(cadFuncioLayout.createSequentialGroup()
+                                .addComponent(jLabel35)
+                                .addGap(67, 67, 67)
+                                .addComponent(jLabel45))
+                            .addGroup(cadFuncioLayout.createSequentialGroup()
+                                .addComponent(jTextFieldPesoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextFieldAlturaFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadFuncioLayout.createSequentialGroup()
+                        .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(399, 399, 399))
+                    .addComponent(jLabel46)
                     .addComponent(jFormattedTextFieldCpfFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel26)
-                    .addGroup(cadFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(cadFuncioLayout.createSequentialGroup()
-                            .addComponent(jButtonCancelarFuncionario)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonSalvarFuncio))
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, cadFuncioLayout.createSequentialGroup()
-                            .addComponent(jTextFieldEspecialidadeFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(38, 38, 38)
-                            .addGroup(cadFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jComboBoxTurnoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(34, 34, 34)
-                            .addGroup(cadFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jComboBoxCargaHorariaFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(0, 249, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadFuncioLayout.createSequentialGroup()
+                        .addComponent(jButtonCancelarFuncionario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonSalvarFuncio))
+                    .addComponent(jScrollPane4)
+                    .addGroup(cadFuncioLayout.createSequentialGroup()
+                        .addComponent(jTextFieldEspecialidadeFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addGroup(cadFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxTurnoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(cadFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel52, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                            .addComponent(jComboBoxCargaHorariaFuncionario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(cadFuncioLayout.createSequentialGroup()
+                        .addGroup(cadFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel47)
+                            .addComponent(jFormattedTextFieldTelFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(cadFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadFuncioLayout.createSequentialGroup()
+                                .addComponent(jLabel49)
+                                .addGap(127, 127, 127))
+                            .addComponent(jFormattedTextFieldCelFuncionario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jTextFieldEmailFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldNomeFuncionario))
+                .addGap(0, 244, Short.MAX_VALUE))
         );
         cadFuncioLayout.setVerticalGroup(
             cadFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1434,7 +1418,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(cadFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCancelarFuncionario)
                     .addComponent(jButtonSalvarFuncio))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         CRUDFuncio.add(cadFuncio, "card5");
@@ -1446,7 +1430,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nome", "Contato", "Email"
+                "ID", "Nome", "Contato", "Especialidade"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -1459,10 +1443,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(jTableListarFuncionario);
 
-        jButtonVisuCompleFuncionario.setBackground(new java.awt.Color(102, 102, 102));
-        jButtonVisuCompleFuncionario.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
-        jButtonVisuCompleFuncionario.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonVisuCompleFuncionario.setText("Visualização Completa");
+        jButtonDeletarFunc.setBackground(new java.awt.Color(102, 102, 102));
+        jButtonDeletarFunc.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
+        jButtonDeletarFunc.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonDeletarFunc.setText("Excluir");
+
+        jButtonPesquisarFunc.setText("Pesquisar");
+
+        jButtonEditarFunc.setBackground(new java.awt.Color(102, 102, 102));
+        jButtonEditarFunc.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
+        jButtonEditarFunc.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonEditarFunc.setText("Editar");
+        jButtonEditarFunc.setMaximumSize(new java.awt.Dimension(89, 29));
+        jButtonEditarFunc.setMinimumSize(new java.awt.Dimension(89, 29));
+        jButtonEditarFunc.setPreferredSize(new java.awt.Dimension(89, 29));
 
         javax.swing.GroupLayout listFuncioLayout = new javax.swing.GroupLayout(listFuncio);
         listFuncio.setLayout(listFuncioLayout);
@@ -1470,71 +1464,38 @@ public class TelaPrincipal extends javax.swing.JFrame {
             listFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(listFuncioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5)
+                .addGroup(listFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5)
+                    .addGroup(listFuncioLayout.createSequentialGroup()
+                        .addComponent(jTextFieldPesquisarFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonPesquisarFunc)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(listFuncioLayout.createSequentialGroup()
-                .addGap(371, 371, 371)
-                .addComponent(jButtonVisuCompleFuncionario)
-                .addContainerGap(415, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listFuncioLayout.createSequentialGroup()
+                .addContainerGap(414, Short.MAX_VALUE)
+                .addComponent(jButtonEditarFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonDeletarFunc)
+                .addGap(413, 413, 413))
         );
         listFuncioLayout.setVerticalGroup(
             listFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listFuncioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonVisuCompleFuncionario)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGroup(listFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldPesquisarFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonPesquisarFunc))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(listFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonDeletarFunc)
+                    .addComponent(jButtonEditarFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18))
         );
 
         CRUDFuncio.add(listFuncio, "card3");
-
-        delFuncio.setBorder(javax.swing.BorderFactory.createTitledBorder("Deletar Funcionários"));
-
-        jTableFuncionarioDeletar.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nome", "CPF", "E-mail", "Telefone"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPaneAtivos3.setViewportView(jTableFuncionarioDeletar);
-
-        jButtonDeletarFuncionario.setBackground(new java.awt.Color(102, 102, 102));
-        jButtonDeletarFuncionario.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
-        jButtonDeletarFuncionario.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonDeletarFuncionario.setText("Excluir");
-
-        javax.swing.GroupLayout delFuncioLayout = new javax.swing.GroupLayout(delFuncio);
-        delFuncio.setLayout(delFuncioLayout);
-        delFuncioLayout.setHorizontalGroup(
-            delFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPaneAtivos3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1011, Short.MAX_VALUE)
-            .addGroup(delFuncioLayout.createSequentialGroup()
-                .addGap(459, 459, 459)
-                .addComponent(jButtonDeletarFuncionario)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        delFuncioLayout.setVerticalGroup(
-            delFuncioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(delFuncioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPaneAtivos3, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonDeletarFuncionario)
-                .addGap(43, 43, 43))
-        );
-
-        CRUDFuncio.add(delFuncio, "card4");
 
         javax.swing.GroupLayout jPanelFuncLayout = new javax.swing.GroupLayout(jPanelFunc);
         jPanelFunc.setLayout(jPanelFuncLayout);
@@ -2295,7 +2256,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jFormattedTextFieldCelMouseClicked
 
     private void jButtonCancelarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarClienteActionPerformed
-        limparCampos();
+        limparCamposCliente();
     }//GEN-LAST:event_jButtonCancelarClienteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -2314,7 +2275,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel delCliente;
     private javax.swing.JPanel delEquipa;
     private javax.swing.JPanel delExerc;
-    private javax.swing.JPanel delFuncio;
     private javax.swing.JPanel delTreino;
     private javax.swing.JPanel equipamentoAtivo;
     private javax.swing.JPanel equipamentoInativo;
@@ -2339,11 +2299,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDeletarCliente;
     private javax.swing.JButton jButtonDeletarEquipamento;
     private javax.swing.JButton jButtonDeletarExercicio;
-    private javax.swing.JButton jButtonDeletarFuncio;
-    private javax.swing.JButton jButtonDeletarFuncionario;
+    private javax.swing.JButton jButtonDeletarFunc;
     private javax.swing.JButton jButtonDeletarTreino;
     private javax.swing.JButton jButtonDesativarEquipament;
     private javax.swing.JButton jButtonEditarCliente;
+    private javax.swing.JButton jButtonEditarFunc;
     private javax.swing.JButton jButtonListarCliente;
     private javax.swing.JButton jButtonListarEquipamento;
     private javax.swing.JButton jButtonListarExercicio;
@@ -2351,12 +2311,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonListarTreino;
     private javax.swing.JButton jButtonPesquisarCliente;
     private javax.swing.JButton jButtonPesquisarClienteDel;
+    private javax.swing.JButton jButtonPesquisarFunc;
     private javax.swing.JButton jButtonRemoverFoto;
     private javax.swing.JButton jButtonSalvarCliente;
     private javax.swing.JButton jButtonSalvarEquipamento;
     private javax.swing.JButton jButtonSalvarFuncio;
     private javax.swing.JButton jButtonSalvarTreino;
-    private javax.swing.JButton jButtonVisuCompleFuncionario;
     private javax.swing.JComboBox<String> jComboBoxCargaHorariaFuncionario;
     private javax.swing.JComboBox<String> jComboBoxExercicios;
     private javax.swing.JComboBox<String> jComboBoxInstrutorTreino;
@@ -2382,7 +2342,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -2444,7 +2403,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPaneAtivos;
     private javax.swing.JScrollPane jScrollPaneAtivos1;
     private javax.swing.JScrollPane jScrollPaneAtivos2;
-    private javax.swing.JScrollPane jScrollPaneAtivos3;
     private javax.swing.JScrollPane jScrollPaneInativos;
     private javax.swing.JScrollPane jScrollPaneInativos1;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -2456,7 +2414,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable jTableAtivosCliente;
     private javax.swing.JTable jTableAtivosEquipamento;
     private javax.swing.JTable jTableDeletar;
-    private javax.swing.JTable jTableFuncionarioDeletar;
     private javax.swing.JTable jTableInativosCliente;
     private javax.swing.JTable jTableInativosEquipamento;
     private javax.swing.JTable jTableListarFuncionario;
@@ -2478,6 +2435,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldPesoFuncionario;
     private javax.swing.JTextField jTextFieldPesquisarCliente;
     private javax.swing.JTextField jTextFieldPesquisarClienteDel;
+    private javax.swing.JTextField jTextFieldPesquisarFunc;
     private javax.swing.JTextField jTextFieldRepeticaoTreino;
     private javax.swing.JTextField jTextFieldSeriesTreino;
     private javax.swing.JTextField jTextFieldTipoTreino;

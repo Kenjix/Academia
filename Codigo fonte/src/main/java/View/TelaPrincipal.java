@@ -374,6 +374,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelInicio = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanelPessoa = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -536,6 +540,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         CRUDExerc = new javax.swing.JPanel();
         inicioExerc = new javax.swing.JPanel();
         cadExerc = new javax.swing.JPanel();
+        jLabel54 = new javax.swing.JLabel();
+        jLabel55 = new javax.swing.JLabel();
+        jTextFieldNomeExercicio = new javax.swing.JTextField();
+        jTextFieldGrupoMuscExercicio = new javax.swing.JTextField();
+        jButtonSalvarExercicio = new javax.swing.JButton();
         listExerc = new javax.swing.JPanel();
         delExerc = new javax.swing.JPanel();
         jPanelTreino = new javax.swing.JPanel();
@@ -583,25 +592,32 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(800, 600));
 
         jPanelInicio.setPreferredSize(new java.awt.Dimension(1024, 768));
+        jPanelInicio.setLayout(null);
 
-        jLabel2.setText("jLabel2");
+        jPanel2.setLayout(null);
 
-        javax.swing.GroupLayout jPanelInicioLayout = new javax.swing.GroupLayout(jPanelInicio);
-        jPanelInicio.setLayout(jPanelInicioLayout);
-        jPanelInicioLayout.setHorizontalGroup(
-            jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelInicioLayout.createSequentialGroup()
-                .addGap(340, 340, 340)
-                .addComponent(jLabel2)
-                .addContainerGap(644, Short.MAX_VALUE))
-        );
-        jPanelInicioLayout.setVerticalGroup(
-            jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelInicioLayout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(jLabel2)
-                .addContainerGap(662, Short.MAX_VALUE))
-        );
+        jLabel12.setFont(new java.awt.Font("Nirmala UI Semilight", 2, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("\"Só os fortes sobrevivem...\"");
+        jPanel2.add(jLabel12);
+        jLabel12.setBounds(50, 260, 240, 25);
+
+        jLabel16.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("BEM - VINDO À ACADEMIA");
+        jPanel2.add(jLabel16);
+        jLabel16.setBounds(30, 20, 240, 25);
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo acad.png"))); // NOI18N
+        jPanel2.add(jLabel8);
+        jLabel8.setBounds(0, 0, 300, 300);
+
+        jPanelInicio.add(jPanel2);
+        jPanel2.setBounds(580, 130, 300, 300);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo.jpg"))); // NOI18N
+        jPanelInicio.add(jLabel2);
+        jLabel2.setBounds(10, 30, 1000, 670);
 
         jTabbedPane1.addTab("Inicio", jPanelInicio);
 
@@ -1877,11 +1893,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanelMenuExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonCadastrarExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(80, 80, 80)
-                .addGroup(jPanelMenuExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonListarExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(247, 247, 247)
+                .addGap(164, 164, 164)
+                .addGroup(jPanelMenuExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonListarExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(163, 163, 163)
                 .addGroup(jPanelMenuExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonDeletarExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1897,10 +1913,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButtonListarExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelMenuExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel29)
                     .addGroup(jPanelMenuExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel29)
-                        .addComponent(jLabel30))
-                    .addComponent(jLabel32))
+                        .addComponent(jLabel32)
+                        .addComponent(jLabel30)))
                 .addContainerGap())
         );
 
@@ -1921,15 +1937,55 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         cadExerc.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastrar Exercício"));
 
+        jLabel54.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
+        jLabel54.setText("Nome do Exercício:");
+
+        jLabel55.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
+        jLabel55.setText("Grupo Muscular:");
+
+        jTextFieldNomeExercicio.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
+
+        jTextFieldGrupoMuscExercicio.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
+
+        jButtonSalvarExercicio.setBackground(new java.awt.Color(125, 125, 125));
+        jButtonSalvarExercicio.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
+        jButtonSalvarExercicio.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSalvarExercicio.setText("Salvar");
+
         javax.swing.GroupLayout cadExercLayout = new javax.swing.GroupLayout(cadExerc);
         cadExerc.setLayout(cadExercLayout);
         cadExercLayout.setHorizontalGroup(
             cadExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1011, Short.MAX_VALUE)
+            .addGroup(cadExercLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(cadExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(cadExercLayout.createSequentialGroup()
+                        .addComponent(jLabel55)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldGrupoMuscExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(cadExercLayout.createSequentialGroup()
+                        .addComponent(jLabel54)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldNomeExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(cadExercLayout.createSequentialGroup()
+                        .addGap(334, 334, 334)
+                        .addComponent(jButtonSalvarExercicio)))
+                .addContainerGap(570, Short.MAX_VALUE))
         );
         cadExercLayout.setVerticalGroup(
             cadExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 575, Short.MAX_VALUE)
+            .addGroup(cadExercLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(cadExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel54)
+                    .addComponent(jTextFieldNomeExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(69, 69, 69)
+                .addGroup(cadExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel55)
+                    .addComponent(jTextFieldGrupoMuscExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(52, 52, 52)
+                .addComponent(jButtonSalvarExercicio)
+                .addContainerGap(338, Short.MAX_VALUE))
         );
 
         CRUDExerc.add(cadExerc, "card3");
@@ -2354,6 +2410,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonRemoverFoto;
     private javax.swing.JButton jButtonSalvarCliente;
     private javax.swing.JButton jButtonSalvarEquipamento;
+    private javax.swing.JButton jButtonSalvarExercicio;
     private javax.swing.JButton jButtonSalvarFuncio;
     private javax.swing.JButton jButtonSalvarTreino;
     private javax.swing.JButton jButtonVisuCompleFuncionario;
@@ -2374,9 +2431,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -2418,11 +2477,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelFoto;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelCliente;
     private javax.swing.JPanel jPanelEquip;
     private javax.swing.JPanel jPanelExerc;
@@ -2470,8 +2533,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldEmailFuncionario;
     private javax.swing.JTextField jTextFieldEspecialidadeFuncionario;
+    private javax.swing.JTextField jTextFieldGrupoMuscExercicio;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldNomeEquipamento;
+    private javax.swing.JTextField jTextFieldNomeExercicio;
     private javax.swing.JTextField jTextFieldNomeFuncionario;
     private javax.swing.JTextField jTextFieldObjetivo;
     private javax.swing.JTextField jTextFieldPeso;

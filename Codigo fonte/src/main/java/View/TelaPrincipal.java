@@ -380,6 +380,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelInicio = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanelPessoa = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -588,25 +591,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(800, 600));
 
         jPanelInicio.setPreferredSize(new java.awt.Dimension(1024, 768));
+        jPanelInicio.setLayout(null);
 
-        jLabel2.setText("jLabel2");
+        jLabel16.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("BEM - VINDO À ACADEMIA");
+        jPanelInicio.add(jLabel16);
+        jLabel16.setBounds(610, 140, 240, 25);
 
-        javax.swing.GroupLayout jPanelInicioLayout = new javax.swing.GroupLayout(jPanelInicio);
-        jPanelInicio.setLayout(jPanelInicioLayout);
-        jPanelInicioLayout.setHorizontalGroup(
-            jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelInicioLayout.createSequentialGroup()
-                .addGap(340, 340, 340)
-                .addComponent(jLabel2)
-                .addContainerGap(644, Short.MAX_VALUE))
-        );
-        jPanelInicioLayout.setVerticalGroup(
-            jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelInicioLayout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(jLabel2)
-                .addContainerGap(662, Short.MAX_VALUE))
-        );
+        jLabel12.setFont(new java.awt.Font("Nirmala UI Semilight", 2, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("\"Só os fortes sobrevivem...\"");
+        jPanelInicio.add(jLabel12);
+        jLabel12.setBounds(620, 370, 240, 25);
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo acad.png"))); // NOI18N
+        jPanelInicio.add(jLabel8);
+        jLabel8.setBounds(580, 120, 300, 300);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo.jpg"))); // NOI18N
+        jPanelInicio.add(jLabel2);
+        jLabel2.setBounds(10, 30, 1000, 670);
 
         jTabbedPane1.addTab("Inicio", jPanelInicio);
 
@@ -2334,9 +2339,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -2379,6 +2386,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelFoto;
     private javax.swing.JPanel jPanel1;

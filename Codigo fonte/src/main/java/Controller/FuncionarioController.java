@@ -25,7 +25,7 @@ public class FuncionarioController {
         this.funcionarioInfo = funcionarioInfo;
     }
 
-    public void initClienteController() {
+    public void initFuncionarioController() {
         telaPrincipal.getjButtonSalvarFuncio().addActionListener(e -> CadastrarFuncionario());
         telaPrincipal.getjButtonListarFuncio().addActionListener(e -> listarFuncionarios());
         telaPrincipal.getjButtonListarFuncio().addActionListener(e -> listarFuncionarios());
@@ -33,7 +33,7 @@ public class FuncionarioController {
         //telaPrincipal.getjButtonPesquisarFuncionario().addActionListener(e -> getFuncionario(telaPrincipal.getjTextFieldPesquisarFuncionario().getText()));
     }
 
-    //Cadastra cliente atraves dos dados dos campos
+    //Cadastra funcionario atraves dos dados dos campos
     private void CadastrarFuncionario() {
         String nome = telaPrincipal.getjTextFieldNomeFuncionario().getText();
         String cpf = String.valueOf(telaPrincipal.getjFormattedTextFieldCpfFuncionario().getValue());
@@ -57,14 +57,6 @@ public class FuncionarioController {
             JOptionPane.showMessageDialog(telaPrincipal, "O campo Nome é obrigatório",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             telaPrincipal.getjTextFieldNomeFuncionario().requestFocus();
-        } else if (telaPrincipal.getjComboBoxCargaHorariaFuncionario().getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(telaPrincipal, "Selecione a carga horária",
-                    "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
-            telaPrincipal.getjComboBoxCargaHorariaFuncionario().requestFocus();
-        } else if (telaPrincipal.getjComboBoxTurnoFuncionario().getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(telaPrincipal, "Selecione o turno",
-                    "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
-            telaPrincipal.getjComboBoxTurnoFuncionario().requestFocus();
         } else if (!editValidCpf) {
             JOptionPane.showMessageDialog(telaPrincipal, "O campo CPF é obrigatório",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
@@ -88,15 +80,27 @@ public class FuncionarioController {
         } else if (!altura.matches("^[0-9]{1,2}([,.][0-9]{1,2})?$")) {
             JOptionPane.showMessageDialog(telaPrincipal, "Dados de altura inválidos",
                     "Campo inválido", JOptionPane.ERROR_MESSAGE);
-        } else if (!validaEmail(email)) {
-            JOptionPane.showMessageDialog(telaPrincipal, "E-mail inválido",
-                    "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
-            telaPrincipal.getjTextFieldEmailFuncionario().requestFocus();
         } else if (telaPrincipal.getjFormattedTextFieldTelFuncionario().getValue() == null
                 && telaPrincipal.getjFormattedTextFieldCelFuncionario().getValue() == null) {
             JOptionPane.showMessageDialog(telaPrincipal, "Contato obrigatório",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             telaPrincipal.getjFormattedTextFieldTelFuncionario().requestFocus();
+        } else if (!validaEmail(email)) {
+            JOptionPane.showMessageDialog(telaPrincipal, "E-mail inválido",
+                    "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
+            telaPrincipal.getjTextFieldEmailFuncionario().requestFocus();
+        } else if (especialidade.isEmpty()) {
+            JOptionPane.showMessageDialog(telaPrincipal, "O campo Especialidade é obrigatório",
+                    "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
+            telaPrincipal.getjTextFieldEspecialidadeFuncionario().requestFocus();
+        } else if (telaPrincipal.getjComboBoxCargaHorariaFuncionario().getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(telaPrincipal, "Selecione a carga horária",
+                    "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
+            telaPrincipal.getjComboBoxCargaHorariaFuncionario().requestFocus();
+        } else if (telaPrincipal.getjComboBoxTurnoFuncionario().getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(telaPrincipal, "Selecione o turno",
+                    "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
+            telaPrincipal.getjComboBoxTurnoFuncionario().requestFocus();
         } else {
             if (dao.inserirFuncionario(new Funcionario(especialidade, turno,
                     cargaHoraria, Float.parseFloat(peso), Float.parseFloat(altura),

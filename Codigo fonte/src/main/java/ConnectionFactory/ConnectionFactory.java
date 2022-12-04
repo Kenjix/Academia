@@ -8,7 +8,7 @@ public class ConnectionFactory {
 
     private Connection con;
     private final String user = "root";
-    private final String password = "Gabri123!";
+    private final String password = "laboratorio";
     private final String url = "jdbc:mysql://localhost:3306/academia";
 
     //Retorna uma conexao

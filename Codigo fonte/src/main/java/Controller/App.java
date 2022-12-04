@@ -21,6 +21,9 @@ public class App {
 
         ClienteController cli = new ClienteController(telaPrincipal, clienteInfo);
         cli.initClienteController();
+        
+        FuncionarioController fun = new FuncionarioController(telaPrincipal, funcionarioInfo);
+        fun.initFuncionarioController();
     }
 
     private static void carregarTema() {

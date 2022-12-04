@@ -1,45 +1,31 @@
 package Controller;
 
-import Model.Cliente;
-import Model.ClienteDAO;
 import Model.Funcionario;
 import Model.FuncionarioDAO;
-import View.ClienteInfo;
+import View.FuncionarioInfo;
 import View.TelaPrincipal;
-import java.awt.Image;
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 public class FuncionarioController {
 
     private final TelaPrincipal telaPrincipal;
-    private final ClienteInfo clienteInfo;
-    private String imgPath = ".\\src\\main\\resources\\img\\userplaceholder.png";
+    private final FuncionarioInfo funcionarioInfo;
     FuncionarioDAO dao = new FuncionarioDAO();
 
-    public FuncionarioController(TelaPrincipal telaPrincipal, ClienteInfo clienteInfo) {
+    public FuncionarioController(TelaPrincipal telaPrincipal, FuncionarioInfo funcionarioInfo) {
         this.telaPrincipal = telaPrincipal;
-        this.clienteInfo = clienteInfo;
+        this.funcionarioInfo = funcionarioInfo;
     }
 
     public void initClienteController() {
-        //telaPrincipal.getjButtonAdicionarFoto().addActionListener(e -> adicionaFotoCli());
-        //telaPrincipal.getjButtonRemoverFoto().addActionListener(e -> RemoveFotoCli());
         telaPrincipal.getjButtonSalvarFuncionario().addActionListener(e -> CadastrarFuncionario());
         telaPrincipal.getjButtonListarFuncio().addActionListener(e -> listarFuncionarios());
         telaPrincipal.getjButtonListarFuncio().addActionListener(e -> listarFuncionarios());
@@ -49,7 +35,7 @@ public class FuncionarioController {
 
     //Cadastra cliente atraves dos dados dos campos
     private void CadastrarFuncionario() {
-        String nome = telaPrincipal.getjTextFieldNome().getText();
+        String nome = telaPrincipal.getjTextFieldNomeFuncionario().getText();
         String cpf = String.valueOf(telaPrincipal.getjFormattedTextFieldCpfFuncionario().getValue());
         String dataNasc = "";
         SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd");
@@ -60,11 +46,11 @@ public class FuncionarioController {
         String altura = telaPrincipal.getjTextFieldAlturaFuncionario().getText().replaceAll(",", ".");
         String email = telaPrincipal.getjTextFieldEmailFuncionario().getText();
         String tel = String.valueOf(telaPrincipal.getjFormattedTextFieldTelFuncionario().getValue());
-        String cel = String.valueOf(telaPrincipal.getjFormattedTextFieldTelFuncionario().getValue());
+        String cel = String.valueOf(telaPrincipal.getjFormattedTextFieldCelFuncionario().getValue());
         String observacao = telaPrincipal.getjTextAreaObservaFuncionario().getText();
         String especialidade = telaPrincipal.getjTextFieldEspecialidadeFuncionario().getText();
         String turno = telaPrincipal.getjComboBoxTurnoFuncionario().getSelectedItem().toString();
-        //int cargaHoraria = telaPrincipal.getjComboBoxCargaHorariaFuncionario().getSelectedItem().toString();
+        int cargaHoraria = Integer.parseInt(telaPrincipal.getjComboBoxCargaHorariaFuncionario().getSelectedItem().toString());
         final boolean editValidCpf = telaPrincipal.getjFormattedTextFieldCpfFuncionario().isEditValid();
 
         if (nome.isEmpty()) {
@@ -98,16 +84,16 @@ public class FuncionarioController {
             JOptionPane.showMessageDialog(telaPrincipal, "E-mail inválido",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             telaPrincipal.getjTextFieldEmailFuncionario().requestFocus();
-        } else if (telaPrincipal.getjFormattedTextFieldTel().getValue() == null
-                && telaPrincipal.getjFormattedTextFieldCel().getValue() == null) {
+        } else if (telaPrincipal.getjFormattedTextFieldTelFuncionario().getValue() == null
+                && telaPrincipal.getjFormattedTextFieldCelFuncionario().getValue() == null) {
             JOptionPane.showMessageDialog(telaPrincipal, "Contato obrigatório",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
-            telaPrincipal.getjFormattedTextFieldTel().requestFocus();
+            telaPrincipal.getjFormattedTextFieldTelFuncionario().requestFocus();
         } else {
             if (dao.inserirFuncionario(new Funcionario(especialidade, turno,
-                    0, 0, Float.parseFloat(peso), Float.parseFloat(altura),
+                    cargaHoraria, Float.parseFloat(peso), Float.parseFloat(altura),
                     nome, dataNasc, cpf, tel, cel, email, observacao))) {
-                JOptionPane.showMessageDialog(telaPrincipal, "Usuário " + nome
+                JOptionPane.showMessageDialog(telaPrincipal, "Funcionário " + nome
                         + " Cadastrado com sucesso", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
             }
         }
@@ -188,42 +174,6 @@ public class FuncionarioController {
                     contato,
                     lista.get(i).getEmail()});
             }
-        }
-
-    }
-
-    //Insere foto no label do frame principal
-    private void adicionaFotoFun() {
-        JFileChooser fc = new JFileChooser("./");
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Arquivos jpg, png", "jpg", "png");
-        fc.setAcceptAllFileFilterUsed(false);
-        fc.setFileFilter(filter);
-        fc.setDialogTitle("Selecione da foto:");
-
-        if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-            imgPath = fc.getSelectedFile().toString();
-            try {
-                InputStream is = new BufferedInputStream(new FileInputStream(imgPath));
-                Image image = ImageIO.read(is);
-                telaPrincipal.getjLabelFoto().setIcon(new ImageIcon(image));
-                is.close();
-            } catch (IOException e) {
-                JOptionPane.showMessageDialog(telaPrincipal, "Erro ao carregar a imagem\n" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }
-
-    //Remover foto do label do frame principal
-    private void RemoveFotoFun() {
-        imgPath = ".\\src\\main\\resources\\img\\userplaceholder.png";
-        telaPrincipal.getjLabelFoto().setIcon(null);
-        try {
-            InputStream is = new BufferedInputStream(new FileInputStream(imgPath));
-            Image image = ImageIO.read(is);
-            telaPrincipal.getjLabelFoto().setIcon(new ImageIcon(image));
-            is.close();
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(telaPrincipal, "Erro ao carregar a imagem\n" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
 
     }

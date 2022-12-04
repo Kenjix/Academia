@@ -1,6 +1,7 @@
 package Controller;
 
 import View.ClienteInfo;
+import View.FuncionarioInfo;
 import View.TelaPrincipal;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,10 +10,12 @@ public class Controller {
 
     private final TelaPrincipal telaPrincipal;
     private final ClienteInfo clienteInfo;
+    private final FuncionarioInfo funcionarioInfo;
 
-    public Controller(TelaPrincipal telaPrincipal, ClienteInfo clienteInfo) {
+    public Controller(TelaPrincipal telaPrincipal, ClienteInfo clienteInfo, FuncionarioInfo funcionarioInfo) {
         this.telaPrincipal = telaPrincipal;
         this.clienteInfo = clienteInfo;
+        this.funcionarioInfo = funcionarioInfo;
     }
 
     public void initController() {
@@ -36,8 +39,9 @@ public class Controller {
         telaPrincipal.getjButtonCadastrarTreino().addActionListener(e -> exibeTela(telaPrincipal.getCRUDTreino(), telaPrincipal.getCadTreino()));
         telaPrincipal.getjButtonListarTreino().addActionListener(e -> exibeTela(telaPrincipal.getCRUDTreino(), telaPrincipal.getListTreino()));
         telaPrincipal.getjButtonDeletarTreino().addActionListener(e -> exibeTela(telaPrincipal.getCRUDTreino(), telaPrincipal.getDelTreino()));
-
+        
         telaPrincipal.getjButtonEditarCliente().addActionListener(e -> exibeCliente());
+        telaPrincipal.getjButtonVisuCompleFuncionario().addActionListener(e -> exibeFuncionario());
     }
 
     private void exibeTela(JPanel panel, JPanel navegacao) {
@@ -52,6 +56,14 @@ public class Controller {
             clienteInfo.setLocationRelativeTo(telaPrincipal);
             clienteInfo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             clienteInfo.setVisible(true);
+        }
+    }
+    
+    private void exibeFuncionario(){
+        if (telaPrincipal.getjTableAtivosFuncionario().getSelectedRow() != -1) {
+            funcionarioInfo.setLocationRelativeTo(telaPrincipal);
+            funcionarioInfo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            funcionarioInfo.setVisible(true);
         }
     }
 }

@@ -1,6 +1,8 @@
 package Controller;
 
+
 import View.ClienteInfo;
+import View.FuncionarioInfo;
 import View.TelaPrincipal;
 import javax.swing.JFrame;
 
@@ -12,8 +14,9 @@ public class App {
         carregarTema();
         TelaPrincipal telaPrincipal = new TelaPrincipal();
         ClienteInfo clienteInfo = new ClienteInfo((JFrame) null, true);
+        FuncionarioInfo funcionarioInfo = new FuncionarioInfo((JFrame) null, true);
 
-        Controller c = new Controller(telaPrincipal, clienteInfo);
+        Controller c = new Controller(telaPrincipal, clienteInfo, funcionarioInfo);
         c.initController();
 
         ClienteController cli = new ClienteController(telaPrincipal, clienteInfo);

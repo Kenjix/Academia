@@ -1,4 +1,3 @@
-
 package Model;
 
 import ConnectionFactory.ConnectionFactory;
@@ -7,18 +6,21 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class FuncionarioDAO {
-    
-    public boolean inserirFuncionario(Funcionario f){
-        String query = "insert into funcionario (nome,cpf,dataNasc,peso,altura,"
-                + "observacoes,cargaHoraria,turno,email,telefone,celular,especialidade)" +
-                        "values (? , ? , ?, ?, ?, ? , ? , ?, ?, ?, ?, ?);";
-        
-        try{    
-            Connection con = new ConnectionFactory().getConnection();
-            PreparedStatement pst = con.prepareStatement(query);
-              
+
+    public boolean inserirFuncionario(Funcionario f) {
+        String query = "INSERT INTO funcionario (nome, cpf, dataNasc, peso, altura,"
+                + "observacoes, cargaHoraria, turno, email, telefone, celular, especialidade)"
+                + "values (? , ? , ?, ?, ?, ? , ? , ?, ?, ?, ?, ?);";
+
+        Connection con = null;
+        PreparedStatement pst = null;
+        try {
+            con = new ConnectionFactory().getConnection();
+            pst = con.prepareStatement(query);
+
             pst.setString(1, f.getNome());
             pst.setString(2, f.getCpf());
             pst.setString(3, f.getDataNasc());
@@ -31,30 +33,44 @@ public class FuncionarioDAO {
             pst.setString(10, f.getTelefone());
             pst.setString(11, f.getCelular());
             pst.setString(12, f.getEspecialidade());
-          
             pst.execute();
-            con.close();
             return true;
-        }
-        catch(Exception e){
-            System.out.println("Erro de conexão: " + e);
+        } catch (SQLException e) {
+            if(e.getErrorCode() == 1062){
+                JOptionPane.showMessageDialog(null, "Erro: " + e.getErrorCode()+ " - CPF já existe");
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
+            } 
             return false;
-           
+        } finally {
+            if (pst != null) {
+                try {
+                    pst.close();
+                } catch (SQLException e) {}
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {}
+            }
         }
-    }   
-    
-    //Ler informações de Funcionarios
-    public ArrayList<Funcionario> listarFuncionarios(){
+    }
+
+
+//Ler informações de Funcionarios
+public ArrayList<Funcionario> listarFuncionarios(){
         ArrayList<Funcionario> list = new ArrayList();
         String query = "SELECT id, nome, cpf, dataNasc, email, telefone, celular,"
-                + "peso, altura, observacao, cargahoraria, turno, especialidade "
+                + "peso, altura, observacoes, cargahoraria, turno, especialidade "
                 + "FROM funcionario;";
         
+        Connection con = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
         try{
-            Connection con = new ConnectionFactory().getConnection();
-            PreparedStatement pst = con.prepareStatement(query);
-            ResultSet rs = pst.executeQuery();
-            
+            con = new ConnectionFactory().getConnection();
+            pst = con.prepareStatement(query);
+            rs = pst.executeQuery();            
             while(rs.next()){
                 int id = Integer.parseInt(rs.getString(1)) ;
                 String nome = rs.getString(2);
@@ -73,13 +89,27 @@ public class FuncionarioDAO {
                         peso, altura, nome, dataNasc, cpf, telefone, celular, 
                         email, observacoes));  
             }
-            con.close();
             return list;
-        }
-        catch(Exception e){
-            System.out.println(e);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
             return null;
-        }  
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {}
+            }
+            if (pst != null) {
+                try {
+                    pst.close();
+                } catch (SQLException e) {}
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {}
+            }
+        }
     }
     
     //Ler informações de Funcionarios
@@ -88,12 +118,14 @@ public class FuncionarioDAO {
         String query = "SELECT id, nome, cpf, dataNasc, email, telefone, celular,"
                 + "peso, altura, observacao, cargahoraria, turno, especialidade "
                 + "FROM funcionario WHERE nome LIKE ?;";
-        
+        Connection con = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
         try{
-            Connection con = new ConnectionFactory().getConnection();
-            PreparedStatement pst = con.prepareStatement(query);
+            con = new ConnectionFactory().getConnection();
+            pst = con.prepareStatement(query);
             pst.setString(1, '%' + pesquisa + '%');
-            ResultSet rs = pst.executeQuery();
+            rs = pst.executeQuery();
             
             while(rs.next()){
                 int id = Integer.parseInt(rs.getString(1)) ;
@@ -113,26 +145,42 @@ public class FuncionarioDAO {
                         peso, altura, nome, dataNasc, cpf, telefone, celular, 
                         email, observacoes));  
             }
-            con.close();
             return list;
-        }
-        catch(Exception e){
-            System.out.println(e);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
             return null;
-        }  
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {}
+            }
+            if (pst != null) {
+                try {
+                    pst.close();
+                } catch (SQLException e) {}
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {}
+            }
+        }
     }
     
     public Funcionario getFuncionario(int id){
-        ArrayList<Funcionario> list = new ArrayList();
         String query = "SELECT nome, cpf, dataNasc, email, telefone, celular,"
                 + "peso, altura, observacao, cargahoraria, turno, especialidade "
                 + "FROM funcionario WHERE id = ?;";
         
+        Connection con = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;        
         try{
-            Connection con = new ConnectionFactory().getConnection();
-            PreparedStatement pst = con.prepareStatement(query);
+            con = new ConnectionFactory().getConnection();
+            pst = con.prepareStatement(query);
             pst.setString(1, String.valueOf(id));
-            ResultSet rs = pst.executeQuery();
+            rs = pst.executeQuery();
             
             int idF = 0;
             String nome = "";
@@ -162,19 +210,30 @@ public class FuncionarioDAO {
                 cargaHoraria = Integer.parseInt(rs.getString(11));
                 turno = rs.getString(12);
                 especialidade = rs.getString(13);  
-            }
-            
+            }            
             Funcionario func = new Funcionario(especialidade, turno, cargaHoraria, idF,
-            peso, altura, nome, dataNasc, cpf, telefone, celular,email, observacoes);
-            
-            con.close();
-            
+            peso, altura, nome, dataNasc, cpf, telefone, celular,email, observacoes);            
             return func;
-        }
-        catch(Exception e){
-            System.out.println(e);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
             return null;
-        }  
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {}
+            }
+            if (pst != null) {
+                try {
+                    pst.close();
+                } catch (SQLException e) {}
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {}
+            }
+        }
     }  
     
     //UPDATE
@@ -182,10 +241,12 @@ public class FuncionarioDAO {
         String query = "UPDATE funcionario SET  nome = ?, cpf = ?,  dataNasc = ?, peso = ?, altura = ?, "
                 + " observacoes = ?, cargaHoraria = ?, turno = ?, especialidade = ?, email, telefone, celular "
                 + "Where id = ?;";       
+        Connection con = null;
+        PreparedStatement pst = null;
         
         try{
-            Connection con = new ConnectionFactory().getConnection();
-            PreparedStatement pst = con.prepareStatement(query);
+            con = new ConnectionFactory().getConnection();
+            pst = con.prepareStatement(query);
             pst.setString(1, funcionario.getNome());
             pst.setString(2, funcionario.getCpf());
             pst.setString(3, funcionario.getDataNasc());
@@ -198,31 +259,50 @@ public class FuncionarioDAO {
             pst.setString(10, funcionario.getEmail());
             pst.setString(11, funcionario.getTelefone());
             pst.setString(12, funcionario.getCelular());
-            pst.setString(13, String.valueOf(funcionario.getId()));
-                        
+            pst.setString(13, String.valueOf(funcionario.getId()));                        
             pst.execute();
-            con.close();
-        }
-        catch(SQLException e){
-            System.out.println("ERRO AO ALTERAR: " + e);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());            
+        } finally {
+            if (pst != null) {
+                try {
+                    pst.close();
+                } catch (SQLException e) {}
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {}
+            }
         }
     }
     
     // DELETE
-    public void deletarFuncionario(int id){
-        String query = "DELETE FROM funcionario Where Id = ?;";
-                
+    public boolean deletarFuncionario(int id){
+        String query = "DELETE FROM funcionario WHERE Id = ?;";
+        Connection con = null;
+        PreparedStatement pst = null;
+        
         try{
-            Connection con = new ConnectionFactory().getConnection();
-            PreparedStatement pst = con.prepareStatement(query);
-            pst.setString(1,  String.valueOf(id));
-            
+            con = new ConnectionFactory().getConnection();
+            pst = con.prepareStatement(query);
+            pst.setString(1,  String.valueOf(id));            
             pst.execute();
-            System.out.println("DELETEANDO");
-            con.close();
-        }
-        catch(SQLException e){
-            System.out.println("ERRO AO DELETAR: " + e);
+            return true;
+        }catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao deletar - código: " + e.getErrorCode());
+            return false;
+        } finally {            
+            if (pst != null) {
+                try {
+                    pst.close();
+                } catch (SQLException e) {}
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {}
+            }
         }
     }
 }

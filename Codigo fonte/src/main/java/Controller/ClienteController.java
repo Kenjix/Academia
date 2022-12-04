@@ -448,15 +448,17 @@ public class ClienteController {
     }
 
     private void removerCliente() {
-        System.out.println("REMOVE");
         JTable tabela = telaPrincipal.getjTableDeletar();
         int linha = tabela.getSelectedRow();
         if (linha != -1) {
             long matricula = Integer.parseInt(String.valueOf(tabela.getValueAt(linha, 0)));
-            if (dao.deletarCliente(matricula)) {
-                JOptionPane.showMessageDialog(telaPrincipal, "Cliente excluido com sucesso", "Excluir", JOptionPane.INFORMATION_MESSAGE);
+            int showConfirmDialog = JOptionPane.showConfirmDialog(null, "DELETAR O CLIENTE: " + tabela.getValueAt(linha, 1));
+            if (showConfirmDialog == 0) {
+                if (dao.deletarCliente(matricula)) {
+                    JOptionPane.showMessageDialog(telaPrincipal, "Cliente excluido com sucesso", "Excluir", JOptionPane.INFORMATION_MESSAGE);
+                    listarClientes(1);
+                }
             }
-            listarClientes(1);
         }
     }
 

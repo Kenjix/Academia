@@ -1,6 +1,7 @@
 package Controller;
 
 import View.ClienteInfo;
+import View.EquipInfo;
 import View.FuncionarioInfo;
 import View.TelaPrincipal;
 import javax.swing.JFrame;
@@ -11,11 +12,13 @@ public class Controller {
     private final TelaPrincipal telaPrincipal;
     private final ClienteInfo clienteInfo;
     private final FuncionarioInfo funcionarioInfo;
+    private final EquipInfo equipInfo;
 
-    public Controller(TelaPrincipal telaPrincipal, ClienteInfo clienteInfo, FuncionarioInfo funcionarioInfo) {
+    public Controller(TelaPrincipal telaPrincipal, ClienteInfo clienteInfo, FuncionarioInfo funcionarioInfo, EquipInfo equipInfo) {
         this.telaPrincipal = telaPrincipal;
         this.clienteInfo = clienteInfo;
         this.funcionarioInfo = funcionarioInfo;
+        this.equipInfo = equipInfo;
     }
 
     public void initController() {
@@ -29,7 +32,6 @@ public class Controller {
 
         telaPrincipal.getjButtonCadastrarEquipamento().addActionListener(e -> exibeTela(telaPrincipal.getCRUDEquipa(), telaPrincipal.getCadEquipa()));
         telaPrincipal.getjButtonListarEquipamento().addActionListener(e -> exibeTela(telaPrincipal.getCRUDEquipa(), telaPrincipal.getListEquipa()));
-        telaPrincipal.getjButtonDeletarEquipamento().addActionListener(e -> exibeTela(telaPrincipal.getCRUDEquipa(), telaPrincipal.getDelEquipa()));
 
         telaPrincipal.getjButtonCadastrarExercicio().addActionListener(e -> exibeTela(telaPrincipal.getCRUDExerc(), telaPrincipal.getCadExerc()));
         telaPrincipal.getjButtonListarExercicio().addActionListener(e -> exibeTela(telaPrincipal.getCRUDExerc(), telaPrincipal.getListExerc()));
@@ -38,9 +40,10 @@ public class Controller {
         telaPrincipal.getjButtonCadastrarTreino().addActionListener(e -> exibeTela(telaPrincipal.getCRUDTreino(), telaPrincipal.getCadTreino()));
         telaPrincipal.getjButtonListarTreino().addActionListener(e -> exibeTela(telaPrincipal.getCRUDTreino(), telaPrincipal.getListTreino()));
         telaPrincipal.getjButtonDeletarTreino().addActionListener(e -> exibeTela(telaPrincipal.getCRUDTreino(), telaPrincipal.getDelTreino()));
-        
+
         telaPrincipal.getjButtonEditarCliente().addActionListener(e -> exibeCliente());
-        telaPrincipal.getjButtonEditarFunc().addActionListener(e -> exibeFuncionario());
+        telaPrincipal.getjButtonEditarFunc().addActionListener(e -> exibeFuncionario());        
+        telaPrincipal.getjButtonEditarEquip().addActionListener(e -> exibeEquip());
     }
 
     private void exibeTela(JPanel panel, JPanel navegacao) {
@@ -57,12 +60,20 @@ public class Controller {
             clienteInfo.setVisible(true);
         }
     }
-    
-    private void exibeFuncionario(){
+
+    private void exibeFuncionario() {
         if (telaPrincipal.getjTableAtivosFuncionario().getSelectedRow() != -1) {
             funcionarioInfo.setLocationRelativeTo(telaPrincipal);
             funcionarioInfo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             funcionarioInfo.setVisible(true);
+        }
+    }
+
+    private void exibeEquip() {
+        if (telaPrincipal.getjTableAtivosEquipamento().getSelectedRow() != -1) {
+            equipInfo.setLocationRelativeTo(telaPrincipal);
+            equipInfo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            equipInfo.setVisible(true);
         }
     }
 }

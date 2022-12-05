@@ -1,4 +1,5 @@
 CREATE DATABASE academia;
+drop database academia;
 USE academia;
 
 CREATE TABLE frequencia
@@ -50,7 +51,9 @@ CREATE TABLE equipamento
 (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	nome VARCHAR(50) NOT NULL,
-	disponivel BIT DEFAULT 1
+    dataAquisicao DATE,
+	disponivel BIT DEFAULT 1,
+    observacoes TEXT    
 );
 
 CREATE TABLE exercicios
@@ -200,3 +203,5 @@ FOR EACH ROW
 		SET NEW.cpf = replace(replace(NEW.cpf,'.',''),'-','');
 	END$$
 DELIMITER ;
+SELECT id, nome, dataAquisicao disponivel FROM equipamento
+select * from equipamento

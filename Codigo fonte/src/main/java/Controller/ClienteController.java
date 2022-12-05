@@ -53,7 +53,6 @@ public class ClienteController {
         clienteInfo.getjButtonSalvar().addActionListener(e -> editarCliente());
         clienteInfo.getjButtonAdicionarFotoCliEdit().addActionListener(e -> adicionaFotoCli(1));
         clienteInfo.getjButtonRemoverFotoCliEdit().addActionListener(e -> removeFotoCli());
-
     }
 
     //Cadastra cliente atraves dos dados dos campos

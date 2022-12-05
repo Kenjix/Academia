@@ -10,19 +10,21 @@ import javax.swing.JOptionPane;
 
 public class EquipamentoDAO {
 
-    public void inserirEquipamento(Equipamento eq) {
-        String query = "INSERT INTO equipamento (nome, disponivel)"
-                + "values (?, ?);";
+    public boolean inserirEquipamento(Equipamento eq) {
+        String query = "INSERT INTO equipamento (nome, dataAquisicao, observacoes) VALUES (?, ?, ?);";
         Connection con = null;
         PreparedStatement pst = null;
         try {
             con = new ConnectionFactory().getConnection();
             pst = con.prepareStatement(query);
             pst.setString(1, eq.getNome());
-            pst.setBoolean(2, eq.isDisponivel());
+            pst.setString(2, eq.getDataAquisicao());
+            pst.setString(3, eq.getObservacoes());
             pst.execute();
+            return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
+            JOptionPane.showMessageDialog(null, "Erro código: " + e.getMessage());
+            return false;
         } finally {
             if (pst != null) {
                 try {
@@ -40,7 +42,7 @@ public class EquipamentoDAO {
     //Ler informações de equipamentos
     public ArrayList<Equipamento> listarEquipamento() {
         ArrayList<Equipamento> list = new ArrayList();
-        String query = "SELECT id, nome, disponivel FROM equipamento;";
+        String query = "SELECT id, nome, dataAquisicao, disponivel, observacoes FROM equipamento;";
         Connection con = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
@@ -53,8 +55,55 @@ public class EquipamentoDAO {
             while (rs.next()) {
                 int id = Integer.parseInt(rs.getString(1));
                 String nome = rs.getString(2);
-                boolean disponivel = rs.getBoolean(3);
-                list.add(new Equipamento(id, nome, disponivel));
+                String dataAquisicao = rs.getString(3);
+                boolean disponivel = rs.getBoolean(4);
+                String observacoes = rs.getString(5);
+                list.add(new Equipamento(id, nome, dataAquisicao, disponivel, observacoes));
+            }
+            return list;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro código: " + e.getMessage());
+            return null;
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {}
+            }
+            if (pst != null) {
+                try {
+                    pst.close();
+                } catch (SQLException e) {}
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {}
+            }
+        }
+    }
+
+    //Ler informações de Equipamento por nome
+    public ArrayList<Equipamento> listarEquip(String pesquisa) {
+        ArrayList<Equipamento> list = new ArrayList();
+        String query = "SELECT id, nome, dataAquisicao, disponivel, observacoes FROM equipamento WHERE nome LIKE ?;";
+        Connection con = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        try {
+            con = new ConnectionFactory().getConnection();
+            pst = con.prepareStatement(query);
+            pst.setString(1, '%' + pesquisa + '%');
+            rs = pst.executeQuery();
+
+            while (rs.next()) {
+                int id = Integer.parseInt(rs.getString(1));
+                String nome = rs.getString(2);
+                String dataAquisicao = rs.getString(3);
+                Boolean dispoviel = rs.getBoolean(4);
+                String observacoes = rs.getString(5);
+                list.add(new Equipamento(id, nome, dataAquisicao, dispoviel, observacoes));
             }
             return list;
         } catch (SQLException e) {
@@ -80,9 +129,9 @@ public class EquipamentoDAO {
     }
 
     //UPDATE
-    public void editarEquipamento(Equipamento equipamento) {
-        String query = "UPDATE equipamento SET  nome = ?, disponivel = ?"
-                + "WHERE id = ?;";
+    public boolean editarEquipamento(Equipamento equipamento) {
+        String query = "UPDATE equipamento SET  nome = ?, dataAquisicao = ?,"
+                + "observacoes = ? WHERE id = ?;";
 
         Connection con = null;
         PreparedStatement pst = null;
@@ -90,21 +139,103 @@ public class EquipamentoDAO {
             con = new ConnectionFactory().getConnection();
             pst = con.prepareStatement(query);
             pst.setString(1, equipamento.getNome());
-            pst.setBoolean(2, equipamento.isDisponivel());
-            pst.setString(3, String.valueOf(equipamento.getId()));
+            pst.setString(2, equipamento.getDataAquisicao());
+            pst.setString(3, equipamento.getObservacoes());
+            pst.setString(4, String.valueOf(equipamento.getId()));
             pst.execute();
+            return true;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
+            return false;
+        } finally {
+            if (pst != null) {
+                try {
+                    pst.close();
+                } catch (SQLException e) {}
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {}
+            }
         }
-        if (pst != null) {
-            try {
-                pst.close();
-            } catch (SQLException e) {}
+    }
+
+    public boolean statusEquip(int id, boolean controle) {
+        String query = "UPDATE equipamento SET disponivel = ? WHERE id = ?;";
+        Connection con = null;
+        PreparedStatement pst = null;
+        try {
+            con = new ConnectionFactory().getConnection();
+            pst = con.prepareStatement(query);
+            pst.setBoolean(1, controle);
+            pst.setString(2, String.valueOf(id));
+            pst.execute();
+            return true;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro código: " + e.getMessage());
+            return false;
+        } finally {
+            if (pst != null) {
+                try {
+                    pst.close();
+                } catch (SQLException e) {}
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {}
+            }
         }
-        if (con != null) {
-            try {
-                con.close();
-            } catch (SQLException e) {}
+    }
+
+    public Equipamento getEquipamento(int id) {
+        String query = "SELECT id, nome, dataAquisicao, disponivel, observacoes FROM equipamento WHERE id = ?;";
+
+        Connection con = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        try {
+            con = new ConnectionFactory().getConnection();
+            pst = con.prepareStatement(query);
+            pst.setString(1, String.valueOf(id));
+            rs = pst.executeQuery();
+
+            int idE = 0;
+            String nome = "";
+            String dataAquisicao = "";
+            Boolean dispovivel = null;
+            String observacoes = "";
+
+            while (rs.next()) {
+                idE = rs.getInt(1);
+                nome = rs.getString(2);
+                dataAquisicao = rs.getString(3);
+                dispovivel = rs.getBoolean(4);
+                observacoes = rs.getString(5);
+
+            }
+            Equipamento equip = new Equipamento(idE, nome, dataAquisicao, dispovivel, observacoes);
+            return equip;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
+            return null;
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {}
+            }
+            if (pst != null) {
+                try {
+                    pst.close();
+                } catch (SQLException e) {}
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {}
+            }
         }
     }
 

@@ -274,7 +274,7 @@ public class FuncionarioController {
             JOptionPane.showMessageDialog(funcionarioInfo, "E-mail inválido",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             funcionarioInfo.getjTextFieldEmail().requestFocus();
-        } else if (tel.contains("null") && cel.contains("null")) {
+        } else if (tel.contains("null") && cel.contains("null")) { //testar aqio --------------------
             JOptionPane.showMessageDialog(funcionarioInfo, "Contato obrigatório",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             funcionarioInfo.getjFormattedTextFieldTel().requestFocus();

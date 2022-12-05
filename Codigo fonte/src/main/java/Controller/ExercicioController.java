@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class ExercicioController {
@@ -75,115 +76,102 @@ public class ExercicioController {
         }
 
     }
-    /*
-    private void listarEquip(String pesquisa) {
-        ArrayList<Equipamento> lista = dao.listarEquip(pesquisa);
-
-        if (lista != null) {
-            DefaultTableModel modeloAtivo = (DefaultTableModel) telaPrincipal.getjTableAtivosEquipamento().getModel();
-            DefaultTableModel modeloInativo = (DefaultTableModel) telaPrincipal.getjTableInativosEquipamento().getModel();
-            modeloAtivo.setRowCount(0);
-            modeloInativo.setRowCount(0);
-            String aquisicao = "";
-
-            for (int i = 0; i < lista.size(); i++) {
-                aquisicao = lista.get(i).getDataAquisicao();
-                if (lista.get(i).isDisponivel()) {
-                    modeloAtivo.addRow(new Object[]{
-                        lista.get(i).getId(),
-                        lista.get(i).getNome(),
-                        aquisicao.substring(8, 10) + "/" + aquisicao.substring(5, 7) + "/" + aquisicao.substring(0, 4)});
-                } else if (!lista.get(i).isDisponivel()) {
-                    modeloInativo.addRow(new Object[]{
-                        lista.get(i).getId(),
-                        lista.get(i).getNome(),
-                        aquisicao.substring(8, 10) + "/" + aquisicao.substring(5, 7) + "/" + aquisicao.substring(0, 4)});
-                }
-            }
-        }
-    }
-
-    private void getEquipamento() {
-        JTable tabela = telaPrincipal.getjTableAtivosEquipamento();
+    
+    private void getExerc() {
+        JTable tabela = telaPrincipal.getjTableExercicio();
         int linha = tabela.getSelectedRow();
         if (linha != -1) {
-            try {
-                SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd");
-                int id = Integer.parseInt(String.valueOf(tabela.getValueAt(linha, 0)));
-                Equipamento equip = dao.getEquipamento(id);
-                Date dataAquisicao = formatoData.parse(equip.getDataAquisicao());
-                if (equip.getDataAquisicao() != null) {
-                    dataAquisicao = formatoData.parse(equip.getDataAquisicao());
-                }
-                equipInfo.getjLabelStoreEquipID().setText(String.valueOf(id));
-                equipInfo.getjTextFieldNomeEquip().setText(equip.getNome());
-                equipInfo.getjTextAreaEquip().setText(equip.getObservacoes());
-                equipInfo.getjDateChooserAquisicaoEquip().setDate(dataAquisicao);
-            } catch (ParseException ex) {
-                JOptionPane.showMessageDialog(equipInfo, "Erro ao adiquirir a data de aquisição",
-                        "Erro", JOptionPane.ERROR_MESSAGE);
+            int id = Integer.parseInt(String.valueOf(tabela.getValueAt(linha, 0)));
+            Exercicios exerc = dao.getExercicios(id);
+                
+            exercicioInfo.getjLabelStoreEquipID().setText(String.valueOf(id));
+            exercicioInfo.getjTextFieldNomeExercicio().setText(exerc.getNome());
+            String grupMusc = exerc.getGrupoMuscular();
+            if (grupMusc.equals("Membros Inferiores")) {
+                exercicioInfo.getjComboBoxGrupoMuscExercicio().setSelectedIndex(1);
+            } else if (grupMusc.equals("Peitorais")) {
+                exercicioInfo.getjComboBoxGrupoMuscExercicio().setSelectedIndex(2);
+            } else if ((grupMusc.equals("Dorsais"))) {
+                exercicioInfo.getjComboBoxGrupoMuscExercicio().setSelectedIndex(3);
+            } else if ((grupMusc.equals("Deltóides/Trapézio"))) {
+                exercicioInfo.getjComboBoxGrupoMuscExercicio().setSelectedIndex(3);
+            } else if ((grupMusc.equals("Bíceps"))) {
+                exercicioInfo.getjComboBoxGrupoMuscExercicio().setSelectedIndex(3);
+            } else if ((grupMusc.equals("Tríceps"))) {
+                exercicioInfo.getjComboBoxGrupoMuscExercicio().setSelectedIndex(3);
             }
+            
         }
     }
-
+    
+    
     //Edita equipamento selecionado na tabela
-    private void editarEquip() {
+    private void editarExerc() {
         //Atribuicao de dados
-        String id = equipInfo.getjLabelStoreEquipID().getText();
-        String nome = equipInfo.getjTextFieldNomeEquip().getText();
-        String observacoes = equipInfo.getjTextAreaEquip().getText();
-        String dataAquisicao = "";
-        SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd");
+        String id = exercicioInfo.getjLabelStoreExercID().getText();
+        String nome = exercicioInfo.getjTextFieldNomeExercicio().getText();
+        String grupoMusc = String.valueOf(exercicioInfo.getjComboBoxGrupoMuscExercicio().getSelectedItem());
+        String equip = String.valueOf(exercicioInfo.getjComboBoxEquipamentoExercicio().getSelectedItem());
 
-        if (equipInfo.getjDateChooserAquisicaoEquip().getDate() != null) {
-            dataAquisicao = formatoData.format(equipInfo.getjDateChooserAquisicaoEquip().getDate());
-        }
         //Validacao de dados
         if (nome.isEmpty()) {
-            JOptionPane.showMessageDialog(equipInfo, "O campo Nome é obrigatório",
+            JOptionPane.showMessageDialog(telaPrincipal, "O campo Nome é obrigatório",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
-            equipInfo.getjTextFieldNomeEquip().requestFocus();
-        } else if (dataAquisicao.isEmpty()) {
-            JOptionPane.showMessageDialog(equipInfo, "O campo Data de Aquisição é obrigatório",
+            exercicioInfo.getjTextFieldNomeExercicio().requestFocus();
+        } 
+        
+        else if (grupoMusc.equals("Selecione")) {
+            JOptionPane.showMessageDialog(telaPrincipal, "Selecione o Grupo Muscular",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
-            equipInfo.getjDateChooserAquisicaoEquip().requestFocus();
-
+            exercicioInfo.getjComboBoxGrupoMuscExercicio().requestFocus();
+        } 
+        
+        else if (equip.equals("Selecione")) {
+            JOptionPane.showMessageDialog(telaPrincipal, "Selecione o equipamento",
+                    "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
+            exercicioInfo.getjComboBoxEquipamentoExercicio().requestFocus();
         } else {
             //Execucao
-            if (dao.editarEquipamento(new Equipamento(Integer.parseInt(id), nome, dataAquisicao, observacoes))) {
+            if (dao.editarExercicio(new Exercicios(Integer.parseInt(id), nome, grupoMusc))) {
                 JOptionPane.showMessageDialog(null, "Funcionário " + nome
                         + " Alterado com sucesso", "Editar funcionário", JOptionPane.INFORMATION_MESSAGE);
             }
-            telaPrincipal.getjTextFieldPesquisarFunc().setText("");
-            listarEquip();
-            equipInfo.dispose();
+            telaPrincipal.getjTextFieldPesquisarExercicio().setText("");
+            listarExerc();
+            exercicioInfo.dispose();
         }
     }
-
-    //Ativa e desativa equipamentos
-    private void statusEquip(int controle) {
-        JTable tabelaAtivo = telaPrincipal.getjTableAtivosEquipamento();
-        JTable tabelaDesabilitado = telaPrincipal.getjTableInativosEquipamento();
-        int linhaAtivo = tabelaAtivo.getSelectedRow();
-        int linhaDesabilitado = tabelaDesabilitado.getSelectedRow();
-
-        if (linhaAtivo != -1 && controle == 0) {
-            int id = Integer.parseInt(String.valueOf(tabelaAtivo.getValueAt(linhaAtivo, 0)));
-            if (dao.statusEquip(id, false)) {
-                JOptionPane.showMessageDialog(null, "Equipamento desativado com sucesso",
-                        "Desativar Equipamento", JOptionPane.INFORMATION_MESSAGE);
-                listarEquip();
-            }
-        } else if (linhaDesabilitado != -1 && controle == 1) {
-            int id = Integer.parseInt(String.valueOf(tabelaDesabilitado.getValueAt(linhaDesabilitado, 0)));
-            if (dao.statusEquip(id, true)) {
-                JOptionPane.showMessageDialog(null, "Equipamento ativado com sucesso",
-                        "Ativar Equipamento", JOptionPane.INFORMATION_MESSAGE);
-                listarEquip();
+    
+    private void removerExercicio() {
+        JTable tabela = telaPrincipal.getjTableExercicio();
+        int linha = tabela.getSelectedRow();
+        if (linha != -1) {
+            int id = Integer.parseInt(String.valueOf(tabela.getValueAt(linha, 0)));
+            int showConfirmDialog = JOptionPane.showConfirmDialog(null, "DELETAR O EXERCíCIOS: " + tabela.getValueAt(linha, 1));
+            if (showConfirmDialog == 0) {
+                if (dao.deletarExercicio(id)) {
+                    JOptionPane.showMessageDialog(telaPrincipal, "Exercício excluido com sucesso", "Excluir", JOptionPane.INFORMATION_MESSAGE);
+                    telaPrincipal.getjTextFieldPesquisarExercicio().setText("");
+                    listarExerc();
+                }
             }
         }
     }
-     */
+    
+    private void listarExerc(String pesquisa) {
+        ArrayList<Exercicios> lista = dao.listarExercicios(pesquisa);
+        
+        if (lista != null) {
+            DefaultTableModel modelo = (DefaultTableModel) telaPrincipal.getjTableExercicio().getModel();
+            for (int i = 0; i < lista.size(); i++) {
+                modelo.addRow(new Object[]{
+                lista.get(i).getId(),
+                lista.get(i).getNome(),
+                lista.get(i).getGrupoMuscular()});    
+            }
+        }
+    }
+
     Vector<Integer> id_equip = new Vector<Integer>();
 
     public void listaDadosComboBox() {

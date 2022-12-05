@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.Frame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;

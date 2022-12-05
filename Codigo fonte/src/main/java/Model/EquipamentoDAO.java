@@ -263,4 +263,19 @@ public class EquipamentoDAO {
             } catch (SQLException e) {}
         }
     }
+    
+    public ResultSet listarEquipamentoComboBox(){
+        String query = "SELECT * FROM equipamento ORDER BY nome";
+        Connection con = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        try {
+            con = new ConnectionFactory().getConnection();
+            pst = con.prepareStatement(query);
+            return pst.executeQuery();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro - código: " + e.getErrorCode());
+            return null;
+        }
+    }
 }

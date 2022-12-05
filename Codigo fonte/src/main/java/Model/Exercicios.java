@@ -2,7 +2,7 @@
 package Model;
 
 public class Exercicios {
-    private final int id;
+    private int id;
     private final String nome;
     private final String grupoMuscular;
 
@@ -11,6 +11,12 @@ public class Exercicios {
         this.nome = nome;
         this.grupoMuscular = grupoMuscular;
     }
+
+    public Exercicios(String nome, String grupoMuscular) {
+        this.nome = nome;
+        this.grupoMuscular = grupoMuscular;
+    }
+    
 
     public int getId() {
         return id;

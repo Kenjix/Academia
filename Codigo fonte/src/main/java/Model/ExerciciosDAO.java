@@ -21,15 +21,15 @@ public class ExerciciosDAO {
 
             pst.execute();
             con.close();
-        } catch (Exception e) {
-            System.out.println("Erro de conexão: " + e);
+        } catch (SQLException e) {
+            System.out.println("Erro de conexão: " + e.getErrorCode());
         }
     }
 
     //Ler informações de Funcionarios
     public ArrayList<Exercicios> listarExercicios() {
         ArrayList<Exercicios> list = new ArrayList();
-        String query = "SELECT nome, grupoMuscular FROM exercicios;";
+        String query = "SELECT * FROM exercicios;";
 
         try {
             Connection con = new ConnectionFactory().getConnection();

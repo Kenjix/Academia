@@ -29,6 +29,9 @@ public class App {
         
         EquipamentoController equip = new EquipamentoController(telaPrincipal, equipInfo);
         equip.initEquipamentoController();
+        
+        ExercicioController exerc = new ExercicioController(telaPrincipal);
+        exerc.initExerciciosController();
     }
 
     private static void carregarTema() {

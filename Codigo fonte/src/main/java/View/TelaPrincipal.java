@@ -320,6 +320,28 @@ public class TelaPrincipal extends javax.swing.JFrame {
         return delExerc;
     }
 
+    public JButton getjButtonSalvarExercicio() {
+        return jButtonSalvarExercicio;
+    }
+
+    public JComboBox<String> getjComboBoxEquipamentoExercicio() {
+        return jComboBoxEquipamentoExercicio;
+    }
+
+    public JComboBox<String> getjComboBoxGrupoMuscExercicio() {
+        return jComboBoxGrupoMuscExercicio;
+    }
+
+    public JTextField getjTextFieldNomeExercicio() {
+        return jTextFieldNomeExercicio;
+    }
+
+    public JTable getjTableExercicio() {
+        return jTableExercicio;
+    }
+    
+    
+
     //Treino
     public JPanel getCRUDTreino() {
         return CRUDTreino;
@@ -609,7 +631,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
         CRUDExerc = new javax.swing.JPanel();
         inicioExerc = new javax.swing.JPanel();
         cadExerc = new javax.swing.JPanel();
+        jLabel54 = new javax.swing.JLabel();
+        jTextFieldNomeExercicio = new javax.swing.JTextField();
+        jLabel55 = new javax.swing.JLabel();
+        jLabel56 = new javax.swing.JLabel();
+        jComboBoxEquipamentoExercicio = new javax.swing.JComboBox<>();
+        jButtonSalvarExercicio = new javax.swing.JButton();
+        jComboBoxGrupoMuscExercicio = new javax.swing.JComboBox<>();
         listExerc = new javax.swing.JPanel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTableExercicio = new javax.swing.JTable();
         delExerc = new javax.swing.JPanel();
         jPanelTreino = new javax.swing.JPanel();
         jPanelMenuTreino = new javax.swing.JPanel();
@@ -1907,11 +1938,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanelMenuExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonCadastrarExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(80, 80, 80)
-                .addGroup(jPanelMenuExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonListarExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(247, 247, 247)
+                .addGap(141, 141, 141)
+                .addGroup(jPanelMenuExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonListarExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(186, 186, 186)
                 .addGroup(jPanelMenuExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonDeletarExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1951,30 +1982,91 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         cadExerc.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastrar Exercício"));
 
+        jLabel54.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
+        jLabel54.setText("Nome do exercício:");
+
+        jTextFieldNomeExercicio.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
+
+        jLabel55.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
+        jLabel55.setText("Grupo Muscular:");
+
+        jLabel56.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
+        jLabel56.setText("Equipamento:");
+
+        jComboBoxEquipamentoExercicio.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
+        jComboBoxEquipamentoExercicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+
+        jButtonSalvarExercicio.setBackground(new java.awt.Color(102, 102, 102));
+        jButtonSalvarExercicio.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
+        jButtonSalvarExercicio.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSalvarExercicio.setText("Salvar");
+
+        jComboBoxGrupoMuscExercicio.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
+        jComboBoxGrupoMuscExercicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Membros Inferiores", "Peitorais", "Dorsais", "Deltóides/Trapézio", "Bíceps", "Tríceps" }));
+
         javax.swing.GroupLayout cadExercLayout = new javax.swing.GroupLayout(cadExerc);
         cadExerc.setLayout(cadExercLayout);
         cadExercLayout.setHorizontalGroup(
             cadExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1011, Short.MAX_VALUE)
+            .addGroup(cadExercLayout.createSequentialGroup()
+                .addGap(360, 360, 360)
+                .addGroup(cadExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonSalvarExercicio)
+                    .addGroup(cadExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jComboBoxGrupoMuscExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(cadExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jTextFieldNomeExercicio)
+                            .addComponent(jLabel56, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel55, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel54, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBoxEquipamentoExercicio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(384, Short.MAX_VALUE))
         );
         cadExercLayout.setVerticalGroup(
             cadExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 575, Short.MAX_VALUE)
+            .addGroup(cadExercLayout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(jLabel54)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldNomeExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel55)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBoxGrupoMuscExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(jLabel56)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBoxEquipamentoExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66)
+                .addComponent(jButtonSalvarExercicio)
+                .addContainerGap(230, Short.MAX_VALUE))
         );
 
         CRUDExerc.add(cadExerc, "card3");
 
         listExerc.setBorder(javax.swing.BorderFactory.createTitledBorder("Listar Exercícios"));
 
+        jTableExercicio.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome", "Grupo Muscular"
+            }
+        ));
+        jScrollPane7.setViewportView(jTableExercicio);
+
         javax.swing.GroupLayout listExercLayout = new javax.swing.GroupLayout(listExerc);
         listExerc.setLayout(listExercLayout);
         listExercLayout.setHorizontalGroup(
             listExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1011, Short.MAX_VALUE)
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 1011, Short.MAX_VALUE)
         );
         listExercLayout.setVerticalGroup(
             listExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 575, Short.MAX_VALUE)
+            .addGroup(listExercLayout.createSequentialGroup()
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 87, Short.MAX_VALUE))
         );
 
         CRUDExerc.add(listExerc, "card4");
@@ -2384,10 +2476,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonRemoverFoto;
     private javax.swing.JButton jButtonSalvarCliente;
     private javax.swing.JButton jButtonSalvarEquipamento;
+    private javax.swing.JButton jButtonSalvarExercicio;
     private javax.swing.JButton jButtonSalvarFuncio;
     private javax.swing.JButton jButtonSalvarTreino;
     private javax.swing.JComboBox<String> jComboBoxCargaHorariaFuncionario;
+    private javax.swing.JComboBox<String> jComboBoxEquipamentoExercicio;
     private javax.swing.JComboBox<String> jComboBoxExercicios;
+    private javax.swing.JComboBox<String> jComboBoxGrupoMuscExercicio;
     private javax.swing.JComboBox<String> jComboBoxInstrutorTreino;
     private javax.swing.JComboBox<String> jComboBoxOrdem;
     private javax.swing.JComboBox<String> jComboBoxTurnoFuncionario;
@@ -2450,6 +2545,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -2474,6 +2572,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPaneAtivos;
     private javax.swing.JScrollPane jScrollPaneAtivos1;
     private javax.swing.JScrollPane jScrollPaneAtivos2;
@@ -2487,6 +2586,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable jTableAtivosCliente;
     private javax.swing.JTable jTableAtivosEquipamento;
     private javax.swing.JTable jTableDeletar;
+    private javax.swing.JTable jTableExercicio;
     private javax.swing.JTable jTableInativosCliente;
     private javax.swing.JTable jTableInativosEquipamento;
     private javax.swing.JTable jTableListarFuncionario;
@@ -2503,6 +2603,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldEspecialidadeFuncionario;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldNomeEquipamento;
+    private javax.swing.JTextField jTextFieldNomeExercicio;
     private javax.swing.JTextField jTextFieldNomeFuncionario;
     private javax.swing.JTextField jTextFieldObjetivo;
     private javax.swing.JTextField jTextFieldPeso;

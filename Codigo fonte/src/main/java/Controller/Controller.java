@@ -2,6 +2,7 @@ package Controller;
 
 import View.ClienteInfo;
 import View.EquipInfo;
+import View.ExercicioInfo;
 import View.FuncionarioInfo;
 import View.TelaPrincipal;
 import javax.swing.JFrame;
@@ -13,12 +14,14 @@ public class Controller {
     private final ClienteInfo clienteInfo;
     private final FuncionarioInfo funcionarioInfo;
     private final EquipInfo equipInfo;
+    private final ExercicioInfo exercicioInfo;
 
-    public Controller(TelaPrincipal telaPrincipal, ClienteInfo clienteInfo, FuncionarioInfo funcionarioInfo, EquipInfo equipInfo) {
+    public Controller(TelaPrincipal telaPrincipal, ClienteInfo clienteInfo, FuncionarioInfo funcionarioInfo, EquipInfo equipInfo, ExercicioInfo exercicioInfo) {
         this.telaPrincipal = telaPrincipal;
         this.clienteInfo = clienteInfo;
         this.funcionarioInfo = funcionarioInfo;
         this.equipInfo = equipInfo;
+        this.exercicioInfo = exercicioInfo;
     }
 
     public void initController() {
@@ -35,7 +38,6 @@ public class Controller {
 
         telaPrincipal.getjButtonCadastrarExercicio().addActionListener(e -> exibeTela(telaPrincipal.getCRUDExerc(), telaPrincipal.getCadExerc()));
         telaPrincipal.getjButtonListarExercicio().addActionListener(e -> exibeTela(telaPrincipal.getCRUDExerc(), telaPrincipal.getListExerc()));
-        telaPrincipal.getjButtonDeletarExercicio().addActionListener(e -> exibeTela(telaPrincipal.getCRUDExerc(), telaPrincipal.getDelExerc()));
 
         telaPrincipal.getjButtonCadastrarTreino().addActionListener(e -> exibeTela(telaPrincipal.getCRUDTreino(), telaPrincipal.getCadTreino()));
         telaPrincipal.getjButtonListarTreino().addActionListener(e -> exibeTela(telaPrincipal.getCRUDTreino(), telaPrincipal.getListTreino()));
@@ -44,6 +46,7 @@ public class Controller {
         telaPrincipal.getjButtonEditarCliente().addActionListener(e -> exibeCliente());
         telaPrincipal.getjButtonEditarFunc().addActionListener(e -> exibeFuncionario());        
         telaPrincipal.getjButtonEditarEquip().addActionListener(e -> exibeEquip());
+        telaPrincipal.getjButtonEditarExerc().addActionListener(e -> exibeExerc());
     }
 
     private void exibeTela(JPanel panel, JPanel navegacao) {
@@ -74,6 +77,14 @@ public class Controller {
             equipInfo.setLocationRelativeTo(telaPrincipal);
             equipInfo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             equipInfo.setVisible(true);
+        }
+    }
+    
+    private void exibeExerc() {
+        if (telaPrincipal.getjTableExercicio().getSelectedRow() != -1) {
+            exercicioInfo.setLocationRelativeTo(telaPrincipal);
+            exercicioInfo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            exercicioInfo.setVisible(true);
         }
     }
 }

@@ -51,6 +51,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jTextFieldNomeEquipamento.setText("");
         jDateChooserDataAquisicao.setCalendar(null);
     }
+    
+    public void limparCamposExerc() {
+        jTextFieldNomeExercicio.setText("");
+        jComboBoxGrupoMuscExercicio.setSelectedIndex(1);
+        jComboBoxEquipamentoExercicio.setSelectedIndex(1);
+    }
 
     //Cliente
     public JPanel getCRUDClient() {
@@ -304,10 +310,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         return jButtonListarExercicio;
     }
 
-    public JButton getjButtonDeletarExercicio() {
-        return jButtonDeletarExercicio;
-    }
-
     public JPanel getCadExerc() {
         return cadExerc;
     }
@@ -339,7 +341,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public JTable getjTableExercicio() {
         return jTableExercicio;
     }
-    
+
+    public JButton getjButtonPesquisarExerc() {
+        return jButtonPesquisarExerc;
+    }
+
+    public JTextField getjTextFieldPesquisarExerc() {
+        return jTextFieldPesquisarExerc;
+    }
+
+    public JButton getjButtonEditarExerc() {
+        return jButtonEditarExerc;
+    }
+
+    public JButton getjButtonDeletarExerc() {
+        return jButtonDeletarExerc;
+    }
     
 
     //Treino
@@ -626,8 +643,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
         jButtonListarExercicio = new javax.swing.JButton();
         jLabel30 = new javax.swing.JLabel();
-        jButtonDeletarExercicio = new javax.swing.JButton();
-        jLabel32 = new javax.swing.JLabel();
         CRUDExerc = new javax.swing.JPanel();
         inicioExerc = new javax.swing.JPanel();
         cadExerc = new javax.swing.JPanel();
@@ -641,6 +656,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         listExerc = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTableExercicio = new javax.swing.JTable();
+        jTextFieldPesquisarExerc = new javax.swing.JTextField();
+        jButtonPesquisarExerc = new javax.swing.JButton();
+        jButtonEditarExerc = new javax.swing.JButton();
+        jButtonDeletarExerc = new javax.swing.JButton();
         delExerc = new javax.swing.JPanel();
         jPanelTreino = new javax.swing.JPanel();
         jPanelMenuTreino = new javax.swing.JPanel();
@@ -1921,31 +1940,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel30.setText("Listar");
-
-        jButtonDeletarExercicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/deletar.png"))); // NOI18N
-
-        jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel32.setText("Deletar");
+        jLabel30.setText("Visualizar e Editar");
 
         javax.swing.GroupLayout jPanelMenuExercLayout = new javax.swing.GroupLayout(jPanelMenuExerc);
         jPanelMenuExerc.setLayout(jPanelMenuExercLayout);
         jPanelMenuExercLayout.setHorizontalGroup(
             jPanelMenuExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMenuExercLayout.createSequentialGroup()
-                .addGap(218, 218, 218)
-                .addGroup(jPanelMenuExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonCadastrarExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(141, 141, 141)
+                .addGap(259, 259, 259)
+                .addGroup(jPanelMenuExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCadastrarExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanelMenuExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonListarExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(186, 186, 186)
-                .addGroup(jPanelMenuExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonDeletarExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelMenuExercLayout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addComponent(jButtonListarExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelMenuExercLayout.createSequentialGroup()
+                        .addGap(213, 213, 213)
+                        .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelMenuExercLayout.setVerticalGroup(
@@ -1954,14 +1966,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE)
                 .addGroup(jPanelMenuExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButtonCadastrarExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonDeletarExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonListarExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelMenuExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelMenuExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel29)
-                        .addComponent(jLabel30))
-                    .addComponent(jLabel32))
+                .addGroup(jPanelMenuExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel29)
+                    .addComponent(jLabel30))
                 .addContainerGap())
         );
 
@@ -2051,22 +2060,71 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Grupo Muscular"
+                "Id", "Nome", "Grupo Muscular"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane7.setViewportView(jTableExercicio);
+
+        jButtonPesquisarExerc.setText("Pesquisar");
+
+        jButtonEditarExerc.setBackground(new java.awt.Color(102, 102, 102));
+        jButtonEditarExerc.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
+        jButtonEditarExerc.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonEditarExerc.setText("Editar");
+        jButtonEditarExerc.setMaximumSize(new java.awt.Dimension(111, 29));
+        jButtonEditarExerc.setMinimumSize(new java.awt.Dimension(111, 29));
+        jButtonEditarExerc.setPreferredSize(new java.awt.Dimension(111, 29));
+
+        jButtonDeletarExerc.setBackground(new java.awt.Color(102, 102, 102));
+        jButtonDeletarExerc.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
+        jButtonDeletarExerc.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonDeletarExerc.setText("Deletar");
+        jButtonDeletarExerc.setMaximumSize(new java.awt.Dimension(111, 29));
+        jButtonDeletarExerc.setMinimumSize(new java.awt.Dimension(111, 29));
+        jButtonDeletarExerc.setPreferredSize(new java.awt.Dimension(111, 29));
 
         javax.swing.GroupLayout listExercLayout = new javax.swing.GroupLayout(listExerc);
         listExerc.setLayout(listExercLayout);
         listExercLayout.setHorizontalGroup(
             listExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 1011, Short.MAX_VALUE)
+            .addGroup(listExercLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(listExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(listExercLayout.createSequentialGroup()
+                        .addComponent(jTextFieldPesquisarExerc, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonPesquisarExerc)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(listExercLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonEditarExerc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonDeletarExerc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(340, 340, 340))))
         );
         listExercLayout.setVerticalGroup(
             listExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(listExercLayout.createSequentialGroup()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 87, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addGroup(listExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldPesquisarExerc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonPesquisarExerc))
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(listExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonEditarExerc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonDeletarExerc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         CRUDExerc.add(listExerc, "card4");
@@ -2457,12 +2515,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCancelarTreino;
     private javax.swing.JButton jButtonDelCliente;
     private javax.swing.JButton jButtonDeletarCliente;
-    private javax.swing.JButton jButtonDeletarExercicio;
+    private javax.swing.JButton jButtonDeletarExerc;
     private javax.swing.JButton jButtonDeletarFunc;
     private javax.swing.JButton jButtonDeletarTreino;
     private javax.swing.JButton jButtonDesativaEquip;
     private javax.swing.JButton jButtonEditarCliente;
     private javax.swing.JButton jButtonEditarEquip;
+    private javax.swing.JButton jButtonEditarExerc;
     private javax.swing.JButton jButtonEditarFunc;
     private javax.swing.JButton jButtonListarCliente;
     private javax.swing.JButton jButtonListarEquipamento;
@@ -2472,6 +2531,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonPesquisarCliente;
     private javax.swing.JButton jButtonPesquisarClienteDel;
     private javax.swing.JButton jButtonPesquisarEquip;
+    private javax.swing.JButton jButtonPesquisarExerc;
     private javax.swing.JButton jButtonPesquisarFunc;
     private javax.swing.JButton jButtonRemoverFoto;
     private javax.swing.JButton jButtonSalvarCliente;
@@ -2521,7 +2581,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
@@ -2611,6 +2670,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldPesquisarCliente;
     private javax.swing.JTextField jTextFieldPesquisarClienteDel;
     private javax.swing.JTextField jTextFieldPesquisarEquip;
+    private javax.swing.JTextField jTextFieldPesquisarExerc;
     private javax.swing.JTextField jTextFieldPesquisarFunc;
     private javax.swing.JTextField jTextFieldRepeticaoTreino;
     private javax.swing.JTextField jTextFieldSeriesTreino;

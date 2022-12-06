@@ -3,6 +3,7 @@ package Controller;
 
 import View.ClienteInfo;
 import View.EquipInfo;
+import View.ExercicioInfo;
 import View.FuncionarioInfo;
 import View.TelaPrincipal;
 import javax.swing.JFrame;
@@ -17,8 +18,9 @@ public class App {
         ClienteInfo clienteInfo = new ClienteInfo((JFrame) null, true);
         FuncionarioInfo funcionarioInfo = new FuncionarioInfo((JFrame) null, true);
         EquipInfo equipInfo = new EquipInfo((JFrame) null, true);
+        ExercicioInfo exercicioInfo = new ExercicioInfo((JFrame) null, true);
 
-        Controller c = new Controller(telaPrincipal, clienteInfo, funcionarioInfo, equipInfo);
+        Controller c = new Controller(telaPrincipal, clienteInfo, funcionarioInfo, equipInfo, exercicioInfo);
         c.initController();
 
         ClienteController cli = new ClienteController(telaPrincipal, clienteInfo);
@@ -30,7 +32,7 @@ public class App {
         EquipamentoController equip = new EquipamentoController(telaPrincipal, equipInfo);
         equip.initEquipamentoController();
         
-        ExercicioController exerc = new ExercicioController(telaPrincipal);
+        ExercicioController exerc = new ExercicioController(telaPrincipal, exercicioInfo);
         exerc.initExerciciosController();
     }
 

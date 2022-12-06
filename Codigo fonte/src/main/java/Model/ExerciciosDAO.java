@@ -56,27 +56,38 @@ public class ExerciciosDAO {
 
     //UPDATE
     public boolean editarExercicio(Exercicios exercicios) {
-        String query = "UPDATE exercicio SET  nome = ?, grupoMuscular = ?"
-                + "Where id = ?;";
-
+        String query = "UPDATE exercicios SET  nome = ?, grupoMuscular = ?"
+                + "WHERE id = ?;";
+        Connection con = null;
+        PreparedStatement pst = null;
         try {
-            Connection con = new ConnectionFactory().getConnection();
-            PreparedStatement pst = con.prepareStatement(query);
+            con = new ConnectionFactory().getConnection();
+            pst = con.prepareStatement(query);
             pst.setString(1, exercicios.getNome());
             pst.setString(2, exercicios.getGrupoMuscular());
-
+            pst.setString(3, String.valueOf(exercicios.getId()));
             pst.execute();
-            con.close();
             return true;
         } catch (SQLException e) {
-            System.out.println("ERRO AO ALTERAR: " + e);
+            JOptionPane.showMessageDialog(null, "Erro código: " + e.getMessage()); 
             return false;
+        } finally {
+            if (pst != null) {
+                try {
+                    pst.close();
+                } catch (SQLException e) {}
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {}
+            }
         }
     }
 
     // DELETE
     public boolean deletarExercicio(int id) {
-        String query = "DELETE FROM exercicios Where Id = ?;";       
+        String query = "DELETE FROM exercicios Where Id = ?;";
 
         try {
             Connection con = new ConnectionFactory().getConnection();
@@ -92,7 +103,7 @@ public class ExerciciosDAO {
             return false;
         }
     }
-    
+
     public Exercicios getExercicios(int id) {
         String query = "SELECT id, nome, grupoMuscular FROM exercicios WHERE id = ?;";
 
@@ -108,7 +119,6 @@ public class ExerciciosDAO {
             int idE = 0;
             String nome = "";
             String grupMusc = "";
- 
 
             while (rs.next()) {
                 idE = rs.getInt(1);
@@ -124,30 +134,37 @@ public class ExerciciosDAO {
             if (rs != null) {
                 try {
                     rs.close();
-                } catch (SQLException e) {}
+                } catch (SQLException e) {
+                }
             }
             if (pst != null) {
                 try {
                     pst.close();
-                } catch (SQLException e) {}
+                } catch (SQLException e) {
+                }
             }
             if (con != null) {
                 try {
                     con.close();
-                } catch (SQLException e) {}
+                } catch (SQLException e) {
+                }
             }
         }
     }
-    
+
     //Ler informações de Funcionarios
     public ArrayList<Exercicios> listarExercicios(String pesquisa) {
         ArrayList<Exercicios> list = new ArrayList();
-        String query = "SELECT * FROM exercicios WHERE nome LIKE ?;";
+        String query = "SELECT id, nome, grupoMuscular FROM exercicios WHERE nome LIKE ?;";
 
+        Connection con = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
         try {
-            Connection con = new ConnectionFactory().getConnection();
-            PreparedStatement pst = con.prepareStatement(query);
-            ResultSet rs = pst.executeQuery();
+            con = new ConnectionFactory().getConnection();
+            pst = con.prepareStatement(query);
+            pst.setString(1, '%' + pesquisa + '%');
+            rs = pst.executeQuery();
 
             while (rs.next()) {
 
@@ -156,12 +173,30 @@ public class ExerciciosDAO {
                 String grupoMuscular = rs.getString(3);
                 list.add(new Exercicios(id, nome, grupoMuscular));
             }
-            con.close();
             return list;
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
             return null;
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if (pst != null) {
+                try {
+                    pst.close();
+                } catch (SQLException e) {
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                }
+            }
         }
-    }
 
+    }
 }

@@ -1,12 +1,11 @@
 package Controller;
 
+import Model.Equipamento;
 import Model.EquipamentoDAO;
 import Model.Exercicios;
 import Model.ExerciciosDAO;
 import View.ExercicioInfo;
 import View.TelaPrincipal;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -17,6 +16,7 @@ public class ExercicioController {
     private final TelaPrincipal telaPrincipal;
     private final ExercicioInfo exercicioInfo;
     ExerciciosDAO dao = new ExerciciosDAO();
+    EquipamentoDAO equipDAO = new EquipamentoDAO();
 
     public ExercicioController(TelaPrincipal telaPrincipal, ExercicioInfo exercicioInfo) {
         this.telaPrincipal = telaPrincipal;
@@ -38,27 +38,21 @@ public class ExercicioController {
         String nome = telaPrincipal.getjTextFieldNomeExercicio().getText();
         String grupoMusc = String.valueOf(telaPrincipal.getjComboBoxGrupoMuscExercicio().getSelectedItem());
         String equip = String.valueOf(telaPrincipal.getjComboBoxEquipamentoExercicio().getSelectedItem());
-        
+
         if (nome.isEmpty()) {
             JOptionPane.showMessageDialog(telaPrincipal, "O campo Nome é obrigatório",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             telaPrincipal.getjTextFieldNomeExercicio().requestFocus();
-        } 
-        
-        else if (grupoMusc.equals("Selecione")) {
+        } else if (grupoMusc.equals("Selecione")) {
             JOptionPane.showMessageDialog(telaPrincipal, "Selecione o Grupo Muscular",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             telaPrincipal.getjComboBoxGrupoMuscExercicio().requestFocus();
-        } 
-        
-        else if (equip.equals("Selecione")) {
+        } else if (equip.equals("Selecione")) {
             JOptionPane.showMessageDialog(telaPrincipal, "Selecione o equipamento",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             telaPrincipal.getjComboBoxEquipamentoExercicio().requestFocus();
-        } 
-        
-        else {
-            if (dao.inserirExercicio(new Exercicios(nome, grupoMusc))){
+        } else {
+            if (dao.inserirExercicio(new Exercicios(nome, grupoMusc))) {
                 JOptionPane.showMessageDialog(telaPrincipal, "Exercicio " + nome
                         + " Cadastrado com sucesso", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -68,26 +62,24 @@ public class ExercicioController {
     }
 
     private void listarExerc() {
-        ArrayList<Exercicios> lista = new ArrayList();
+        ArrayList<Exercicios> lista = dao.listarExercicios();
         DefaultTableModel modelo = (DefaultTableModel) telaPrincipal.getjTableExercicio().getModel();
         modelo.setRowCount(0);
-
-        for (Exercicios e : dao.listarExercicios()) {
+        for (Exercicios e : lista) {
             modelo.addRow(new Object[]{
                 e.getId(),
                 e.getNome(),
                 e.getGrupoMuscular()});
         }
-
     }
-    
+
     private void getExerc() {
         JTable tabela = telaPrincipal.getjTableExercicio();
         int linha = tabela.getSelectedRow();
         if (linha != -1) {
             int id = Integer.parseInt(String.valueOf(tabela.getValueAt(linha, 0)));
             Exercicios exerc = dao.getExercicios(id);
-                
+
             exercicioInfo.getjLabelStoreExercID().setText(String.valueOf(id));
             exercicioInfo.getjTextFieldNomeExerc().setText(exerc.getNome());
             String grupMusc = exerc.getGrupoMuscular();
@@ -107,8 +99,7 @@ public class ExercicioController {
             listaDadosComboBox();
         }
     }
-    
- 
+
     //Edita equipamento selecionado na tabela
     private void editarExerc() {
         //Atribuicao de dados
@@ -122,15 +113,11 @@ public class ExercicioController {
             JOptionPane.showMessageDialog(telaPrincipal, "O campo Nome é obrigatório",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             exercicioInfo.getjTextFieldNomeExerc().requestFocus();
-        } 
-        
-        else if (grupoMusc.equals("Selecione")) {
+        } else if (grupoMusc.equals("Selecione")) {
             JOptionPane.showMessageDialog(telaPrincipal, "Selecione o Grupo Muscular",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             exercicioInfo.getjComboBoxGrupoMuscExercicio().requestFocus();
-        } 
-        
-        /*else if (equip.equals("Selecione")) {
+        } /*else if (equip.equals("Selecione")) {
             JOptionPane.showMessageDialog(telaPrincipal, "Selecione o equipamento",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             exercicioInfo.getjComboBoxEquipamentoExercicio().requestFocus();
@@ -145,13 +132,13 @@ public class ExercicioController {
             exercicioInfo.dispose();
         }
     }
-   
+
     private void removerExercicio() {
         JTable tabela = telaPrincipal.getjTableExercicio();
         int linha = tabela.getSelectedRow();
         if (linha != -1) {
             int id = Integer.parseInt(String.valueOf(tabela.getValueAt(linha, 0)));
-            int showConfirmDialog = JOptionPane.showConfirmDialog(null, "DELETAR O EXERCíCIOS: " + tabela.getValueAt(linha, 1));
+            int showConfirmDialog = JOptionPane.showConfirmDialog(null, "DELETAR O EXERCÍCIO: " + tabela.getValueAt(linha, 1));
             if (showConfirmDialog == 0) {
                 if (dao.deletarExercicio(id)) {
                     JOptionPane.showMessageDialog(telaPrincipal, "Exercício excluido com sucesso", "Excluir", JOptionPane.INFORMATION_MESSAGE);
@@ -161,34 +148,30 @@ public class ExercicioController {
             }
         }
     }
-    
+
     private void listarExerc(String pesquisa) {
         ArrayList<Exercicios> lista = dao.listarExercicios(pesquisa);
-        
+
         if (lista != null) {
             DefaultTableModel modelo = (DefaultTableModel) telaPrincipal.getjTableExercicio().getModel();
             modelo.setRowCount(0);
             for (int i = 0; i < lista.size(); i++) {
                 modelo.addRow(new Object[]{
-                lista.get(i).getId(),
-                lista.get(i).getNome(),
-                lista.get(i).getGrupoMuscular()});    
+                    lista.get(i).getId(),
+                    lista.get(i).getNome(),
+                    lista.get(i).getGrupoMuscular()});
             }
         }
     }
 
-
     public void listaDadosComboBox() {
         telaPrincipal.getjComboBoxEquipamentoExercicio().removeAllItems();
         telaPrincipal.getjComboBoxEquipamentoExercicio().addItem("Selecione");
-        try {
-            EquipamentoDAO equip = new EquipamentoDAO();
-            ResultSet rs = equip.listarEquipamentoComboBox();
 
-            while (rs.next()) {
-                telaPrincipal.getjComboBoxEquipamentoExercicio().addItem(rs.getString(2));
-                exercicioInfo.getjComboBoxEquipamentoExercicio().addItem(rs.getString(2));
-            }
-        } catch (SQLException e) {}
+        ArrayList<Equipamento> list = equipDAO.listarEquipamentoComboBox();
+        for (int i = 0; i < list.size(); i++) {
+            telaPrincipal.getjComboBoxEquipamentoExercicio().addItem(list.get(i).getNome());
+            exercicioInfo.getjComboBoxEquipamentoExercicio().addItem(list.get(i).getNome());
+        }
     }
 }

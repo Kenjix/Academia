@@ -11,21 +11,35 @@ import javax.swing.JOptionPane;
 public class ExerciciosDAO {
 
     public boolean inserirExercicio(Exercicios ex) {
-        String query = "insert into exercicios (nome,grupoMuscular)"
-                + "values (? , ?);";
+        String query = "INSERT INTO exercicios (nome, grupoMuscular)"
+                + "VALUES (?, ?);";
+
+        Connection con = null;
+        PreparedStatement pst = null;
         try {
-            Connection con = new ConnectionFactory().getConnection();
-            PreparedStatement pst = con.prepareStatement(query);
+            con = new ConnectionFactory().getConnection();
+            pst = con.prepareStatement(query);
 
             pst.setString(1, ex.getNome());
             pst.setString(2, ex.getGrupoMuscular());
-
             pst.execute();
-            con.close();
             return true;
         } catch (SQLException e) {
-            System.out.println("Erro de conexão: " + e.getErrorCode());
+            JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
             return false;
+        } finally {
+            if (pst != null) {
+                try {
+                    pst.close();
+                } catch (SQLException e) {
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                }
+            }
         }
     }
 
@@ -34,23 +48,42 @@ public class ExerciciosDAO {
         ArrayList<Exercicios> list = new ArrayList();
         String query = "SELECT * FROM exercicios;";
 
+        Connection con = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
         try {
-            Connection con = new ConnectionFactory().getConnection();
-            PreparedStatement pst = con.prepareStatement(query);
-            ResultSet rs = pst.executeQuery();
-
+            con = new ConnectionFactory().getConnection();
+            pst = con.prepareStatement(query);
+            rs = pst.executeQuery();
             while (rs.next()) {
-
                 int id = Integer.parseInt(rs.getString(1));
                 String nome = rs.getString(2);
                 String grupoMuscular = rs.getString(3);
                 list.add(new Exercicios(id, nome, grupoMuscular));
             }
-            con.close();
             return list;
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
             return null;
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if (pst != null) {
+                try {
+                    pst.close();
+                } catch (SQLException e) {
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                }
+            }
         }
     }
 
@@ -69,38 +102,53 @@ public class ExerciciosDAO {
             pst.execute();
             return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro código: " + e.getMessage()); 
+            JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
             return false;
         } finally {
             if (pst != null) {
                 try {
                     pst.close();
-                } catch (SQLException e) {}
+                } catch (SQLException e) {
+                }
             }
             if (con != null) {
                 try {
                     con.close();
-                } catch (SQLException e) {}
+                } catch (SQLException e) {
+                }
             }
         }
     }
 
     // DELETE
     public boolean deletarExercicio(int id) {
-        String query = "DELETE FROM exercicios Where Id = ?;";
+        String query = "DELETE FROM exercicios WHERE Id = ?;";
 
+        Connection con = null;
+        PreparedStatement pst = null;
         try {
-            Connection con = new ConnectionFactory().getConnection();
-            PreparedStatement pst = con.prepareStatement(query);
+            con = new ConnectionFactory().getConnection();
+            pst = con.prepareStatement(query);
             pst.setString(1, String.valueOf(id));
 
             pst.execute();
-            System.out.println("DELETEANDO");
-            con.close();
             return true;
         } catch (SQLException e) {
-            System.out.println("ERRO AO DELETAR: " + e);
+            JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
             return false;
+        } finally {
+            if (pst != null) {
+                try {
+                    pst.close();
+                } catch (SQLException e) {
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                }
+            }
         }
     }
 
@@ -197,6 +245,5 @@ public class ExerciciosDAO {
                 }
             }
         }
-
     }
 }

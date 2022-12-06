@@ -127,7 +127,7 @@ CREATE PROCEDURE insereCliente(
 	END$$
 DELIMITER ;
 
---Procedure para geracao formatacao de campos de funcionario
+--Procedure para geracao  e formatacao de campos de funcionario
 DELIMITER $$
 CREATE PROCEDURE insereFunc(
 				IN nome VARCHAR(60), 
@@ -203,5 +203,3 @@ FOR EACH ROW
 		SET NEW.cpf = replace(replace(NEW.cpf,'.',''),'-','');
 	END$$
 DELIMITER ;
-SELECT id, nome, dataAquisicao disponivel FROM equipamento
-select * from equipamento

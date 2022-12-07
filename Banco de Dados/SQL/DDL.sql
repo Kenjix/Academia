@@ -1,5 +1,4 @@
 CREATE DATABASE academia;
-drop database academia;
 USE academia;
 
 CREATE TABLE funcionario (
@@ -89,7 +88,7 @@ CREATE TABLE treinos (
 	FOREIGN KEY (FK_exercicios) REFERENCES exercicios (id)
 );
 
---Procedure para geracao de matriculas de clientes
+-- Procedure para geracao de matriculas de clientes
 DELIMITER $$
 CREATE PROCEDURE insereCliente(	
 				IN nome VARCHAR(60), 
@@ -127,7 +126,7 @@ CREATE PROCEDURE insereCliente(
 	END$$
 DELIMITER ;
 
---Procedure para geracao  e formatacao de campos de funcionario
+-- Procedure para geracao  e formatacao de campos de funcionario
 DELIMITER $$
 CREATE PROCEDURE insereFunc(
 				IN nome VARCHAR(60), 
@@ -154,7 +153,7 @@ CREATE PROCEDURE insereFunc(
 	END$$
 DELIMITER ;
 
---Trigger para prevenir insercao de clientes duplicados.
+-- Trigger para prevenir insercao de clientes duplicados.
 DELIMITER $$
 CREATE TRIGGER trigger_cliente_before
 BEFORE INSERT 
@@ -167,7 +166,7 @@ FOR EACH ROW
 	END$$
 DELIMITER ;
 
---Trigger para prevenir insercao de funcionarios duplicados.
+-- Trigger para prevenir insercao de funcionarios duplicados.
 DELIMITER $$
 CREATE TRIGGER trigger_funcionario_before
 BEFORE INSERT 
@@ -180,7 +179,7 @@ FOR EACH ROW
 	END$$
 DELIMITER ;
 
---Trigger para formatar cpf em updates e contato
+-- Trigger para formatar cpf em updates e contato
 DELIMITER $$
 CREATE TRIGGER trigger_update_formatarCpfContatoCli
 BEFORE UPDATE ON cliente
@@ -192,7 +191,7 @@ FOR EACH ROW
 	END$$
 DELIMITER ;
 
---Trigger para formatar cpf em updates e contato
+-- Trigger para formatar cpf em updates e contato
 DELIMITER $$
 CREATE TRIGGER trigger_update_formatarCpfContatoFunc
 BEFORE UPDATE ON funcionario
@@ -204,7 +203,7 @@ FOR EACH ROW
 	END$$
 DELIMITER ;
 
---View para listar frequencia de clientes
+-- View para listar frequencia de clientes
 CREATE VIEW view_frequencia_cliente
 AS
 SELECT cliente.nome, frequencia.data, frequencia.presenca

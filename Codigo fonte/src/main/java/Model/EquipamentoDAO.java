@@ -280,36 +280,4 @@ public class EquipamentoDAO {
             }
         }
     }
-
-    public ArrayList<Equipamento> listarEquipamentoComboBox() {
-        String query = "SELECT * FROM equipamento ORDER BY nome";
-        ArrayList<Equipamento> lista = new ArrayList();
-        Connection con = null;
-        PreparedStatement pst = null;
-        ResultSet rs = null;
-        try {
-            con = new ConnectionFactory().getConnection();
-            pst = con.prepareStatement(query);
-            
-                        int idE = 0;
-            String nome = "";
-            String dataAquisicao = "";
-            Boolean dispovivel = null;
-            String observacoes = "";
-
-            while (rs.next()) {
-                idE = rs.getInt(1);
-                nome = rs.getString(2);
-                dataAquisicao = rs.getString(3);
-                dispovivel = rs.getBoolean(4);
-                observacoes = rs.getString(5);
-                lista.add(new Equipamento(idE, nome, dataAquisicao, dispovivel, observacoes));
-            }
-
-            return lista;
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro - código: " + e.getErrorCode());
-            return null;
-        }
-    }
 }

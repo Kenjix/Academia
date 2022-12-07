@@ -54,8 +54,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     public void limparCamposExerc() {
         jTextFieldNomeExercicio.setText("");
-        jComboBoxGrupoMuscExercicio.setSelectedIndex(1);
-        jComboBoxEquipamentoExercicio.setSelectedIndex(1);
+        jComboBoxGrupoMuscExercicio.setSelectedIndex(0);
+        jComboBoxEquipamentoExercicio.setSelectedIndex(0);
     }
 
     //Cliente
@@ -656,6 +656,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         listExerc = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTableExercicio = new javax.swing.JTable();
+        jTableExercicio.getTableHeader().setEnabled(false);
         jTextFieldPesquisarExerc = new javax.swing.JTextField();
         jButtonPesquisarExerc = new javax.swing.JButton();
         jButtonEditarExerc = new javax.swing.JButton();
@@ -1947,17 +1948,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanelMenuExercLayout.setHorizontalGroup(
             jPanelMenuExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMenuExercLayout.createSequentialGroup()
-                .addGap(259, 259, 259)
+                .addGap(338, 338, 338)
                 .addGroup(jPanelMenuExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonCadastrarExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(161, 161, 161)
                 .addGroup(jPanelMenuExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelMenuExercLayout.createSequentialGroup()
-                        .addGap(250, 250, 250)
-                        .addComponent(jButtonListarExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelMenuExercLayout.createSequentialGroup()
-                        .addGap(213, 213, 213)
-                        .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButtonListarExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelMenuExercLayout.setVerticalGroup(

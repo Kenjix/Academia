@@ -2399,20 +2399,15 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="259" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="338" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel29" min="-2" pref="87" max="-2" attributes="0"/>
                               <Component id="jButtonCadastrarExercicio" min="-2" pref="87" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="250" max="-2" attributes="0"/>
-                                  <Component id="jButtonListarExercicio" min="-2" pref="87" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="213" max="-2" attributes="0"/>
-                                  <Component id="jLabel30" min="-2" pref="166" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jButtonListarExercicio" min="-2" pref="87" max="-2" attributes="0"/>
+                              <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -2713,6 +2708,9 @@
                               </Table>
                             </Property>
                           </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="jTableExercicio.getTableHeader().setEnabled(false);"/>
+                          </AuxValues>
                         </Component>
                       </SubComponents>
                     </Container>

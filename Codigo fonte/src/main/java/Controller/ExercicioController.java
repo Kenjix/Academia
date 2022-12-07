@@ -1,7 +1,8 @@
 package Controller;
 
-import Model.Equipamento;
 import Model.EquipamentoDAO;
+import Model.ExercEquip;
+import Model.ExercEquipDAO;
 import Model.Exercicios;
 import Model.ExerciciosDAO;
 import View.ExercicioInfo;
@@ -16,7 +17,7 @@ public class ExercicioController {
     private final TelaPrincipal telaPrincipal;
     private final ExercicioInfo exercicioInfo;
     ExerciciosDAO dao = new ExerciciosDAO();
-    EquipamentoDAO equipDAO = new EquipamentoDAO();
+    ExercEquipDAO exercEquipDAO = new ExercEquipDAO();
 
     public ExercicioController(TelaPrincipal telaPrincipal, ExercicioInfo exercicioInfo) {
         this.telaPrincipal = telaPrincipal;
@@ -55,9 +56,10 @@ public class ExercicioController {
             if (dao.inserirExercicio(new Exercicios(nome, grupoMusc))) {
                 JOptionPane.showMessageDialog(telaPrincipal, "Exercicio " + nome
                         + " Cadastrado com sucesso", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+                telaPrincipal.limparCamposExerc();
             }
         }
-        telaPrincipal.limparCamposExerc();
+
         listarExerc();
     }
 
@@ -75,6 +77,7 @@ public class ExercicioController {
 
     private void getExerc() {
         JTable tabela = telaPrincipal.getjTableExercicio();
+        ArrayList<ExercEquip> list = exercEquipDAO.listar();
         int linha = tabela.getSelectedRow();
         if (linha != -1) {
             int id = Integer.parseInt(String.valueOf(tabela.getValueAt(linha, 0)));
@@ -90,13 +93,25 @@ public class ExercicioController {
             } else if ((grupMusc.equals("Dorsais"))) {
                 exercicioInfo.getjComboBoxGrupoMuscExercicio().setSelectedIndex(3);
             } else if ((grupMusc.equals("Deltóides/Trapézio"))) {
-                exercicioInfo.getjComboBoxGrupoMuscExercicio().setSelectedIndex(3);
+                exercicioInfo.getjComboBoxGrupoMuscExercicio().setSelectedIndex(4);
             } else if ((grupMusc.equals("Bíceps"))) {
-                exercicioInfo.getjComboBoxGrupoMuscExercicio().setSelectedIndex(3);
+                exercicioInfo.getjComboBoxGrupoMuscExercicio().setSelectedIndex(5);
             } else if ((grupMusc.equals("Tríceps"))) {
-                exercicioInfo.getjComboBoxGrupoMuscExercicio().setSelectedIndex(3);
+                exercicioInfo.getjComboBoxGrupoMuscExercicio().setSelectedIndex(6);
             }
+            exercicioInfo.getjComboBoxEquipamentoExercicio().removeAllItems();
             listaDadosComboBox();
+            String equipAtual = "";
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i).getExercicio().getId() == Integer.parseInt(exercicioInfo.getjLabelStoreExercID().getText())) {
+                    equipAtual = list.get(i).getEquipamento().getNome();
+                }
+            }
+            for (int i = 0; i < exercicioInfo.getjComboBoxEquipamentoExercicio().getItemCount(); i++) {
+                if (String.valueOf(exercicioInfo.getjComboBoxEquipamentoExercicio().getItemAt(i)).equals(equipAtual)) {
+                    exercicioInfo.getjComboBoxEquipamentoExercicio().setSelectedIndex(i);
+                }
+            }
         }
     }
 
@@ -106,29 +121,29 @@ public class ExercicioController {
         String id = exercicioInfo.getjLabelStoreExercID().getText();
         String nome = exercicioInfo.getjTextFieldNomeExerc().getText();
         String grupoMusc = String.valueOf(exercicioInfo.getjComboBoxGrupoMuscExercicio().getSelectedItem());
-        //String equip = String.valueOf(exercicioInfo.getjComboBoxEquipamentoExercicio().getSelectedItem());
+        String equip = String.valueOf(exercicioInfo.getjComboBoxEquipamentoExercicio().getSelectedItem());
 
         //Validacao de dados
         if (nome.isEmpty()) {
-            JOptionPane.showMessageDialog(telaPrincipal, "O campo Nome é obrigatório",
+            JOptionPane.showMessageDialog(exercicioInfo, "O campo Nome é obrigatório",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             exercicioInfo.getjTextFieldNomeExerc().requestFocus();
         } else if (grupoMusc.equals("Selecione")) {
-            JOptionPane.showMessageDialog(telaPrincipal, "Selecione o Grupo Muscular",
+            JOptionPane.showMessageDialog(exercicioInfo, "Selecione o Grupo Muscular",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             exercicioInfo.getjComboBoxGrupoMuscExercicio().requestFocus();
-        } /*else if (equip.equals("Selecione")) {
-            JOptionPane.showMessageDialog(telaPrincipal, "Selecione o equipamento",
+
+        } else if (equip.equals("Selecione")) {
+            JOptionPane.showMessageDialog(exercicioInfo, "Selecione o equipamento",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             exercicioInfo.getjComboBoxEquipamentoExercicio().requestFocus();
-        }*/ else {
+        } else {
             //Execucao
             if (dao.editarExercicio(new Exercicios(Integer.parseInt(id), nome, grupoMusc))) {
                 JOptionPane.showMessageDialog(null, "Exercício " + nome
                         + " Alterado com sucesso", "Editar exercício", JOptionPane.INFORMATION_MESSAGE);
             }
             telaPrincipal.getjTextFieldPesquisarExerc().setText("");
-            listarExerc();
             exercicioInfo.dispose();
         }
     }
@@ -167,11 +182,12 @@ public class ExercicioController {
     public void listaDadosComboBox() {
         telaPrincipal.getjComboBoxEquipamentoExercicio().removeAllItems();
         telaPrincipal.getjComboBoxEquipamentoExercicio().addItem("Selecione");
-
-        ArrayList<Equipamento> list = equipDAO.listarEquipamentoComboBox();
+        exercicioInfo.getjComboBoxEquipamentoExercicio().removeAllItems();
+        exercicioInfo.getjComboBoxEquipamentoExercicio().addItem("Selecione");        
+        ArrayList<ExercEquip> list = exercEquipDAO.listar();
         for (int i = 0; i < list.size(); i++) {
-            telaPrincipal.getjComboBoxEquipamentoExercicio().addItem(list.get(i).getNome());
-            exercicioInfo.getjComboBoxEquipamentoExercicio().addItem(list.get(i).getNome());
+            telaPrincipal.getjComboBoxEquipamentoExercicio().addItem(list.get(i).getEquipamento().getNome());
+            exercicioInfo.getjComboBoxEquipamentoExercicio().addItem(list.get(i).getEquipamento().getNome());
         }
     }
 }

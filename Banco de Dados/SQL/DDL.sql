@@ -2,11 +2,20 @@ CREATE DATABASE academia;
 drop database academia;
 USE academia;
 
-CREATE TABLE frequencia
-(
+CREATE TABLE funcionario (
 	id INT PRIMARY KEY AUTO_INCREMENT,
-	data DATE,
-	presenca BIT DEFAULT 0
+	nome VARCHAR(60) NOT NULL,
+	cpf VARCHAR(14) UNIQUE NOT NULL,
+	telefone VARCHAR(13),
+	celular VARCHAR(14),
+	email VARCHAR(60),
+	dataNasc DATE NOT NULL,
+	peso FLOAT NOT NULL,
+	altura FLOAT NOT NULL,
+	observacoes TEXT,
+	cargaHoraria INT,
+	turno VARCHAR(20),
+	especialidade VARCHAR(50)
 );
 
 CREATE TABLE cliente (
@@ -25,26 +34,17 @@ CREATE TABLE cliente (
 	objetivo VARCHAR(80),
 	ativo BIT DEFAULT 1,
 	foto MEDIUMBLOB,
-	observacoes TEXT,
-	FK_frequencia INT,
-	updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	FOREIGN KEY (FK_frequencia) REFERENCES frequencia (id)
+	observacoes TEXT,	
+	updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP	
 );
 
-CREATE TABLE funcionario (
+CREATE TABLE frequencia
+(
 	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(60) NOT NULL,
-	cpf VARCHAR(14) UNIQUE NOT NULL,
-	telefone VARCHAR(13),
-	celular VARCHAR(14),
-	email VARCHAR(60),
-	dataNasc DATE NOT NULL,
-	peso FLOAT NOT NULL,
-	altura FLOAT NOT NULL,
-	observacoes TEXT,
-	cargaHoraria INT,
-	turno VARCHAR(20),
-	especialidade VARCHAR(50)
+	data DATE,
+	presenca BIT DEFAULT 0,
+    FK_cliente INT,
+    FOREIGN KEY (FK_cliente) REFERENCES cliente (id)
 );
 
 CREATE TABLE equipamento
@@ -203,3 +203,10 @@ FOR EACH ROW
 		SET NEW.cpf = replace(replace(NEW.cpf,'.',''),'-','');
 	END$$
 DELIMITER ;
+
+--View para listar frequencia de clientes
+CREATE VIEW view_frequencia_cliente
+AS
+SELECT cliente.nome, frequencia.data, frequencia.presenca
+FROM frequencia
+INNER JOIN cliente ON cliente.id = frequencia.fk_cliente;

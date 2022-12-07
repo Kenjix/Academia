@@ -26,11 +26,23 @@ public class ExercEquipDAO {
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro - código: " + e.getErrorCode());
-
+        } finally {
+            if (pst != null) {
+                try {
+                    pst.close();
+                } catch (SQLException e) {
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                }
+            }
         }
     }
-    
-    public void editar(){
+
+    public void editar() {
         String query = "UPDATE exerc_equip ";
     }
 
@@ -74,10 +86,10 @@ public class ExercEquipDAO {
                 grupoMuscular = rs.getString(8);
                 fkEquip = rs.getInt(9);
                 fkExerc = rs.getInt(10);
-                
+
                 Exercicios exerc = new Exercicios(idExerc, nomeExerc, grupoMuscular);
                 Equipamento equip = new Equipamento(idEquip, nomeEquip, dataAquisicao, disponivel, observacoes);
-                list.add(new ExercEquip(equip, exerc, fkEquip, fkExerc));                
+                list.add(new ExercEquip(equip, exerc, fkEquip, fkExerc));
             }
             return list;
         } catch (SQLException e) {

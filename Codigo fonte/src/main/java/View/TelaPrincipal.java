@@ -50,12 +50,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public void limparCamposEquip() {
         jTextFieldNomeEquipamento.setText("");
         jDateChooserDataAquisicao.setCalendar(null);
+        jTextAreaCadastroEquip.setText("");
     }
     
     public void limparCamposExerc() {
         jTextFieldNomeExercicio.setText("");
         jComboBoxGrupoMuscExercicio.setSelectedIndex(0);
-        jComboBoxEquipamentoExercicio.setSelectedIndex(0);
     }
 
     //Cliente
@@ -325,11 +325,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public JButton getjButtonSalvarExercicio() {
         return jButtonSalvarExercicio;
     }
-
-    public JComboBox<String> getjComboBoxEquipamentoExercicio() {
-        return jComboBoxEquipamentoExercicio;
-    }
-
+    
     public JComboBox<String> getjComboBoxGrupoMuscExercicio() {
         return jComboBoxGrupoMuscExercicio;
     }
@@ -649,8 +645,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel54 = new javax.swing.JLabel();
         jTextFieldNomeExercicio = new javax.swing.JTextField();
         jLabel55 = new javax.swing.JLabel();
-        jLabel56 = new javax.swing.JLabel();
-        jComboBoxEquipamentoExercicio = new javax.swing.JComboBox<>();
         jButtonSalvarExercicio = new javax.swing.JButton();
         jComboBoxGrupoMuscExercicio = new javax.swing.JComboBox<>();
         listExerc = new javax.swing.JPanel();
@@ -1997,12 +1991,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel55.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
         jLabel55.setText("Grupo Muscular:");
 
-        jLabel56.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
-        jLabel56.setText("Equipamento:");
-
-        jComboBoxEquipamentoExercicio.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
-        jComboBoxEquipamentoExercicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
-
         jButtonSalvarExercicio.setBackground(new java.awt.Color(102, 102, 102));
         jButtonSalvarExercicio.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
         jButtonSalvarExercicio.setForeground(new java.awt.Color(255, 255, 255));
@@ -2021,12 +2009,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButtonSalvarExercicio)
                     .addGroup(cadExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jComboBoxGrupoMuscExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(cadExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextFieldNomeExercicio)
-                            .addComponent(jLabel56, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(cadExercLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldNomeExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel55, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel54, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxEquipamentoExercicio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel54, javax.swing.GroupLayout.Alignment.LEADING))))
                 .addContainerGap(384, Short.MAX_VALUE))
         );
         cadExercLayout.setVerticalGroup(
@@ -2040,13 +2026,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel55)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBoxGrupoMuscExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(jLabel56)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBoxEquipamentoExercicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
+                .addGap(33, 33, 33)
                 .addComponent(jButtonSalvarExercicio)
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addContainerGap(331, Short.MAX_VALUE))
         );
 
         CRUDExerc.add(cadExerc, "card3");
@@ -2538,7 +2520,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSalvarFuncio;
     private javax.swing.JButton jButtonSalvarTreino;
     private javax.swing.JComboBox<String> jComboBoxCargaHorariaFuncionario;
-    private javax.swing.JComboBox<String> jComboBoxEquipamentoExercicio;
     private javax.swing.JComboBox<String> jComboBoxExercicios;
     private javax.swing.JComboBox<String> jComboBoxGrupoMuscExercicio;
     private javax.swing.JComboBox<String> jComboBoxInstrutorTreino;
@@ -2604,7 +2585,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
-    private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

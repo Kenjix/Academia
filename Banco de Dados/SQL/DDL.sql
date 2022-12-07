@@ -49,6 +49,7 @@ CREATE TABLE frequencia
 CREATE TABLE equipamento
 (
 	id INT PRIMARY KEY AUTO_INCREMENT,
+    patrimonio VARCHAR(10) UNIQUE NOT NULL,
 	nome VARCHAR(50) NOT NULL,
     dataAquisicao DATE,
 	disponivel BIT DEFAULT 1,

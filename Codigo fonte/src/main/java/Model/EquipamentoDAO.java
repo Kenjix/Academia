@@ -44,7 +44,7 @@ public class EquipamentoDAO {
     //Ler informações de equipamentos
     public ArrayList<Equipamento> listarEquipamento() {
         ArrayList<Equipamento> list = new ArrayList();
-        String query = "SELECT id, nome, dataAquisicao, disponivel, observacoes FROM equipamento;";
+        String query = "SELECT id, nome, dataAquisicao, disponivel, observacoes, patrimonio FROM equipamento;";
         Connection con = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
@@ -60,7 +60,8 @@ public class EquipamentoDAO {
                 String dataAquisicao = rs.getString(3);
                 boolean disponivel = rs.getBoolean(4);
                 String observacoes = rs.getString(5);
-                list.add(new Equipamento(id, nome, dataAquisicao, disponivel, observacoes));
+                String patrimonio = rs.getString(6);
+                list.add(new Equipamento(id, nome, dataAquisicao, observacoes, patrimonio));
             }
             return list;
         } catch (SQLException e) {

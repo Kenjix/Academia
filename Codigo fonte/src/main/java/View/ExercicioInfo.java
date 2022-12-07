@@ -34,6 +34,10 @@ public class ExercicioInfo extends javax.swing.JDialog {
         return jLabelStoreExercID;
     }
 
+    public JLabel getjLabelStoreEquipID() {
+        return jLabelStoreEquipID;
+    }
+
     public JTextField getjTextFieldNomeExerc() {
         return jTextFieldNomeExerc;
     }
@@ -54,6 +58,7 @@ public class ExercicioInfo extends javax.swing.JDialog {
         jButtonCancelarExerc = new javax.swing.JButton();
         jComboBoxGrupoMuscExercicio = new javax.swing.JComboBox<>();
         jComboBoxEquipamentoExercicio = new javax.swing.JComboBox<>();
+        jLabelStoreEquipID = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Editar Equpamento");
@@ -99,7 +104,9 @@ public class ExercicioInfo extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(362, 362, 362)
-                        .addComponent(jLabelStoreExercID, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabelStoreExercID, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelStoreEquipID, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(252, 252, 252)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -121,7 +128,9 @@ public class ExercicioInfo extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jLabelStoreExercID, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelStoreEquipID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelStoreExercID, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
                 .addGap(38, 38, 38)
                 .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -172,6 +181,7 @@ public class ExercicioInfo extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabelStoreEquipID;
     private javax.swing.JLabel jLabelStoreExercID;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextFieldNomeExerc;

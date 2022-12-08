@@ -408,6 +408,38 @@ public class TelaPrincipal extends javax.swing.JFrame {
         return jButtonEditarFunc;
     }
 
+    public JTable getjTableTreinoClientes() {
+        return jTableTreinoClientes;
+    }
+
+    public JComboBox<String> getjComboBoxInstrutorTreino() {
+        return jComboBoxInstrutorTreino;
+    }
+
+    public JComboBox<String> getjComboBoxOrdem() {
+        return jComboBoxOrdem;
+    }
+
+    public JTextField getjTextFieldRepeticaoTreino() {
+        return jTextFieldRepeticaoTreino;
+    }
+
+    public JTextField getjTextFieldSeriesTreino() {
+        return jTextFieldSeriesTreino;
+    }
+
+    public JTextField getjTextFieldTipoTreino() {
+        return jTextFieldTipoTreino;
+    }
+
+    public JComboBox<String> getjComboBoxExercicios() {
+        return jComboBoxExercicios;
+    }
+
+    public JTextField getjTextFieldCargaTreino() {
+        return jTextFieldCargaTreino;
+    }
+
     //Equipamento
     public JButton getjButtonSalvarEquipamento() {
         return jButtonSalvarEquipamento;
@@ -457,6 +489,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         return jTextAreaObservacaoTreino;
     }
 
+    public JButton getjButtonCancelarTreino() {
+        return jButtonCancelarTreino;
+    }
+
+    public JButton getjButtonSalvarTreino() {
+        return jButtonSalvarTreino;
+    }
+    
 
     
     
@@ -2142,6 +2182,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jTabbedPane1.addTab("Exercício", jPanelExerc);
 
         jButtonCadastrarTreino.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/novoTreino.png"))); // NOI18N
+        jButtonCadastrarTreino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastrarTreinoActionPerformed(evt);
+            }
+        });
 
         jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -2457,6 +2502,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jButtonCancelarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarClienteActionPerformed
         limparCamposCliente();
     }//GEN-LAST:event_jButtonCancelarClienteActionPerformed
+
+    private void jButtonCadastrarTreinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarTreinoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonCadastrarTreinoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CRUDClient;

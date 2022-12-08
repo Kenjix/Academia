@@ -114,9 +114,10 @@ public class ExercicioController {
             exercicioInfo.getjComboBoxEquipamentoExercicio().removeAllItems();
             exercicioInfo.getjComboBoxEquipamentoExercicio().addItem("Selecione");
             for (int i = 0; i < listEquip.size(); i++) {
-                exercicioInfo.getjComboBoxEquipamentoExercicio().addItem(listEquip.get(i).getPatrimonio());
+                if (listEquip.get(i).isDisponivel()) {
+                    exercicioInfo.getjComboBoxEquipamentoExercicio().addItem(listEquip.get(i).getPatrimonio());
+                }
             }
-            
         }
     }
 
@@ -127,6 +128,7 @@ public class ExercicioController {
         String nome = exercicioInfo.getjTextFieldNomeExerc().getText();
         String grupoMusc = String.valueOf(exercicioInfo.getjComboBoxGrupoMuscExercicio().getSelectedItem());
         String patrimonio = String.valueOf(exercicioInfo.getjComboBoxEquipamentoExercicio().getSelectedItem());
+        Equipamento equip = equipDAO.getEquipamento(patrimonio);
 
         //Validacao de dados
         if (nome.isEmpty()) {
@@ -142,9 +144,12 @@ public class ExercicioController {
             JOptionPane.showMessageDialog(exercicioInfo, "Selecione o equipamento",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             exercicioInfo.getjComboBoxEquipamentoExercicio().requestFocus();
+        } else if (!equip.isDisponivel()) {
+            JOptionPane.showMessageDialog(exercicioInfo, "Equipamento desativado",
+                    "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
+            exercicioInfo.getjComboBoxEquipamentoExercicio().requestFocus();
         } else {
-            //Execucao
-            Equipamento equip = equipDAO.getEquipamento(patrimonio);
+            //Execucao            
             int equipID = equip.getId();
             if (dao.editarExercicio(new Exercicios(Integer.parseInt(exercId), nome, grupoMusc))) {
                 exercEquipDAO.cadastrar(Integer.parseInt(exercId), equipID);

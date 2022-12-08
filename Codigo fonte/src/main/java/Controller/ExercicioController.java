@@ -110,22 +110,23 @@ public class ExercicioController {
             } else if ((grupMusc.equals("Tríceps"))) {
                 exercicioInfo.getjComboBoxGrupoMuscExercicio().setSelectedIndex(6);
             }
-
+            // AQUI VER
             exercicioInfo.getjComboBoxEquipamentoExercicio().removeAllItems();
             exercicioInfo.getjComboBoxEquipamentoExercicio().addItem("Selecione");
             for (int i = 0; i < listEquip.size(); i++) {
-                exercicioInfo.getjComboBoxEquipamentoExercicio().addItem(listEquip.get(i).getNome());
+                exercicioInfo.getjComboBoxEquipamentoExercicio().addItem(listEquip.get(i).getPatrimonio());
             }
+            
         }
     }
 
     //Edita equipamento selecionado na tabela
     private void editarExerc() {
         //Atribuicao de dados
-        String id = exercicioInfo.getjLabelStoreExercID().getText();
+        String exercId = exercicioInfo.getjLabelStoreExercID().getText();
         String nome = exercicioInfo.getjTextFieldNomeExerc().getText();
         String grupoMusc = String.valueOf(exercicioInfo.getjComboBoxGrupoMuscExercicio().getSelectedItem());
-        String equip = String.valueOf(exercicioInfo.getjComboBoxEquipamentoExercicio().getSelectedItem());
+        String patrimonio = String.valueOf(exercicioInfo.getjComboBoxEquipamentoExercicio().getSelectedItem());
 
         //Validacao de dados
         if (nome.isEmpty()) {
@@ -137,14 +138,16 @@ public class ExercicioController {
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             exercicioInfo.getjComboBoxGrupoMuscExercicio().requestFocus();
 
-        } else if (equip.equals("Selecione")) {
+        } else if (patrimonio.equals("Selecione")) {
             JOptionPane.showMessageDialog(exercicioInfo, "Selecione o equipamento",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             exercicioInfo.getjComboBoxEquipamentoExercicio().requestFocus();
         } else {
             //Execucao
-            if (dao.editarExercicio(new Exercicios(Integer.parseInt(id), nome, grupoMusc))) {
-                exercEquipDAO.cadastrar(Integer.parseInt(id), 0);
+            Equipamento equip = equipDAO.getEquipamento(patrimonio);
+            int equipID = equip.getId();
+            if (dao.editarExercicio(new Exercicios(Integer.parseInt(exercId), nome, grupoMusc))) {
+                exercEquipDAO.cadastrar(Integer.parseInt(exercId), equipID);
                 JOptionPane.showMessageDialog(null, "Exercício " + nome
                         + " Alterado com sucesso", "Editar exercício", JOptionPane.INFORMATION_MESSAGE);
             }

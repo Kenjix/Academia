@@ -24,16 +24,18 @@ public class Equipamento {
         this.observacoes = observacoes;
     }
     
-    
-
-  
-
- 
-    
-    public Equipamento(int id, String nome, String dataAquisicao, String observacoes, String patrimonio) {
+    public Equipamento(int id, String nome, String dataAquisicao, String observacoes) {
         this.id = id;
         this.nome = nome;
         this.dataAquisicao = dataAquisicao;
+        this.observacoes = observacoes;
+    }
+    
+    public Equipamento(int id, String nome, String dataAquisicao, boolean disponivel, String observacoes, String patrimonio) {
+        this.id = id;
+        this.nome = nome;
+        this.dataAquisicao = dataAquisicao;
+        this.disponivel = disponivel;
         this.observacoes = observacoes;
         this.patrimonio = patrimonio;
     }

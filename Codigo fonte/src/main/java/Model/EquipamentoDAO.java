@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 public class EquipamentoDAO {
 
     public boolean inserirEquipamento(Equipamento eq) {
-        String query = "INSERT INTO equipamento (nome, dataAquisicao, observacoes) VALUES (?, ?, ?);";
+        String query = "CALL insereExercicio(?, ?, ?);";
         Connection con = null;
         PreparedStatement pst = null;
         try {
@@ -61,7 +61,7 @@ public class EquipamentoDAO {
                 boolean disponivel = rs.getBoolean(4);
                 String observacoes = rs.getString(5);
                 String patrimonio = rs.getString(6);
-                list.add(new Equipamento(id, nome, dataAquisicao, observacoes, patrimonio));
+                list.add(new Equipamento(id, nome, dataAquisicao, disponivel, observacoes, patrimonio));
             }
             return list;
         } catch (SQLException e) {
@@ -92,7 +92,7 @@ public class EquipamentoDAO {
     //Ler informações de Equipamento por nome
     public ArrayList<Equipamento> listarEquip(String pesquisa) {
         ArrayList<Equipamento> list = new ArrayList();
-        String query = "SELECT id, nome, dataAquisicao, disponivel, observacoes FROM equipamento WHERE nome LIKE ?;";
+        String query = "SELECT id, nome, dataAquisicao, disponivel, observacoes, patrimonio FROM equipamento WHERE nome LIKE ?;";
         Connection con = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
@@ -109,7 +109,8 @@ public class EquipamentoDAO {
                 String dataAquisicao = rs.getString(3);
                 Boolean dispoviel = rs.getBoolean(4);
                 String observacoes = rs.getString(5);
-                list.add(new Equipamento(id, nome, dataAquisicao, dispoviel, observacoes));
+                String patrimonio = rs.getString(6);
+                list.add(new Equipamento(id, nome, dataAquisicao, dispoviel, observacoes, patrimonio));
             }
             return list;
         } catch (SQLException e) {
@@ -203,7 +204,7 @@ public class EquipamentoDAO {
     }
 
     public Equipamento getEquipamento(int id) {
-        String query = "SELECT id, nome, dataAquisicao, disponivel, observacoes FROM equipamento WHERE id = ?;";
+        String query = "SELECT id, nome, dataAquisicao, disponivel, observacoes, patrimonio FROM equipamento WHERE id = ?;";
 
         Connection con = null;
         PreparedStatement pst = null;
@@ -212,6 +213,61 @@ public class EquipamentoDAO {
             con = new ConnectionFactory().getConnection();
             pst = con.prepareStatement(query);
             pst.setString(1, String.valueOf(id));
+            rs = pst.executeQuery();
+
+            int idE = 0;
+            String nome = "";
+            String dataAquisicao = "";
+            Boolean dispovivel = null;
+            String observacoes = "";
+            String patrimonio = "";
+
+            while (rs.next()) {
+                idE = rs.getInt(1);
+                nome = rs.getString(2);
+                dataAquisicao = rs.getString(3);
+                dispovivel = rs.getBoolean(4);
+                observacoes = rs.getString(5);
+                patrimonio = rs.getString(6);
+
+            }
+            Equipamento equip = new Equipamento(idE, nome, dataAquisicao, dispovivel, observacoes, patrimonio);
+            return equip;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
+            return null;
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if (pst != null) {
+                try {
+                    pst.close();
+                } catch (SQLException e) {
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+    }
+    
+        public Equipamento getEquipamento(String patrimonio) {
+        String query = "SELECT id, nome, dataAquisicao, disponivel, observacoes FROM equipamento WHERE patrimonio = ?;";
+
+        Connection con = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        try {
+            con = new ConnectionFactory().getConnection();
+            pst = con.prepareStatement(query);
+            pst.setString(1, patrimonio);
             rs = pst.executeQuery();
 
             int idE = 0;
@@ -228,7 +284,7 @@ public class EquipamentoDAO {
                 observacoes = rs.getString(5);
 
             }
-            Equipamento equip = new Equipamento(idE, nome, dataAquisicao, dispovivel, observacoes);
+            Equipamento equip = new Equipamento(idE, nome, dataAquisicao, dispovivel, observacoes, patrimonio);
             return equip;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());

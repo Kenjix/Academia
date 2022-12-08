@@ -1,4 +1,5 @@
 CREATE DATABASE academia;
+drop database academia
 USE academia;
 
 CREATE TABLE funcionario (
@@ -151,6 +152,26 @@ CREATE PROCEDURE insereFunc(
         SET celFormatado = (select replace(replace(replace(celular,'(',''),')',''),'-',''));
 		INSERT INTO funcionario (nome, cpf, telefone, celular, email, dataNasc, peso, altura, observacoes, cargaHoraria, turno, especialidade) 
 		VALUES (nome, cpfFormatado, telFormatado, celFormatado, email, dataNasc, peso, altura, observacoes, cargaHoraria, turno, especialidade);
+	END$$
+DELIMITER ;
+
+-- Procedure para geracao de patrimonio de equipamentos
+DELIMITER $$
+CREATE PROCEDURE insereExercicio(	
+				IN nome VARCHAR(50), 
+				IN dataAquisicao DATE, 
+				IN observacoes TEXT)
+	BEGIN
+		DECLARE codigo VARCHAR(10);
+		DECLARE patrimonioGerado VARCHAR(10);
+		SET codigo = (SELECT MAX(patrimonio) FROM equipamento);          
+			IF codigo IS NULL THEN
+				SET patrimonioGerado = LPAD(1, 10, 0);
+			ELSE			
+				SET patrimonioGerado = LPAD((SELECT MAX(patrimonio)+1 FROM equipamento), 10, 0);   
+			END IF;
+			INSERT INTO equipamento (patrimonio, nome, dataAquisicao, observacoes) 
+			VALUES (patrimonioGerado, nome, dataAquisicao, observacoes);
 	END$$
 DELIMITER ;
 

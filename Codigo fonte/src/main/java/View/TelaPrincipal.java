@@ -1782,11 +1782,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Nome", "Aquisição"
+                "Id", "Nome", "Aquisição", "Patrimônio"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1838,11 +1838,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Nome", "Aquisição"
+                "Id", "Nome", "Aquisição", "Patrimônio"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

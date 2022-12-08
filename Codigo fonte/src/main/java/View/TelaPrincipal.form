@@ -2196,10 +2196,11 @@
                                 <Component class="javax.swing.JTable" name="jTableAtivosEquipamento">
                                   <Properties>
                                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                      <Table columnCount="3" rowCount="0">
+                                      <Table columnCount="4" rowCount="0">
                                         <Column editable="false" title="Id" type="java.lang.Object"/>
                                         <Column editable="false" title="Nome" type="java.lang.Object"/>
                                         <Column editable="false" title="Aquisi&#xe7;&#xe3;o" type="java.lang.Object"/>
+                                        <Column editable="false" title="Patrim&#xf4;nio" type="java.lang.Object"/>
                                       </Table>
                                     </Property>
                                   </Properties>
@@ -2290,10 +2291,11 @@
                                 <Component class="javax.swing.JTable" name="jTableInativosEquipamento">
                                   <Properties>
                                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                      <Table columnCount="3" rowCount="0">
+                                      <Table columnCount="4" rowCount="0">
                                         <Column editable="false" title="Id" type="java.lang.Object"/>
                                         <Column editable="false" title="Nome" type="java.lang.Object"/>
                                         <Column editable="false" title="Aquisi&#xe7;&#xe3;o" type="java.lang.Object"/>
+                                        <Column editable="false" title="Patrim&#xf4;nio" type="java.lang.Object"/>
                                       </Table>
                                     </Property>
                                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

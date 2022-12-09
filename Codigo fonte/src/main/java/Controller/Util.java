@@ -1,13 +1,13 @@
 package Controller;
 
 import Model.Treino;
+import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import java.awt.Desktop;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -45,7 +45,7 @@ public class Util {
         return matcher.find();
     }
 
-    //Armazena a foto em em temp
+    //Armazena a foto em em temp e retorna seu path
     public String getImage(Icon icon) {
         String path = "";
         try {
@@ -63,6 +63,7 @@ public class Util {
         }
     }
 
+    //Metodos para calular a idade
     public int calculaIdade(java.util.Date dataNasc) {
         Calendar dataNascimento = Calendar.getInstance();
         dataNascimento.setTime(dataNasc);
@@ -90,6 +91,7 @@ public class Util {
         return palavra;
     }
 
+    //Rebece uma lista que poula uma tabala e gera um aquivo PDF a partir dos dados dela
     public void gerarPDF(ArrayList<Treino> list) {
         Document document = new Document();
         try {
@@ -99,7 +101,8 @@ public class Util {
             Paragraph p = new Paragraph("Treinos:");
             p.setAlignment(1);
             document.add(p);
-
+            document.add(Chunk.NEWLINE);
+            document.add(Chunk.NEWLINE);
             PdfPTable table = new PdfPTable(6);
             PdfPCell cell1 = new PdfPCell(new Paragraph("Nome:"));
             PdfPCell cell2 = new PdfPCell(new Paragraph("Exercicío:"));
@@ -128,14 +131,16 @@ public class Util {
                 table.addCell(cell4);
                 table.addCell(cell5);
                 table.addCell(cell6);
-
             }
+            document.add(table);
 
         } catch (DocumentException de) {
-            System.err.println(de.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao gerar o PDF",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
         } catch (IOException ioe) {
-            System.err.println(ioe.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao gerar o PDF",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
         }
-        document.close();        
+        document.close();
     }
 }

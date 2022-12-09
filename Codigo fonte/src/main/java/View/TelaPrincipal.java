@@ -2022,7 +2022,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanelEquipLayout.setHorizontalGroup(
             jPanelEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanelMenuEquipa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(CRUDEquipa, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(CRUDEquipa, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         jPanelEquipLayout.setVerticalGroup(
             jPanelEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2709,7 +2709,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 768, Short.MAX_VALUE)
         );
 
         pack();

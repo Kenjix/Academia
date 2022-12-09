@@ -18,7 +18,9 @@ public class Controller {
     private final ExercicioInfo exercicioInfo;
     private final TreinoInfo treinoInfo;
 
-    public Controller(TelaPrincipal telaPrincipal, ClienteInfo clienteInfo, FuncionarioInfo funcionarioInfo, EquipInfo equipInfo, ExercicioInfo exercicioInfo, TreinoInfo treinoInfo) {
+    public Controller(TelaPrincipal telaPrincipal, ClienteInfo clienteInfo, 
+            FuncionarioInfo funcionarioInfo, EquipInfo equipInfo,
+            ExercicioInfo exercicioInfo, TreinoInfo treinoInfo) {
         this.telaPrincipal = telaPrincipal;
         this.clienteInfo = clienteInfo;
         this.funcionarioInfo = funcionarioInfo;

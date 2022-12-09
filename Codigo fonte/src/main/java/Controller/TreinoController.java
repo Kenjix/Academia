@@ -32,7 +32,7 @@ public class TreinoController {
         this.telaPrincipal = telaPrincipal;
         this.treinoInfo = treinoInfo;
     }
-    
+
     public void initTreinoController() {
         telaPrincipal.getjButtonCadastrarTreino().addActionListener(e -> inserirDados());
         telaPrincipal.getjButtonPesquisarTreino().addActionListener(e -> listarTreinos(telaPrincipal.getjTextFieldPesquisarTreino().getText()));
@@ -221,13 +221,11 @@ public class TreinoController {
 
     private void listarTreinos(String pesquisa) {
         ArrayList<Treino> lista = daoTreino.listarTreino(pesquisa);
-
+        DefaultTableModel modeloAtivo = (DefaultTableModel) telaPrincipal.getjTableListTreinos().getModel();
+        DefaultTableModel modeloInativo = (DefaultTableModel) telaPrincipal.getjTableListTreinosInativos().getModel();
+        modeloAtivo.setRowCount(0);
+        modeloInativo.setRowCount(0);
         if (lista != null) {
-            DefaultTableModel modeloAtivo = (DefaultTableModel) telaPrincipal.getjTableListTreinos().getModel();
-            DefaultTableModel modeloInativo = (DefaultTableModel) telaPrincipal.getjTableListTreinosInativos().getModel();
-            modeloAtivo.setRowCount(0);
-            modeloInativo.setRowCount(0);
-
             for (int i = 0; i < lista.size(); i++) {
                 if (lista.get(i).isAtivo()) {
                     modeloAtivo.addRow(new Object[]{
@@ -249,8 +247,13 @@ public class TreinoController {
                         lista.get(i).getRepeticao() + " Vezes",});
                 }
             }
-
             util.setColumnWidths(telaPrincipal.getjTableListTreinos(), 40, 450, 450, 50, 50, 200, 70);
+        }
+        if (!telaPrincipal.getjTextFieldPesquisarTreino().getText().isEmpty() && modeloAtivo.getRowCount() > 0) {
+            int showConfirmDialog = JOptionPane.showConfirmDialog(null, "Deseja gera PDF de exercicíos ?");
+            if (showConfirmDialog == 0) {
+                util.gerarPDF(lista);
+            }
         }
     }
 

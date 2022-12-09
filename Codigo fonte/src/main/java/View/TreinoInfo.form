@@ -109,7 +109,7 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jLabel56" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jDateChooserTrocaTreino" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jDateChooserTrocaTreinoEdit" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -174,7 +174,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jDateChooserTrocaTreino" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jDateChooserTrocaTreinoEdit" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel56" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -402,13 +402,13 @@
             <Property name="text" type="java.lang.String" value="Previs&#xe3;o troca de treino:"/>
           </Properties>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooserTrocaTreino">
+        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooserTrocaTreinoEdit">
           <Properties>
             <Property name="dateFormatString" type="java.lang.String" value="dd &apos;/&apos; MM &apos;/&apos; yyyy"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JDateChooser(&quot;dd/MM/yyyy&quot;, &quot;##/##/####&quot; , &apos; &apos;);"/>
-            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="jDateChooserTrocaTreino.getJCalendar().setPreferredSize(new Dimension(250, 200));&#xd;&#xa;jDateChooserTrocaTreino.getJCalendar().setWeekOfYearVisible(false);&#xd;&#xa;jDateChooserTrocaTreino.getJCalendar().setTodayButtonVisible(true); &#xd;&#xa;jDateChooserTrocaTreino.getJCalendar().getDayChooser().setDayBordersVisible(true);"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="jDateChooserTrocaTreinoEdit.getJCalendar().setPreferredSize(new Dimension(250, 200));&#xd;&#xa;jDateChooserTrocaTreinoEdit.getJCalendar().setWeekOfYearVisible(false);&#xd;&#xa;jDateChooserTrocaTreinoEdit.getJCalendar().setTodayButtonVisible(true); &#xd;&#xa;jDateChooserTrocaTreinoEdit.getJCalendar().getDayChooser().setDayBordersVisible(true);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonSalvarTreino">

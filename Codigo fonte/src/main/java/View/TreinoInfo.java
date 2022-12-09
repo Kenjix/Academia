@@ -2,6 +2,7 @@
 package View;
 
 import com.toedter.calendar.JDateChooser;
+import java.awt.Dimension;
 import java.awt.Frame;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -41,7 +42,7 @@ public class TreinoInfo extends javax.swing.JDialog {
     }
 
     public JDateChooser getjDateChooserTrocaTreino() {
-        return jDateChooserTrocaTreino;
+        return jDateChooserTrocaTreinoEdit;
     }
 
     public JTable getjTableTreinoClientes() {
@@ -103,11 +104,11 @@ public class TreinoInfo extends javax.swing.JDialog {
         jLabel42 = new javax.swing.JLabel();
         jComboBoxInstrutorTreino = new javax.swing.JComboBox<>();
         jLabel56 = new javax.swing.JLabel();
-        jDateChooserTrocaTreino = new JDateChooser("dd/MM/yyyy", "##/##/####" , ' ');
-        jDateChooserTrocaTreino.getJCalendar().setPreferredSize(new Dimension(250, 200));
-        jDateChooserTrocaTreino.getJCalendar().setWeekOfYearVisible(false);
-        jDateChooserTrocaTreino.getJCalendar().setTodayButtonVisible(true); 
-        jDateChooserTrocaTreino.getJCalendar().getDayChooser().setDayBordersVisible(true);
+        jDateChooserTrocaTreinoEdit = new JDateChooser("dd/MM/yyyy", "##/##/####" , ' ');
+        jDateChooserTrocaTreinoEdit.getJCalendar().setPreferredSize(new Dimension(250, 200));
+        jDateChooserTrocaTreinoEdit.getJCalendar().setWeekOfYearVisible(false);
+        jDateChooserTrocaTreinoEdit.getJCalendar().setTodayButtonVisible(true); 
+        jDateChooserTrocaTreinoEdit.getJCalendar().getDayChooser().setDayBordersVisible(true);
         jButtonSalvarTreino = new javax.swing.JButton();
         jButtonCancelarTreino = new javax.swing.JButton();
 
@@ -187,7 +188,7 @@ public class TreinoInfo extends javax.swing.JDialog {
         jLabel56.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
         jLabel56.setText("Previsão troca de treino:");
 
-        jDateChooserTrocaTreino.setDateFormatString("dd '/' MM '/' yyyy");
+        jDateChooserTrocaTreinoEdit.setDateFormatString("dd '/' MM '/' yyyy");
 
         jButtonSalvarTreino.setBackground(new java.awt.Color(102, 102, 102));
         jButtonSalvarTreino.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
@@ -252,7 +253,7 @@ public class TreinoInfo extends javax.swing.JDialog {
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel56)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jDateChooserTrocaTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(jDateChooserTrocaTreinoEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(83, 83, 83))
         );
         jPanel1Layout.setVerticalGroup(
@@ -301,7 +302,7 @@ public class TreinoInfo extends javax.swing.JDialog {
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE))
                 .addGap(7, 7, 7)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooserTrocaTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateChooserTrocaTreinoEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel56))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -334,7 +335,7 @@ public class TreinoInfo extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> jComboBoxInstrutorTreino;
     private javax.swing.JComboBox<String> jComboBoxOrdem;
     private javax.swing.JComboBox<String> jComboBoxTreinoExercicios;
-    private com.toedter.calendar.JDateChooser jDateChooserTrocaTreino;
+    private com.toedter.calendar.JDateChooser jDateChooserTrocaTreinoEdit;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;

@@ -9,6 +9,7 @@ public class Treino {
     private final String series;
     private String tipoTreino;
     private String observacao;
+    private boolean ativo;
     private Funcionario funcionario;
     private Cliente cliente;
     private Exercicios exercicios;
@@ -66,13 +67,13 @@ public class Treino {
         this.cliente = cliente;
         this.exercicios = exercicios;
     }
-
-    public Treino(int id, int ordem, int repeticao, int carga, String series, Cliente cliente, Exercicios exercicios) {
+    public Treino(int id, int ordem, int carga, String series,  int repeticao, boolean ativo, Cliente cliente, Exercicios exercicios) {
         this.id = id;
         this.ordem = ordem;
         this.repeticao = repeticao;
         this.carga = carga;
         this.series = series;
+        this.ativo = ativo;
         this.cliente = cliente;
         this.exercicios = exercicios;
     }
@@ -120,4 +121,9 @@ public class Treino {
     public String getDataTrocaTreino() {
         return dataTrocaTreino;
     }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+    
 }

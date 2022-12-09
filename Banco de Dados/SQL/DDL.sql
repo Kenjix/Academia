@@ -81,7 +81,7 @@ CREATE TABLE treinos (
 	tipoTreino VARCHAR(20),
 	trocaTreino DATE,
 	observacao TEXT,
-    ativo BIT,
+    ativo BIT DEFAULT 1,
 	FK_cliente INT,
 	FK_funcionario INT,
 	FK_exercicios INT,
@@ -236,7 +236,7 @@ INNER JOIN cliente ON cliente.id = frequencia.fk_cliente;
 CREATE VIEW view_treinos_cliente
 AS
 SELECT treinos.id AS idTreino, cliente.nome AS clienteNome, exercicios.nome AS exercicioNome, treinos.ordem, 
-treinos.carga, treinos.series, treinos.repeticao, treinos.fk_cliente, treinos.fk_exercicios
+treinos.carga, treinos.series, treinos.repeticao, treinos.ativo, treinos.fk_cliente, treinos.fk_exercicios
 FROM treinos
 INNER JOIN cliente ON cliente.id = treinos.fk_cliente
 INNER JOIN exercicios ON exercicios.id = treinos.fk_exercicios;

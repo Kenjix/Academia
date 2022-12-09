@@ -55,7 +55,7 @@ public class TreinoDAO {
 
     public ArrayList<Treino> listarTreino() {
         ArrayList<Treino> list = new ArrayList();
-        String query = "SELECT idTreino, ordem, carga, series, repeticao, fk_cliente, fk_exercicios FROM view_treinos_cliente";
+        String query = "SELECT idTreino, ordem, carga, series, ativo, repeticao, fk_cliente, fk_exercicios FROM view_treinos_cliente;";
 
         Connection con = null;
         PreparedStatement pst = null;
@@ -69,13 +69,14 @@ public class TreinoDAO {
                 int idTreino = Integer.parseInt(rs.getString(1));
                 int ordem = Integer.parseInt(rs.getString(2));
                 int carga = Integer.parseInt(rs.getString(3));
-                int series = Integer.parseInt(rs.getString(4));
-                String repeticao = rs.getString(5);
-                int fkCliente = rs.getInt(6);
-                int fkExercicio = rs.getInt(7);
+                String series = rs.getString(4);
+                boolean ativo = rs.getBoolean(5);
+                int repeticao = rs.getInt(6);
+                int fkCliente = rs.getInt(7);
+                int fkExercicio = rs.getInt(8);
                 Cliente cli = daoCliente.getCliente(fkCliente);
                 Exercicios exerc = daoExercicio.getExercicios(fkExercicio);
-                list.add(new Treino(idTreino, ordem, carga, series, repeticao, cli, exerc));
+                list.add(new Treino(idTreino, ordem, carga, series, repeticao, ativo, cli, exerc));
             }
             return list;
         } catch (SQLException e) {
@@ -102,10 +103,10 @@ public class TreinoDAO {
             }
         }
     }
-    
+
     public ArrayList<Treino> listarTreino(String pesquisa) {
         ArrayList<Treino> list = new ArrayList();
-        String query = "SELECT ordem, carga, series, repeticao, fk_cliente, fk_exercicios FROM view_treinos_cliente WHERE clienteNome LIKE ?";
+        String query = "SELECT idTreino, ordem, carga, series, ativo, repeticao, fk_cliente, fk_exercicios FROM view_treinos_cliente WHERE clienteNome LIKE ?;";
 
         Connection con = null;
         PreparedStatement pst = null;
@@ -113,20 +114,21 @@ public class TreinoDAO {
         try {
             con = new ConnectionFactory().getConnection();
             pst = con.prepareStatement(query);
-            pst.setString(1, '%' + pesquisa + '%');            
+            pst.setString(1, '%' + pesquisa + '%');
             rs = pst.executeQuery();
-           
 
             while (rs.next()) {
-                int ordem = Integer.parseInt(rs.getString(1));
-                int carga = Integer.parseInt(rs.getString(2));
-                int series = Integer.parseInt(rs.getString(3));
-                String repeticao = rs.getString(4);
-                int fkCliente = rs.getInt(5);
-                int fkExercicio = rs.getInt(6);
+                int idTreino = Integer.parseInt(rs.getString(1));
+                int ordem = Integer.parseInt(rs.getString(2));
+                int carga = Integer.parseInt(rs.getString(3));
+                String series = rs.getString(4);
+                boolean ativo = rs.getBoolean(5);
+                int repeticao = rs.getInt(6);
+                int fkCliente = rs.getInt(7);
+                int fkExercicio = rs.getInt(8);
                 Cliente cli = daoCliente.getCliente(fkCliente);
                 Exercicios exerc = daoExercicio.getExercicios(fkExercicio);
-                list.add(new Treino(ordem, carga, series, repeticao, cli, exerc));
+                list.add(new Treino(idTreino, ordem, carga, series, repeticao, ativo, cli, exerc));
             }
             return list;
         } catch (SQLException e) {
@@ -175,6 +177,36 @@ public class TreinoDAO {
             con.close();
         } catch (SQLException e) {
             System.out.println("ERRO AO ALTERAR: " + e);
+        }
+    }
+
+    public boolean statusTraino(int id, boolean controle) {
+        String query = "UPDATE treinos SET ativo = ? WHERE id = ?;";
+        Connection con = null;
+        PreparedStatement pst = null;
+        try {
+            con = new ConnectionFactory().getConnection();
+            pst = con.prepareStatement(query);
+            pst.setBoolean(1, controle);
+            pst.setString(2, String.valueOf(id));
+            pst.execute();
+            return true;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro código: " + e.getMessage());
+            return false;
+        } finally {
+            if (pst != null) {
+                try {
+                    pst.close();
+                } catch (SQLException e) {
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                }
+            }
         }
     }
 

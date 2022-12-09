@@ -368,6 +368,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     //Treino
+
+    public JButton getjButtonDesativaTreino() {
+        return jButtonDesativaTreino;
+    }
+
+    public JButton getjButtonAtivarTreino() {
+        return jButtonAtivarTreino;
+    }
+
+    public JButton getjButtonEditarTreino() {
+        return jButtonEditarTreino;
+    }    
+    
     public JPanel getCRUDTreino() {
         return CRUDTreino;
     }
@@ -387,6 +400,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public JPanel getListTreino() {
         return listTreino;
     }
+
+    public JTable getjTableListTreinosAtivos() {
+        return jTableListTreinosAtivos;
+    }
+
+    public JTable getjTableListTreinosInativos() {
+        return jTableListTreinosInativos;
+    }
+    
+    
+    
 
     public JTabbedPane getjTabbedPaneClientes() {
         return jTabbedPaneClientes;
@@ -731,20 +755,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         listTreino = new javax.swing.JPanel();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         treinosAtivos = new javax.swing.JPanel();
-        jTextFieldPesquisarTreinoAtivo = new javax.swing.JTextField();
-        jButtonPesquisarTreinoAtivo = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
         jTableListTreinosAtivos = new javax.swing.JTable();
         jTableListTreinosAtivos.getTableHeader().setEnabled(false);
-        jButtonEditarTreinoAtivo = new javax.swing.JButton();
-        jButtonDeletarTreino = new javax.swing.JButton();
+        jButtonEditarTreino = new javax.swing.JButton();
+        jButtonDesativaTreino = new javax.swing.JButton();
         treinosInativos = new javax.swing.JPanel();
-        jTextFieldPesquisarTreinoInativo = new javax.swing.JTextField();
-        jButtonPesquisarTreinoInativo = new javax.swing.JButton();
         jScrollPane9 = new javax.swing.JScrollPane();
         jTableListTreinosInativos = new javax.swing.JTable();
         jTableListTreinosAtivos.getTableHeader().setEnabled(false);
         jButtonAtivarTreino = new javax.swing.JButton();
+        jTextFieldPesquisarTreinoAtivo = new javax.swing.JTextField();
+        jButtonPesquisarTreinoAtivo = new javax.swing.JButton();
         cadTreino = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -2272,8 +2294,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         listTreino.setBorder(javax.swing.BorderFactory.createTitledBorder("Listar Treinos"));
 
-        jButtonPesquisarTreinoAtivo.setText("Pesquisar");
-
         jTableListTreinosAtivos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -2292,21 +2312,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jScrollPane8.setViewportView(jTableListTreinosAtivos);
 
-        jButtonEditarTreinoAtivo.setBackground(new java.awt.Color(102, 102, 102));
-        jButtonEditarTreinoAtivo.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
-        jButtonEditarTreinoAtivo.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonEditarTreinoAtivo.setText("Editar");
-        jButtonEditarTreinoAtivo.setMaximumSize(new java.awt.Dimension(111, 29));
-        jButtonEditarTreinoAtivo.setMinimumSize(new java.awt.Dimension(111, 29));
-        jButtonEditarTreinoAtivo.setPreferredSize(new java.awt.Dimension(111, 29));
+        jButtonEditarTreino.setBackground(new java.awt.Color(102, 102, 102));
+        jButtonEditarTreino.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
+        jButtonEditarTreino.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonEditarTreino.setText("Editar");
+        jButtonEditarTreino.setMaximumSize(new java.awt.Dimension(111, 29));
+        jButtonEditarTreino.setMinimumSize(new java.awt.Dimension(111, 29));
+        jButtonEditarTreino.setPreferredSize(new java.awt.Dimension(111, 29));
 
-        jButtonDeletarTreino.setBackground(new java.awt.Color(102, 102, 102));
-        jButtonDeletarTreino.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
-        jButtonDeletarTreino.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonDeletarTreino.setText("Deletar");
-        jButtonDeletarTreino.setMaximumSize(new java.awt.Dimension(111, 29));
-        jButtonDeletarTreino.setMinimumSize(new java.awt.Dimension(111, 29));
-        jButtonDeletarTreino.setPreferredSize(new java.awt.Dimension(111, 29));
+        jButtonDesativaTreino.setBackground(new java.awt.Color(102, 102, 102));
+        jButtonDesativaTreino.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
+        jButtonDesativaTreino.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonDesativaTreino.setText("Desativar");
+        jButtonDesativaTreino.setMaximumSize(new java.awt.Dimension(111, 29));
+        jButtonDesativaTreino.setMinimumSize(new java.awt.Dimension(111, 29));
+        jButtonDesativaTreino.setPreferredSize(new java.awt.Dimension(111, 29));
 
         javax.swing.GroupLayout treinosAtivosLayout = new javax.swing.GroupLayout(treinosAtivos);
         treinosAtivos.setLayout(treinosAtivosLayout);
@@ -2314,44 +2334,32 @@ public class TelaPrincipal extends javax.swing.JFrame {
             treinosAtivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(treinosAtivosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(treinosAtivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(treinosAtivosLayout.createSequentialGroup()
-                        .addComponent(jTextFieldPesquisarTreinoAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonPesquisarTreinoAtivo)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE))
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(treinosAtivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(treinosAtivosLayout.createSequentialGroup()
                     .addContainerGap(380, Short.MAX_VALUE)
-                    .addComponent(jButtonEditarTreinoAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonEditarTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jButtonDeletarTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonDesativaTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(391, 391, 391)))
         );
         treinosAtivosLayout.setVerticalGroup(
             treinosAtivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(treinosAtivosLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(treinosAtivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldPesquisarTreinoAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonPesquisarTreinoAtivo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(45, Short.MAX_VALUE))
             .addGroup(treinosAtivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(treinosAtivosLayout.createSequentialGroup()
-                    .addContainerGap(495, Short.MAX_VALUE)
+                    .addContainerGap(467, Short.MAX_VALUE)
                     .addGroup(treinosAtivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonEditarTreinoAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButtonDeletarTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonEditarTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonDesativaTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap()))
         );
 
         jTabbedPane3.addTab("Treinos Ativos", treinosAtivos);
-
-        jButtonPesquisarTreinoInativo.setText("Pesquisar");
 
         jTableListTreinosInativos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -2384,15 +2392,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         treinosInativosLayout.setHorizontalGroup(
             treinosInativosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(treinosInativosLayout.createSequentialGroup()
-                .addGroup(treinosInativosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(treinosInativosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTextFieldPesquisarTreinoInativo, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonPesquisarTreinoInativo))
-                    .addGroup(treinosInativosLayout.createSequentialGroup()
-                        .addGap(431, 431, 431)
-                        .addComponent(jButtonAtivarTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(431, 431, 431)
+                .addComponent(jButtonAtivarTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(457, Short.MAX_VALUE))
             .addGroup(treinosInativosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(treinosInativosLayout.createSequentialGroup()
@@ -2403,21 +2404,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         treinosInativosLayout.setVerticalGroup(
             treinosInativosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, treinosInativosLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(treinosInativosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldPesquisarTreinoInativo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonPesquisarTreinoInativo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 459, Short.MAX_VALUE)
+                .addContainerGap(467, Short.MAX_VALUE)
                 .addComponent(jButtonAtivarTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(treinosInativosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(treinosInativosLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addContainerGap()
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(45, Short.MAX_VALUE)))
         );
 
         jTabbedPane3.addTab("Treinos Inativos", treinosInativos);
+
+        jButtonPesquisarTreinoAtivo.setText("Pesquisar");
 
         javax.swing.GroupLayout listTreinoLayout = new javax.swing.GroupLayout(listTreino);
         listTreino.setLayout(listTreinoLayout);
@@ -2425,13 +2424,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
             listTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(listTreinoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane3)
+                .addGroup(listTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane3)
+                    .addGroup(listTreinoLayout.createSequentialGroup()
+                        .addComponent(jTextFieldPesquisarTreinoAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonPesquisarTreinoAtivo)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         listTreinoLayout.setVerticalGroup(
             listTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(listTreinoLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listTreinoLayout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(listTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldPesquisarTreinoAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonPesquisarTreinoAtivo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane3)
                 .addContainerGap())
         );
@@ -2751,13 +2760,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDeletarCliente;
     private javax.swing.JButton jButtonDeletarExerc;
     private javax.swing.JButton jButtonDeletarFunc;
-    private javax.swing.JButton jButtonDeletarTreino;
     private javax.swing.JButton jButtonDesativaEquip;
+    private javax.swing.JButton jButtonDesativaTreino;
     private javax.swing.JButton jButtonEditarCliente;
     private javax.swing.JButton jButtonEditarEquip;
     private javax.swing.JButton jButtonEditarExerc;
     private javax.swing.JButton jButtonEditarFunc;
-    private javax.swing.JButton jButtonEditarTreinoAtivo;
+    private javax.swing.JButton jButtonEditarTreino;
     private javax.swing.JButton jButtonListarCliente;
     private javax.swing.JButton jButtonListarEquipamento;
     private javax.swing.JButton jButtonListarExercicio;
@@ -2770,7 +2779,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonPesquisarFunc;
     private javax.swing.JButton jButtonPesquisarTreinoAtivo;
     private javax.swing.JButton jButtonPesquisarTreinoCli;
-    private javax.swing.JButton jButtonPesquisarTreinoInativo;
     private javax.swing.JButton jButtonRemoverFoto;
     private javax.swing.JButton jButtonSalvarCliente;
     private javax.swing.JButton jButtonSalvarEquipamento;
@@ -2916,7 +2924,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldPesquisarFunc;
     private javax.swing.JTextField jTextFieldPesquisarTreinoAtivo;
     private javax.swing.JTextField jTextFieldPesquisarTreinoCli;
-    private javax.swing.JTextField jTextFieldPesquisarTreinoInativo;
     private javax.swing.JTextField jTextFieldRepeticaoTreino;
     private javax.swing.JTextField jTextFieldSeriesTreino;
     private javax.swing.JTextField jTextFieldTipoTreino;

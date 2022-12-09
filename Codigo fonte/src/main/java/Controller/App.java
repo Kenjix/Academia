@@ -6,6 +6,7 @@ import View.EquipInfo;
 import View.ExercicioInfo;
 import View.FuncionarioInfo;
 import View.TelaPrincipal;
+import View.TreinoInfo;
 import javax.swing.JFrame;
 
 import javax.swing.UnsupportedLookAndFeelException;
@@ -19,8 +20,9 @@ public class App {
         FuncionarioInfo funcionarioInfo = new FuncionarioInfo((JFrame) null, true);
         EquipInfo equipInfo = new EquipInfo((JFrame) null, true);
         ExercicioInfo exercicioInfo = new ExercicioInfo((JFrame) null, true);
+        TreinoInfo treinoInfo = new TreinoInfo((JFrame) null, true);
 
-        Controller c = new Controller(telaPrincipal, clienteInfo, funcionarioInfo, equipInfo, exercicioInfo);
+        Controller c = new Controller(telaPrincipal, clienteInfo, funcionarioInfo, equipInfo, exercicioInfo, treinoInfo);
         c.initController();
 
         ClienteController cli = new ClienteController(telaPrincipal, clienteInfo);
@@ -35,7 +37,7 @@ public class App {
         ExercicioController exerc = new ExercicioController(telaPrincipal, exercicioInfo);
         exerc.initExerciciosController();
         
-        TreinoController treino = new TreinoController(telaPrincipal);
+        TreinoController treino = new TreinoController(telaPrincipal, treinoInfo);
         treino.initTreinoController();
     }
 

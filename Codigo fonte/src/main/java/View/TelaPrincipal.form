@@ -2916,16 +2916,29 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTabbedPane3" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jTabbedPane3" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jTextFieldPesquisarTreinoAtivo" min="-2" pref="249" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jButtonPesquisarTreinoAtivo" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jTextFieldPesquisarTreinoAtivo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jButtonPesquisarTreinoAtivo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jTabbedPane3" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -2952,23 +2965,15 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jTextFieldPesquisarTreinoAtivo" min="-2" pref="249" max="-2" attributes="0"/>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="jButtonPesquisarTreinoAtivo" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                              </Group>
-                                              <Component id="jScrollPane8" alignment="0" pref="987" max="32767" attributes="0"/>
-                                          </Group>
+                                          <Component id="jScrollPane8" pref="987" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
                                               <EmptySpace pref="380" max="32767" attributes="0"/>
-                                              <Component id="jButtonEditarTreinoAtivo" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jButtonEditarTreino" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jButtonDeletarTreino" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jButtonDesativaTreino" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="391" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -2977,21 +2982,16 @@
                                 <DimensionLayout dim="1">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jTextFieldPesquisarTreinoAtivo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jButtonPesquisarTreinoAtivo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jScrollPane8" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="53" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jScrollPane8" min="-2" pref="451" max="-2" attributes="0"/>
+                                          <EmptySpace pref="45" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace pref="495" max="32767" attributes="0"/>
+                                              <EmptySpace pref="467" max="32767" attributes="0"/>
                                               <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="jButtonEditarTreinoAtivo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jButtonDeletarTreino" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jButtonEditarTreino" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jButtonDesativaTreino" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                           </Group>
@@ -3000,13 +3000,6 @@
                                 </DimensionLayout>
                               </Layout>
                               <SubComponents>
-                                <Component class="javax.swing.JTextField" name="jTextFieldPesquisarTreinoAtivo">
-                                </Component>
-                                <Component class="javax.swing.JButton" name="jButtonPesquisarTreinoAtivo">
-                                  <Properties>
-                                    <Property name="text" type="java.lang.String" value="Pesquisar"/>
-                                  </Properties>
-                                </Component>
                                 <Container class="javax.swing.JScrollPane" name="jScrollPane8">
                                   <AuxValues>
                                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -3034,7 +3027,7 @@
                                     </Component>
                                   </SubComponents>
                                 </Container>
-                                <Component class="javax.swing.JButton" name="jButtonEditarTreinoAtivo">
+                                <Component class="javax.swing.JButton" name="jButtonEditarTreino">
                                   <Properties>
                                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                       <Color blue="66" green="66" red="66" type="rgb"/>
@@ -3057,7 +3050,7 @@
                                     </Property>
                                   </Properties>
                                 </Component>
-                                <Component class="javax.swing.JButton" name="jButtonDeletarTreino">
+                                <Component class="javax.swing.JButton" name="jButtonDesativaTreino">
                                   <Properties>
                                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                       <Color blue="66" green="66" red="66" type="rgb"/>
@@ -3068,7 +3061,7 @@
                                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                                     </Property>
-                                    <Property name="text" type="java.lang.String" value="Deletar"/>
+                                    <Property name="text" type="java.lang.String" value="Desativar"/>
                                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                       <Dimension value="[111, 29]"/>
                                     </Property>
@@ -3095,22 +3088,12 @@
                                 <DimensionLayout dim="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jTextFieldPesquisarTreinoInativo" min="-2" pref="249" max="-2" attributes="0"/>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="jButtonPesquisarTreinoInativo" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="-2" pref="431" max="-2" attributes="0"/>
-                                                  <Component id="jButtonAtivarTreino" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
+                                          <EmptySpace min="-2" pref="431" max="-2" attributes="0"/>
+                                          <Component id="jButtonAtivarTreino" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace pref="457" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jScrollPane9" pref="987" max="32767" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
@@ -3121,33 +3104,21 @@
                                 <DimensionLayout dim="1">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jTextFieldPesquisarTreinoInativo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jButtonPesquisarTreinoInativo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace pref="459" max="32767" attributes="0"/>
+                                          <EmptySpace pref="467" max="32767" attributes="0"/>
                                           <Component id="jButtonAtivarTreino" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                              <Component id="jScrollPane9" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jScrollPane9" min="-2" pref="451" max="-2" attributes="0"/>
+                                              <EmptySpace pref="45" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
                               </Layout>
                               <SubComponents>
-                                <Component class="javax.swing.JTextField" name="jTextFieldPesquisarTreinoInativo">
-                                </Component>
-                                <Component class="javax.swing.JButton" name="jButtonPesquisarTreinoInativo">
-                                  <Properties>
-                                    <Property name="text" type="java.lang.String" value="Pesquisar"/>
-                                  </Properties>
-                                </Component>
                                 <Container class="javax.swing.JScrollPane" name="jScrollPane9">
                                   <AuxValues>
                                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -3202,6 +3173,13 @@
                             </Container>
                           </SubComponents>
                         </Container>
+                        <Component class="javax.swing.JTextField" name="jTextFieldPesquisarTreinoAtivo">
+                        </Component>
+                        <Component class="javax.swing.JButton" name="jButtonPesquisarTreinoAtivo">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Pesquisar"/>
+                          </Properties>
+                        </Component>
                       </SubComponents>
                     </Container>
                   </SubComponents>

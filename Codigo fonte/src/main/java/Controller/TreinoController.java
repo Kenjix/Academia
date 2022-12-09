@@ -9,6 +9,7 @@ import Model.FuncionarioDAO;
 import Model.Treino;
 import Model.TreinoDAO;
 import View.TelaPrincipal;
+import View.TreinoInfo;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,23 +21,27 @@ import javax.swing.table.DefaultTableModel;
 public class TreinoController {
 
     private final TelaPrincipal telaPrincipal;
+    private final TreinoInfo treinoInfo;
     Util util = new Util();
     ClienteDAO daoCliente = new ClienteDAO();
     ExerciciosDAO daoExercicio = new ExerciciosDAO();
     FuncionarioDAO daoFuncionario = new FuncionarioDAO();
     TreinoDAO daoTreino = new TreinoDAO();
 
-    public TreinoController(TelaPrincipal telaPrincipal) {
+    public TreinoController(TelaPrincipal telaPrincipal, TreinoInfo treinoInfo) {
         this.telaPrincipal = telaPrincipal;
+        this.treinoInfo = treinoInfo;
     }
-
+    
     public void initTreinoController() {
         telaPrincipal.getjButtonCadastrarTreino().addActionListener(e -> inserirDados());
         telaPrincipal.getjButtonPesquisarTreino().addActionListener(e -> listarTreinos(telaPrincipal.getjTextFieldPesquisarTreino().getText()));
         telaPrincipal.getjButtonSalvarTreino().addActionListener(e -> cadastrarTreino());
         telaPrincipal.getjButtonPesquisarTreinoCli().addActionListener(e -> listarClientes(telaPrincipal.getjTextFieldPesquisarTreinoCli().getText()));
         telaPrincipal.getjButtonListarTreino().addActionListener(e -> listarTreinos());
-
+        telaPrincipal.getjButtonDesativaTreino().addActionListener(e -> statusTreino(0));
+        telaPrincipal.getjButtonAtivarTreino().addActionListener(e -> statusTreino(1));
+        telaPrincipal.getjButtonCancelarTreino().addActionListener(e -> telaPrincipal.limparCamposTreinos());
     }
 
     private void cadastrarTreino() {
@@ -184,18 +189,31 @@ public class TreinoController {
         ArrayList<Treino> lista = daoTreino.listarTreino();
 
         if (lista != null) {
-            DefaultTableModel modelo = (DefaultTableModel) telaPrincipal.getjTableListTreinos().getModel();
-            modelo.setRowCount(0);
+            DefaultTableModel modeloAtivo = (DefaultTableModel) telaPrincipal.getjTableListTreinos().getModel();
+            DefaultTableModel modeloInativo = (DefaultTableModel) telaPrincipal.getjTableListTreinosInativos().getModel();
+            modeloAtivo.setRowCount(0);
+            modeloInativo.setRowCount(0);
 
             for (int i = 0; i < lista.size(); i++) {
-                modelo.addRow(new Object[]{
-                    lista.get(i).getId(),
-                    lista.get(i).getCliente().getNome(),
-                    lista.get(i).getExercicios().getNome(),
-                    lista.get(i).getOrdem() + " ª",
-                    lista.get(i).getCarga() + " KG",
-                    lista.get(i).getSeries(),
-                    lista.get(i).getRepeticao() + " Vezes",});
+                if (lista.get(i).isAtivo()) {
+                    modeloAtivo.addRow(new Object[]{
+                        lista.get(i).getId(),
+                        lista.get(i).getCliente().getNome(),
+                        lista.get(i).getExercicios().getNome(),
+                        lista.get(i).getOrdem() + " ª",
+                        lista.get(i).getCarga() + " KG",
+                        lista.get(i).getSeries(),
+                        lista.get(i).getRepeticao() + " Vezes",});
+                } else if (!lista.get(i).isAtivo()) {
+                    modeloInativo.addRow(new Object[]{
+                        lista.get(i).getId(),
+                        lista.get(i).getCliente().getNome(),
+                        lista.get(i).getExercicios().getNome(),
+                        lista.get(i).getOrdem() + " ª",
+                        lista.get(i).getCarga() + " KG",
+                        lista.get(i).getSeries(),
+                        lista.get(i).getRepeticao() + " Vezes",});
+                }
             }
             util.setColumnWidths(telaPrincipal.getjTableListTreinos(), 40, 450, 450, 50, 50, 200, 70);
         }
@@ -205,20 +223,58 @@ public class TreinoController {
         ArrayList<Treino> lista = daoTreino.listarTreino(pesquisa);
 
         if (lista != null) {
-            DefaultTableModel modelo = (DefaultTableModel) telaPrincipal.getjTableListTreinos().getModel();
-            modelo.setRowCount(0);
+            DefaultTableModel modeloAtivo = (DefaultTableModel) telaPrincipal.getjTableListTreinos().getModel();
+            DefaultTableModel modeloInativo = (DefaultTableModel) telaPrincipal.getjTableListTreinosInativos().getModel();
+            modeloAtivo.setRowCount(0);
+            modeloInativo.setRowCount(0);
 
             for (int i = 0; i < lista.size(); i++) {
-                modelo.addRow(new Object[]{
-                    lista.get(i).getId(),
-                    lista.get(i).getCliente().getNome(),
-                    lista.get(i).getExercicios().getNome(),
-                    lista.get(i).getOrdem() + " ª",
-                    lista.get(i).getCarga() + " KG",
-                    lista.get(i).getSeries(),
-                    lista.get(i).getRepeticao() + " Vezes",});
+                if (lista.get(i).isAtivo()) {
+                    modeloAtivo.addRow(new Object[]{
+                        lista.get(i).getId(),
+                        lista.get(i).getCliente().getNome(),
+                        lista.get(i).getExercicios().getNome(),
+                        lista.get(i).getOrdem() + " ª",
+                        lista.get(i).getCarga() + " KG",
+                        lista.get(i).getSeries(),
+                        lista.get(i).getRepeticao() + " Vezes",});
+                } else if (!lista.get(i).isAtivo()) {
+                    modeloInativo.addRow(new Object[]{
+                        lista.get(i).getId(),
+                        lista.get(i).getCliente().getNome(),
+                        lista.get(i).getExercicios().getNome(),
+                        lista.get(i).getOrdem() + " ª",
+                        lista.get(i).getCarga() + " KG",
+                        lista.get(i).getSeries(),
+                        lista.get(i).getRepeticao() + " Vezes",});
+                }
             }
+
             util.setColumnWidths(telaPrincipal.getjTableListTreinos(), 40, 450, 450, 50, 50, 200, 70);
+        }
+    }
+
+    //Ativa e desativa equipamentos
+    private void statusTreino(int controle) {
+        JTable tabelaAtivo = telaPrincipal.getjTableListTreinos();
+        JTable tabelaDesabilitado = telaPrincipal.getjTableListTreinosInativos();
+        int linhaAtivo = tabelaAtivo.getSelectedRow();
+        int linhaDesabilitado = tabelaDesabilitado.getSelectedRow();
+
+        if (linhaAtivo != -1 && controle == 0) {
+            int id = Integer.parseInt(String.valueOf(tabelaAtivo.getValueAt(linhaAtivo, 0)));
+            if (daoTreino.statusTraino(id, false)) {
+                JOptionPane.showMessageDialog(null, "Treino setado como inativo",
+                        "Inativar Treino", JOptionPane.INFORMATION_MESSAGE);
+                listarTreinos();
+            }
+        } else if (linhaDesabilitado != -1 && controle == 1) {
+            int id = Integer.parseInt(String.valueOf(tabelaDesabilitado.getValueAt(linhaDesabilitado, 0)));
+            if (daoTreino.statusTraino(id, true)) {
+                JOptionPane.showMessageDialog(null, "Treino ativado com sucesso",
+                        "Ativar Treino", JOptionPane.INFORMATION_MESSAGE);
+                listarTreinos();
+            }
         }
     }
 }

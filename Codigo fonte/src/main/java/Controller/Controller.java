@@ -5,6 +5,7 @@ import View.EquipInfo;
 import View.ExercicioInfo;
 import View.FuncionarioInfo;
 import View.TelaPrincipal;
+import View.TreinoInfo;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -15,13 +16,15 @@ public class Controller {
     private final FuncionarioInfo funcionarioInfo;
     private final EquipInfo equipInfo;
     private final ExercicioInfo exercicioInfo;
+    private final TreinoInfo treinoInfo;
 
-    public Controller(TelaPrincipal telaPrincipal, ClienteInfo clienteInfo, FuncionarioInfo funcionarioInfo, EquipInfo equipInfo, ExercicioInfo exercicioInfo) {
+    public Controller(TelaPrincipal telaPrincipal, ClienteInfo clienteInfo, FuncionarioInfo funcionarioInfo, EquipInfo equipInfo, ExercicioInfo exercicioInfo, TreinoInfo treinoInfo) {
         this.telaPrincipal = telaPrincipal;
         this.clienteInfo = clienteInfo;
         this.funcionarioInfo = funcionarioInfo;
         this.equipInfo = equipInfo;
         this.exercicioInfo = exercicioInfo;
+        this.treinoInfo = treinoInfo;
     }
 
     public void initController() {
@@ -46,6 +49,7 @@ public class Controller {
         telaPrincipal.getjButtonEditarFunc().addActionListener(e -> exibeFuncionario());        
         telaPrincipal.getjButtonEditarEquip().addActionListener(e -> exibeEquip());
         telaPrincipal.getjButtonEditarExerc().addActionListener(e -> exibeExerc());
+        telaPrincipal.getjButtonEditarTreino().addActionListener(e -> exibeTreino());
     }
 
     private void exibeTela(JPanel panel, JPanel navegacao) {
@@ -84,6 +88,14 @@ public class Controller {
             exercicioInfo.setLocationRelativeTo(telaPrincipal);
             exercicioInfo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             exercicioInfo.setVisible(true);
+        }
+    }
+    
+        private void exibeTreino() {
+        if (telaPrincipal.getjTableListTreinosAtivos().getSelectedRow() != -1) {
+            treinoInfo.setLocationRelativeTo(telaPrincipal);
+            treinoInfo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            treinoInfo.setVisible(true);
         }
     }
 }

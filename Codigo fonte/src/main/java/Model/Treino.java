@@ -30,21 +30,8 @@ public class Treino {
         this.exercicios = exercicios;
         this.dataTrocaTreino = dataTrocaTreino;
     }
-
-    public Treino(int id, int ordem, int repeticao, int carga, String series,
-            String tipoTreino, String observacao, Exercicios exercicios, String dataTrocaTreino) {
-        this.id = id;
-        this.ordem = ordem;
-        this.repeticao = repeticao;
-        this.carga = carga;
-        this.series = series;
-        this.tipoTreino = tipoTreino;
-        this.observacao = observacao;
-        this.exercicios = exercicios;
-        this.dataTrocaTreino = dataTrocaTreino;
-    }
-
-    public Treino(int ordem, int repeticao, int carga, String series,
+    
+        public Treino(int ordem, int repeticao, int carga, String series,
             String tipoTreino, String observacao, Funcionario funcionario,
             Cliente cliente, Exercicios exercicios, String dataTrocaTreino) {
         this.ordem = ordem;
@@ -55,6 +42,21 @@ public class Treino {
         this.observacao = observacao;
         this.funcionario = funcionario;
         this.cliente = cliente;
+        this.exercicios = exercicios;
+        this.dataTrocaTreino = dataTrocaTreino;
+    }
+
+    
+    
+    public Treino(int id, int ordem, int repeticao, int carga, String series,
+            String tipoTreino, String observacao, Exercicios exercicios, String dataTrocaTreino) {
+        this.id = id;
+        this.ordem = ordem;
+        this.repeticao = repeticao;
+        this.carga = carga;
+        this.series = series;
+        this.tipoTreino = tipoTreino;
+        this.observacao = observacao;
         this.exercicios = exercicios;
         this.dataTrocaTreino = dataTrocaTreino;
     }

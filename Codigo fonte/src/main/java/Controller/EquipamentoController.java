@@ -76,13 +76,13 @@ public class EquipamentoController {
                         lista.get(i).getId(),
                         lista.get(i).getNome(),
                         aquisicao.substring(8, 10) + "/" + aquisicao.substring(5, 7) + "/" + aquisicao.substring(0, 4),
-                    lista.get(i).getPatrimonio()});
+                        lista.get(i).getPatrimonio()});
                 } else if (!lista.get(i).isDisponivel()) {
                     modeloInativo.addRow(new Object[]{
                         lista.get(i).getId(),
                         lista.get(i).getNome(),
                         aquisicao.substring(8, 10) + "/" + aquisicao.substring(5, 7) + "/" + aquisicao.substring(0, 4),
-                    lista.get(i).getPatrimonio()});
+                        lista.get(i).getPatrimonio()});
                 }
             }
         }

@@ -20,9 +20,10 @@ public class TreinoInfo extends javax.swing.JDialog {
     public JButton getjButtonCancelarTreino() {
         return jButtonCancelarTreino;
     }
+    
 
     public JButton getjButtonPesquisarTreinoCli() {
-        return jButtonPesquisarTreinoCli;
+        return jButtonPesquisarTreinoCliEdit;
     }
 
     public JButton getjButtonSalvarTreino() {
@@ -58,7 +59,7 @@ public class TreinoInfo extends javax.swing.JDialog {
     }
 
     public JTextField getjTextFieldPesquisarTreinoCli() {
-        return jTextFieldPesquisarTreinoCli;
+        return jTextFieldPesTreinoCliEdit;
     }
 
     public JTextField getjTextFieldRepeticaoTreino() {
@@ -80,8 +81,8 @@ public class TreinoInfo extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jTextFieldPesquisarTreinoCli = new javax.swing.JTextField();
-        jButtonPesquisarTreinoCli = new javax.swing.JButton();
+        jTextFieldPesTreinoCliEdit = new javax.swing.JTextField();
+        jButtonPesquisarTreinoCliEdit = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableTreinoClientes = new javax.swing.JTable();
@@ -113,10 +114,11 @@ public class TreinoInfo extends javax.swing.JDialog {
         jButtonCancelarTreino = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Editar Treino");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Editar Treino"));
 
-        jButtonPesquisarTreinoCli.setText("Pesquisar");
+        jButtonPesquisarTreinoCliEdit.setText("Pesquisar");
 
         jLabel20.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
         jLabel20.setText("Selecione o Cliente:");
@@ -209,9 +211,9 @@ public class TreinoInfo extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel20)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextFieldPesquisarTreinoCli, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldPesTreinoCliEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonPesquisarTreinoCli))
+                        .addComponent(jButtonPesquisarTreinoCliEdit))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -263,8 +265,8 @@ public class TreinoInfo extends javax.swing.JDialog {
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldPesquisarTreinoCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonPesquisarTreinoCli))
+                    .addComponent(jTextFieldPesTreinoCliEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonPesquisarTreinoCliEdit))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
@@ -330,7 +332,7 @@ public class TreinoInfo extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelarTreino;
-    private javax.swing.JButton jButtonPesquisarTreinoCli;
+    private javax.swing.JButton jButtonPesquisarTreinoCliEdit;
     private javax.swing.JButton jButtonSalvarTreino;
     private javax.swing.JComboBox<String> jComboBoxInstrutorTreino;
     private javax.swing.JComboBox<String> jComboBoxOrdem;
@@ -352,7 +354,7 @@ public class TreinoInfo extends javax.swing.JDialog {
     private javax.swing.JTable jTableTreinoClientes;
     private javax.swing.JTextArea jTextAreaObservacaoTreino;
     private javax.swing.JTextField jTextFieldCargaTreino;
-    private javax.swing.JTextField jTextFieldPesquisarTreinoCli;
+    private javax.swing.JTextField jTextFieldPesTreinoCliEdit;
     private javax.swing.JTextField jTextFieldRepeticaoTreino;
     private javax.swing.JTextField jTextFieldSeriesTreino;
     private javax.swing.JTextField jTextFieldTipoTreino;

@@ -34,14 +34,18 @@ public class TreinoController {
     }
 
     public void initTreinoController() {
-        telaPrincipal.getjButtonCadastrarTreino().addActionListener(e -> inserirDados());
+        telaPrincipal.getjButtonCadastrarTreino().addActionListener(e -> inserirDados(0));
         telaPrincipal.getjButtonPesquisarTreino().addActionListener(e -> listarTreinos(telaPrincipal.getjTextFieldPesquisarTreino().getText()));
         telaPrincipal.getjButtonSalvarTreino().addActionListener(e -> cadastrarTreino());
-        telaPrincipal.getjButtonPesquisarTreinoCli().addActionListener(e -> listarClientes(telaPrincipal.getjTextFieldPesquisarTreinoCli().getText()));
+        telaPrincipal.getjButtonPesquisarTreinoCli().addActionListener(e -> listarClientes(telaPrincipal.getjTextFieldPesquisarTreinoCli().getText(), 0));
         telaPrincipal.getjButtonListarTreino().addActionListener(e -> listarTreinos());
         telaPrincipal.getjButtonDesativaTreino().addActionListener(e -> statusTreino(0));
         telaPrincipal.getjButtonAtivarTreino().addActionListener(e -> statusTreino(1));
         telaPrincipal.getjButtonCancelarTreino().addActionListener(e -> telaPrincipal.limparCamposTreinos());
+        telaPrincipal.getjButtonEditarTreino().addActionListener(e -> getTreino());
+        treinoInfo.getjButtonPesquisarTreinoCli().addActionListener(e -> listarClientes(treinoInfo.getjTextFieldPesquisarTreinoCli().getText(), 1));
+        treinoInfo.getjButtonSalvarTreino().addActionListener(e -> atualizarTreino());
+        treinoInfo.getjButtonCancelarTreino().addActionListener(e -> treinoInfo.dispose());
     }
 
     private void cadastrarTreino() {
@@ -90,7 +94,6 @@ public class TreinoController {
                 Cliente cli = daoCliente.getCliente(matricula);
                 int funcID = Integer.parseInt(util.removeLetras(instrutor));
                 int ExercID = Integer.parseInt(util.removeLetras(exerc));
-                System.out.println(ExercID);
                 Funcionario func = daoFuncionario.getFuncionario(funcID);
                 Exercicios exercicio = daoExercicio.getExercicios(ExercID);
 
@@ -111,34 +114,60 @@ public class TreinoController {
         }
     }
 
-    private void inserirDados() {
-        listarClientes();
-        listarExercicios();
-        listarInstrutor();
-    }
-
-    private void listarExercicios() {
+    private void inserirDados(int controle) {
         ArrayList<Exercicios> listaExerc = daoExercicio.listarExercicios();
-        telaPrincipal.getjComboBoxTreinoExercicios().removeAllItems();
-        telaPrincipal.getjComboBoxTreinoExercicios().addItem("Selecione");
-        for (int i = 0; i < listaExerc.size(); i++) {
-            telaPrincipal.getjComboBoxTreinoExercicios().addItem("ID: " + listaExerc.get(i).getId() + " - " + listaExerc.get(i).getNome());
-        }
-    }
-
-    private void listarInstrutor() {
         ArrayList<Funcionario> listaFunc = daoFuncionario.listarFuncionarios();
-        telaPrincipal.getjComboBoxInstrutorTreino().removeAllItems();
-        telaPrincipal.getjComboBoxInstrutorTreino().addItem("Selecione");
-        for (int i = 0; i < listaFunc.size(); i++) {
-            telaPrincipal.getjComboBoxInstrutorTreino().addItem("ID: " + listaFunc.get(i).getId() + " - " + listaFunc.get(i).getNome());
+        if (controle == 0) { //Popula cadastro
+            listarClientes(1);
+            telaPrincipal.getjComboBoxTreinoExercicios().removeAllItems();
+            telaPrincipal.getjComboBoxTreinoExercicios().addItem("Selecione");
+            for (int i = 0; i < listaExerc.size(); i++) {
+                telaPrincipal.getjComboBoxTreinoExercicios().addItem("ID: " + listaExerc.get(i).getId() + " - " + listaExerc.get(i).getNome());
+            }
+            telaPrincipal.getjComboBoxInstrutorTreino().removeAllItems();
+            telaPrincipal.getjComboBoxInstrutorTreino().addItem("Selecione");
+            for (int i = 0; i < listaFunc.size(); i++) {
+                telaPrincipal.getjComboBoxInstrutorTreino().addItem("ID: " + listaFunc.get(i).getId() + " - " + listaFunc.get(i).getNome());
+            }
+        } else if (controle == 1) { //Popula tela de edicao        
+            treinoInfo.getjComboBoxTreinoExercicios().removeAllItems();
+            treinoInfo.getjComboBoxTreinoExercicios().addItem("Selecione");
+            for (int i = 0; i < listaExerc.size(); i++) {
+                treinoInfo.getjComboBoxTreinoExercicios().addItem("ID: " + listaExerc.get(i).getId() + " - " + listaExerc.get(i).getNome());
+            }
+
+            treinoInfo.getjComboBoxInstrutorTreino().removeAllItems();
+            treinoInfo.getjComboBoxInstrutorTreino().addItem("Selecione");
+            for (int i = 0; i < listaFunc.size(); i++) {
+                treinoInfo.getjComboBoxInstrutorTreino().addItem("ID: " + listaFunc.get(i).getId() + " - " + listaFunc.get(i).getNome());
+            }
         }
     }
 
-    private void listarClientes() {
+    private void listarClientes(int controle) {
         ArrayList<Cliente> lista = daoCliente.listarClientes();
-        if (lista != null) {
+        if (lista != null && controle == 0) {
             DefaultTableModel modelo = (DefaultTableModel) telaPrincipal.getjTableTreinoClientes().getModel();
+            modelo.setRowCount(0);
+            SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd");
+
+            for (int i = 0; i < lista.size(); i++) {
+                try {
+                    Date dataNasc = formatoData.parse(lista.get(i).getDataNasc());
+                    modelo.addRow(new Object[]{
+                        lista.get(i).getMatricula(),
+                        lista.get(i).getNome(),
+                        lista.get(i).getPeso() + " Kilos",
+                        lista.get(i).getAltura() + " Metros",
+                        util.calculaIdade(dataNasc) + " Anos"});
+
+                } catch (ParseException e) {
+                    JOptionPane.showMessageDialog(telaPrincipal, "Erro ao adiquirir data - Código: " + e.getErrorOffset(),
+                            "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } else if (lista != null && controle == 1) {
+            DefaultTableModel modelo = (DefaultTableModel) treinoInfo.getjTableTreinoClientes().getModel();
             modelo.setRowCount(0);
             SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -160,9 +189,9 @@ public class TreinoController {
         }
     }
 
-    private void listarClientes(String pesquisa) {
+    private void listarClientes(String pesquisa, int controle) {
         ArrayList<Cliente> lista = daoCliente.listarClientes(pesquisa);
-        if (lista != null) {
+        if (lista != null && controle == 0) {
             DefaultTableModel modelo = (DefaultTableModel) telaPrincipal.getjTableTreinoClientes().getModel();
             modelo.setRowCount(0);
             SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd");
@@ -179,6 +208,26 @@ public class TreinoController {
 
                 } catch (ParseException e) {
                     JOptionPane.showMessageDialog(telaPrincipal, "Erro ao adiquirir data - Código: " + e.getErrorOffset(),
+                            "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } else if (lista != null && controle == 1) {
+            DefaultTableModel modelo = (DefaultTableModel) treinoInfo.getjTableTreinoClientes().getModel();
+            modelo.setRowCount(0);
+            SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd");
+
+            for (int i = 0; i < lista.size(); i++) {
+                try {
+                    Date dataNasc = formatoData.parse(lista.get(i).getDataNasc());
+                    modelo.addRow(new Object[]{
+                        lista.get(i).getMatricula(),
+                        lista.get(i).getNome(),
+                        lista.get(i).getPeso() + " Kilos",
+                        lista.get(i).getAltura() + " Metros",
+                        util.calculaIdade(dataNasc) + " Anos"});
+
+                } catch (ParseException e) {
+                    JOptionPane.showMessageDialog(telaPrincipal, "Erro ao adiquirir data - Código: " + e.getMessage(),
                             "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
                 }
             }
@@ -255,6 +304,73 @@ public class TreinoController {
                 util.gerarPDF(lista);
             }
         }
+    }
+
+    private void getTreino() {
+        listarClientes(1);
+        inserirDados(1);
+        JTable tabela = telaPrincipal.getjTableListTreinosAtivos();
+        int linha = tabela.getSelectedRow();
+        if (linha != -1) {
+            try {
+                SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd");
+                int id = Integer.parseInt(String.valueOf(tabela.getValueAt(linha, 0)));
+                Treino treino = daoTreino.getTreino(id);
+                Date dataTroca = formatoData.parse(treino.getDataTrocaTreino());
+                if (treino.getDataTrocaTreino() != null) {
+                    dataTroca = formatoData.parse(treino.getDataTrocaTreino());
+                }
+                treinoInfo.getjTextFieldCargaTreino().setText(String.valueOf(treino.getCarga()));
+                treinoInfo.getjTextFieldSeriesTreino().setText(treino.getSeries());
+                treinoInfo.getjTextFieldRepeticaoTreino().setText(String.valueOf(treino.getRepeticao()));
+                treinoInfo.getjTextFieldTipoTreino().setText(treino.getTipoTreino());
+                treinoInfo.getjTextAreaObservacaoTreino().setText(treino.getObservacao());
+                treinoInfo.getjDateChooserTrocaTreino().setDate(dataTroca);
+            } catch (ParseException ex) {
+                JOptionPane.showMessageDialog(treinoInfo, "Erro ao adiquirir a data de aquisição",
+                        "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    private void atualizarTreino() {
+        JOptionPane.showMessageDialog(treinoInfo, "404     ¯\\_(ツ)_/¯",
+                "Erro", JOptionPane.ERROR_MESSAGE);
+
+        /*String exerc = String.valueOf(treinoInfo.getjComboBoxTreinoExercicios().getSelectedItem());
+        String ordem = String.valueOf(treinoInfo.getjComboBoxOrdem().getSelectedItem());
+        String instrutor = String.valueOf(treinoInfo.getjComboBoxInstrutorTreino().getSelectedItem());
+        String dataTroca = null;
+        long matriculaCli = 0;
+        JTable tabelaCliEdit = treinoInfo.getjTableTreinoClientes();
+        int linhaCliEdit = tabelaCliEdit.getSelectedRow();
+        if (linhaCliEdit != -1) {
+            long matricula = Long.parseLong(String.valueOf(tabelaCliEdit.getValueAt(linhaCliEdit, 0)));
+        }
+
+        Cliente cli = daoCliente.getCliente(matriculaCli);
+        int funcID = Integer.parseInt(util.removeLetras(instrutor));
+        int ExercID = Integer.parseInt(util.removeLetras(exerc));
+        Funcionario func = daoFuncionario.getFuncionario(funcID);
+        Exercicios exercicio = daoExercicio.getExercicios(ExercID);
+        int carga = Integer.parseInt(treinoInfo.getjTextFieldCargaTreino().getText());
+        String series = treinoInfo.getjTextFieldSeriesTreino().getText();
+        int repeticao = Integer.parseInt(treinoInfo.getjTextFieldRepeticaoTreino().getText());
+        String tipoTreino = treinoInfo.getjTextFieldTipoTreino().getText();
+        String observacao = treinoInfo.getjTextAreaObservacaoTreino().getText();
+        SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd");
+        if (treinoInfo.getjDateChooserTrocaTreino().getDate() != null) {
+            dataTroca = formatoData.format(treinoInfo.getjDateChooserTrocaTreino().getDate());
+        }
+
+        if (daoTreino.editarTreino(new Treino(Integer.parseInt(ordem), repeticao,
+                carga, series, tipoTreino, observacao, func, cli, exercicio, dataTroca))) {
+            JOptionPane.showMessageDialog(null, "Treino atualizado Alterado "
+                    + "com sucesso", "Editar funcionário", JOptionPane.INFORMATION_MESSAGE);
+            listarTreinos();
+            treinoInfo.dispose();
+        }*/
+
     }
 
     //Ativa e desativa equipamentos

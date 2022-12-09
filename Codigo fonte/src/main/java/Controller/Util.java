@@ -121,10 +121,10 @@ public class Util {
             for (Treino treino : list) {
                 cell1 = new PdfPCell(new Paragraph(treino.getCliente().getNome()));
                 cell2 = new PdfPCell(new Paragraph(treino.getExercicios().getNome()));
-                cell3 = new PdfPCell(new Paragraph(String.valueOf(treino.getOrdem())));
-                cell4 = new PdfPCell(new Paragraph(treino.getCarga()));
+                cell3 = new PdfPCell(new Paragraph(String.valueOf(treino.getOrdem()) + "ª"));
+                cell4 = new PdfPCell(new Paragraph(String.valueOf(treino.getCarga()) + "KG"));
                 cell5 = new PdfPCell(new Paragraph(treino.getSeries()));
-                cell6 = new PdfPCell(new Paragraph(treino.getRepeticao()));
+                cell6 = new PdfPCell(new Paragraph(String.valueOf(treino.getRepeticao()) + " Vezes"));
                 table.addCell(cell1);
                 table.addCell(cell2);
                 table.addCell(cell3);

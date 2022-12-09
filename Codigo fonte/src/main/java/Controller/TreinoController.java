@@ -338,35 +338,68 @@ public class TreinoController {
         String exerc = String.valueOf(treinoInfo.getjComboBoxTreinoExercicios().getSelectedItem());
         String ordem = String.valueOf(treinoInfo.getjComboBoxOrdem().getSelectedItem());
         String instrutor = String.valueOf(treinoInfo.getjComboBoxInstrutorTreino().getSelectedItem());
-        String dataTroca = null;        
+        SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd");
+        String dataTroca = null;
         long matriculaCli = 0;
         JTable tabelaCliEdit = treinoInfo.getjTableTreinoClientes();
         int linhaCliEdit = tabelaCliEdit.getSelectedRow();
         if (linhaCliEdit != -1) {
-            matriculaCli = Long.parseLong(String.valueOf(tabelaCliEdit.getValueAt(linhaCliEdit, 0)));
-        }
-        int idT = Integer.parseInt(treinoInfo.getjLabelStoredID().getText());
-        Cliente cli = daoCliente.getCliente(matriculaCli);
-        int funcID = Integer.parseInt(util.removeLetras(instrutor));
-        int ExercID = Integer.parseInt(util.removeLetras(exerc));
-        Funcionario func = daoFuncionario.getFuncionario(funcID);
-        Exercicios exercicio = daoExercicio.getExercicios(ExercID);
-        int carga = Integer.parseInt(treinoInfo.getjTextFieldCargaTreino().getText());
-        String series = treinoInfo.getjTextFieldSeriesTreino().getText();
-        int repeticao = Integer.parseInt(treinoInfo.getjTextFieldRepeticaoTreino().getText());
-        String tipoTreino = treinoInfo.getjTextFieldTipoTreino().getText();
-        String observacao = treinoInfo.getjTextAreaObservacaoTreino().getText();
-        SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd");
-        if (treinoInfo.getjDateChooserTrocaTreino().getDate() != null) {
-            dataTroca = formatoData.format(treinoInfo.getjDateChooserTrocaTreino().getDate());
-        }
+            //validacoes dos campos de edicao
+            if (treinoInfo.getjDateChooserTrocaTreino().getDate() != null) {
+                dataTroca = formatoData.format(treinoInfo.getjDateChooserTrocaTreino().getDate());
+            }
+            if (exerc.equals("Selecione")) {
+                JOptionPane.showMessageDialog(treinoInfo, "Selecione o exercicío",
+                        "Erro", JOptionPane.ERROR_MESSAGE);
+            } else if (ordem.equals("Selecione")) {
+                JOptionPane.showMessageDialog(treinoInfo, "Selecione a ordem do exercicío",
+                        "Erro", JOptionPane.ERROR_MESSAGE);
+            } else if (treinoInfo.getjTextFieldCargaTreino().getText().isEmpty()) {
+                JOptionPane.showMessageDialog(treinoInfo, "Indique a carga do treino",
+                        "Erro", JOptionPane.ERROR_MESSAGE);
+                treinoInfo.getjTextFieldCargaTreino().requestFocus();
+            } else if (treinoInfo.getjTextFieldSeriesTreino().getText().isEmpty()) {
+                JOptionPane.showMessageDialog(treinoInfo, "Indique as series",
+                        "Erro", JOptionPane.ERROR_MESSAGE);
+                treinoInfo.getjTextFieldCargaTreino().requestFocus();
+            } else if (treinoInfo.getjTextFieldRepeticaoTreino().getText().isEmpty()) {
+                JOptionPane.showMessageDialog(treinoInfo, "Indique as repetições do treino",
+                        "Erro", JOptionPane.ERROR_MESSAGE);
+                treinoInfo.getjTextFieldRepeticaoTreino().requestFocus();
+            } else if (treinoInfo.getjTextFieldTipoTreino().getText().isEmpty()) {
+                JOptionPane.showMessageDialog(treinoInfo, "Indique o tipo do treino",
+                        "Erro", JOptionPane.ERROR_MESSAGE);
+                treinoInfo.getjTextFieldTipoTreino().requestFocus();
+            } else if (dataTroca.isEmpty()) {
+                JOptionPane.showMessageDialog(treinoInfo, "Selecione a data de previsão de troca de treino",
+                        "Erro", JOptionPane.ERROR_MESSAGE);
+                treinoInfo.getjDateChooserTrocaTreino().requestFocus();
+            } else {
+                matriculaCli = Long.parseLong(String.valueOf(tabelaCliEdit.getValueAt(linhaCliEdit, 0)));
+                Cliente cli = daoCliente.getCliente(matriculaCli);
+                int funcID = Integer.parseInt(util.removeLetras(instrutor));
+                int ExercID = Integer.parseInt(util.removeLetras(exerc));
 
-        if (daoTreino.editarTreino(new Treino(idT, Integer.parseInt(ordem), repeticao, carga, series,
-            tipoTreino, observacao, func, cli, exercicio, dataTroca))) {
-            JOptionPane.showMessageDialog(null, "Treino atualizado Alterado "
-                    + "com sucesso", "Editar Treino", JOptionPane.INFORMATION_MESSAGE);
-            listarTreinos();
-            treinoInfo.dispose();
+                //Atribuicao
+                int idT = Integer.parseInt(treinoInfo.getjLabelStoredID().getText());
+                int carga = Integer.parseInt(treinoInfo.getjTextFieldCargaTreino().getText());
+                String series = treinoInfo.getjTextFieldSeriesTreino().getText();
+                int repeticao = Integer.parseInt(treinoInfo.getjTextFieldRepeticaoTreino().getText());
+                String tipoTreino = treinoInfo.getjTextFieldTipoTreino().getText();
+                String observacao = treinoInfo.getjTextAreaObservacaoTreino().getText();                
+                Funcionario func = daoFuncionario.getFuncionario(funcID);
+                Exercicios exercicio = daoExercicio.getExercicios(ExercID);
+                if (daoTreino.editarTreino(new Treino(idT, Integer.parseInt(ordem), repeticao, carga, series,
+                        tipoTreino, observacao, func, cli, exercicio, dataTroca))) {
+                    JOptionPane.showMessageDialog(null, "Treino atualizado Alterado "
+                            + "com sucesso", "Editar Treino", JOptionPane.INFORMATION_MESSAGE);
+                    listarTreinos();
+                    treinoInfo.dispose();
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(treinoInfo, "Selecione o usuário",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
         }
 
     }

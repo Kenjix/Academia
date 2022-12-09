@@ -158,9 +158,9 @@ public class TreinoDAO {
     }
 
     public boolean editarTreino(Treino tr) {
-        String query = "UPDATE treino SET ordem = ?, repeticao = ?, carga = ?, "
-                + "series = ?, tipoTreino = ?, observacao = ?, trocaTreino = ?, FK_funcionario = ?, "
-                + "FK_cliente = ?, FK_exercicios = ? WHERE id = ?;";
+        String query = "UPDATE treinos SET ordem = ?, repeticao = ?, carga = ?, "
+                + "series = ?, tipoTreino = ?, observacao = ?, trocaTreino = ?, "
+                + "FK_funcionario = ?, FK_cliente = ?, FK_exercicios = ? WHERE id = ?";
         Connection con = null;
         PreparedStatement pst = null;
         try {

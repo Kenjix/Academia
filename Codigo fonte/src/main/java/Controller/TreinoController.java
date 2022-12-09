@@ -335,18 +335,15 @@ public class TreinoController {
     }
 
     private void atualizarTreino() {
-        JOptionPane.showMessageDialog(treinoInfo, "404     ¯\\_(ツ)_/¯",
-                "Erro", JOptionPane.ERROR_MESSAGE);
-
-        /*String exerc = String.valueOf(treinoInfo.getjComboBoxTreinoExercicios().getSelectedItem());
+        String exerc = String.valueOf(treinoInfo.getjComboBoxTreinoExercicios().getSelectedItem());
         String ordem = String.valueOf(treinoInfo.getjComboBoxOrdem().getSelectedItem());
         String instrutor = String.valueOf(treinoInfo.getjComboBoxInstrutorTreino().getSelectedItem());
-        String dataTroca = null;
+        String dataTroca = null;        
         long matriculaCli = 0;
         JTable tabelaCliEdit = treinoInfo.getjTableTreinoClientes();
         int linhaCliEdit = tabelaCliEdit.getSelectedRow();
         if (linhaCliEdit != -1) {
-            long matricula = Long.parseLong(String.valueOf(tabelaCliEdit.getValueAt(linhaCliEdit, 0)));
+            matriculaCli = Long.parseLong(String.valueOf(tabelaCliEdit.getValueAt(linhaCliEdit, 0)));
         }
         int idT = Integer.parseInt(treinoInfo.getjLabelStoredID().getText());
         Cliente cli = daoCliente.getCliente(matriculaCli);
@@ -370,7 +367,7 @@ public class TreinoController {
                     + "com sucesso", "Editar Treino", JOptionPane.INFORMATION_MESSAGE);
             listarTreinos();
             treinoInfo.dispose();
-        }*/
+        }
 
     }
 

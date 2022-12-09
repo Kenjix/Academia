@@ -15,8 +15,7 @@ public class Exercicios {
     public Exercicios(String nome, String grupoMuscular) {
         this.nome = nome;
         this.grupoMuscular = grupoMuscular;
-    }
-    
+    }    
 
     public int getId() {
         return id;

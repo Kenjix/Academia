@@ -1,5 +1,4 @@
 CREATE DATABASE academia;
-drop database academia
 USE academia;
 
 CREATE TABLE funcionario (
@@ -69,8 +68,8 @@ CREATE TABLE exerc_equip
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	FK_equipamento INT,
 	FK_exercicios INT,
-	FOREIGN KEY (FK_equipamento) REFERENCES equipamento(id),
-	FOREIGN KEY (FK_exercicios) REFERENCES exercicios(id)
+	FOREIGN KEY (FK_equipamento) REFERENCES equipamento(id) ON DELETE CASCADE,
+	FOREIGN KEY (FK_exercicios) REFERENCES exercicios(id) ON DELETE CASCADE
 );
 
 CREATE TABLE treinos (
@@ -166,9 +165,9 @@ CREATE PROCEDURE insereExercicio(
 		DECLARE patrimonioGerado VARCHAR(10);
 		SET codigo = (SELECT MAX(patrimonio) FROM equipamento);          
 			IF codigo IS NULL THEN
-				SET patrimonioGerado = LPAD(1, 10, 0);
+				SET patrimonioGerado = LPAD(1, 5, 0);
 			ELSE			
-				SET patrimonioGerado = LPAD((SELECT MAX(patrimonio)+1 FROM equipamento), 10, 0);   
+				SET patrimonioGerado =  LPAD((SELECT MAX(patrimonio)+1 FROM equipamento), 5, 0);
 			END IF;
 			INSERT INTO equipamento (patrimonio, nome, dataAquisicao, observacoes) 
 			VALUES (patrimonioGerado, nome, dataAquisicao, observacoes);

@@ -34,6 +34,9 @@ public class App {
         
         ExercicioController exerc = new ExercicioController(telaPrincipal, exercicioInfo);
         exerc.initExerciciosController();
+        
+        TreinoController treino = new TreinoController(telaPrincipal);
+        treino.initTreinoController();
     }
 
     private static void carregarTema() {

@@ -46,7 +46,7 @@ public class ExerciciosDAO {
     //Ler informações de Funcionarios
     public ArrayList<Exercicios> listarExercicios() {
         ArrayList<Exercicios> list = new ArrayList();
-        String query = "SELECT * FROM exercicios;";
+        String query = "SELECT id, nome, grupoMuscular FROM exercicios ORDER BY nome DESC;";
 
         Connection con = null;
         PreparedStatement pst = null;
@@ -56,6 +56,53 @@ public class ExerciciosDAO {
             pst = con.prepareStatement(query);
             rs = pst.executeQuery();
             while (rs.next()) {
+                int id = Integer.parseInt(rs.getString(1));
+                String nome = rs.getString(2);
+                String grupoMuscular = rs.getString(3);
+                list.add(new Exercicios(id, nome, grupoMuscular));
+            }
+            return list;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
+            return null;
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if (pst != null) {
+                try {
+                    pst.close();
+                } catch (SQLException e) {
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+    }
+
+    //Ler informações de Funcionarios
+    public ArrayList<Exercicios> listarExercicios(String pesquisa) {
+        ArrayList<Exercicios> list = new ArrayList();
+        String query = "SELECT id, nome, grupoMuscular FROM exercicios WHERE nome LIKE ? ORDER BY nome DESC;";
+
+        Connection con = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        try {
+            con = new ConnectionFactory().getConnection();
+            pst = con.prepareStatement(query);
+            pst.setString(1, '%' + pesquisa + '%');
+            rs = pst.executeQuery();
+
+            while (rs.next()) {
+
                 int id = Integer.parseInt(rs.getString(1));
                 String nome = rs.getString(2);
                 String grupoMuscular = rs.getString(3);
@@ -175,53 +222,6 @@ public class ExerciciosDAO {
             }
             Exercicios exerc = new Exercicios(idE, nome, grupMusc);
             return exerc;
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
-            return null;
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                }
-            }
-            if (pst != null) {
-                try {
-                    pst.close();
-                } catch (SQLException e) {
-                }
-            }
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (SQLException e) {
-                }
-            }
-        }
-    }
-
-    //Ler informações de Funcionarios
-    public ArrayList<Exercicios> listarExercicios(String pesquisa) {
-        ArrayList<Exercicios> list = new ArrayList();
-        String query = "SELECT id, nome, grupoMuscular FROM exercicios WHERE nome LIKE ?;";
-
-        Connection con = null;
-        PreparedStatement pst = null;
-        ResultSet rs = null;
-        try {
-            con = new ConnectionFactory().getConnection();
-            pst = con.prepareStatement(query);
-            pst.setString(1, '%' + pesquisa + '%');
-            rs = pst.executeQuery();
-
-            while (rs.next()) {
-
-                int id = Integer.parseInt(rs.getString(1));
-                String nome = rs.getString(2);
-                String grupoMuscular = rs.getString(3);
-                list.add(new Exercicios(id, nome, grupoMuscular));
-            }
-            return list;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
             return null;

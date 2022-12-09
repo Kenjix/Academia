@@ -6,13 +6,6 @@ public class Funcionario extends Pessoa{
     private final String turno;
     private final int cargaHoraria;
 
-    public Funcionario() {
-        super(0, 0, null, null, null, null, null, null, null);
-        this.especialidade = null;
-        this.turno = null;
-        this.cargaHoraria = 0;
-    }
-    
     public Funcionario(String especialidade, String turno, int cargaHoraria, int id, 
             float peso, float altura, String nome, String dataNasc, String cpf, 
             String telefone, String celular, String email, String observacoes) {

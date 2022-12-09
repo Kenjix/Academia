@@ -9,12 +9,6 @@ public class Cliente extends Pessoa {
     private final byte[] foto;
     private final String objetivo;
 
-    public Cliente() {
-        super(0, 0, null, null, null, null, null, null, null);
-        this.foto = null;
-        this.objetivo = null;
-    }
-    
     public Cliente(long matricula, boolean ativo, String dataInicio, String dataFim, 
             byte[] foto, String objetivo, int id, float peso,float altura, String nome, 
             String dataNasc, String cpf, String telefone, String celular, String email, 

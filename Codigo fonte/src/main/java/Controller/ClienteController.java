@@ -4,9 +4,7 @@ import Model.Cliente;
 import Model.ClienteDAO;
 import View.ClienteInfo;
 import View.TelaPrincipal;
-import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,10 +14,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -31,6 +26,7 @@ public class ClienteController {
 
     private final TelaPrincipal telaPrincipal;
     private final ClienteInfo clienteInfo;
+    Util util = new Util();
     ClienteDAO dao = new ClienteDAO();
 
     public ClienteController(TelaPrincipal telaPrincipal, ClienteInfo clienteInfo) {
@@ -76,7 +72,7 @@ public class ClienteController {
         String objetivo = telaPrincipal.getjTextFieldObjetivo().getText();
         String observacao = telaPrincipal.getjTextAreaObserv().getText();
         final boolean editValidCpf = telaPrincipal.getjFormattedTextFieldCpf().isEditValid();
-        String path = getFoto(telaPrincipal.getjLabelFoto().getIcon());
+        String path = util.getImage(telaPrincipal.getjLabelFoto().getIcon());
         byte[] foto = null;
 
         if (nome.isEmpty()) {
@@ -110,7 +106,7 @@ public class ClienteController {
             JOptionPane.showMessageDialog(telaPrincipal, "O campo Data de Matrícula é obrigatório",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             telaPrincipal.getjDateChooserMatricula().requestFocus();
-        } else if (!validaEmail(email)) {
+        } else if (!util.validaEmail(email)) {
             JOptionPane.showMessageDialog(telaPrincipal, "E-mail inválido",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             telaPrincipal.getjTextFieldEmail().requestFocus();
@@ -299,7 +295,7 @@ public class ClienteController {
 
     //Edita dados de cliente
     private void editarCliente() {
-        //Atribuicao de dados
+        //Atribuicao de dados        
         String id = clienteInfo.getjLabelStoreID().getText();
         String nome = clienteInfo.getjTextFieldClienteNome().getText();
         String cpf = String.valueOf(clienteInfo.getjFormattedTextFieldCpf().getText());
@@ -355,7 +351,7 @@ public class ClienteController {
         } else if (!altura.matches("^[0-9]{1,2}([,.][0-9]{1,2})?$")) {
             JOptionPane.showMessageDialog(clienteInfo, "Dados de altura inválidos",
                     "Campo inválido", JOptionPane.ERROR_MESSAGE);
-        } else if (!validaEmail(email)) {
+        } else if (!util.validaEmail(email)) {
             JOptionPane.showMessageDialog(clienteInfo, "E-mail inválido",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             clienteInfo.getjTextFieldClienteEmail().requestFocus();
@@ -365,7 +361,7 @@ public class ClienteController {
             clienteInfo.getjFormattedTextFieldTel().requestFocus();
         } else {
             //Execucao
-            String path = getFoto(clienteInfo.getjLabelClienteFotoEdit().getIcon());
+            String path = util.getImage(clienteInfo.getjLabelClienteFotoEdit().getIcon());
             if (dao.editarCliente(new Cliente(dataFimMatricula, ativo, foto, objetivo, Integer.parseInt(id),
                     Float.parseFloat(peso), Float.parseFloat(altura), nome, dataNasc,
                     cpf, tel, cel, email, observacao), path)) {
@@ -378,23 +374,7 @@ public class ClienteController {
         }
     }
 
-    //Armazena a foto em em temp
-    private String getFoto(Icon icon) {
-        String path = "";
-        try {
-            BufferedImage image = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
-            Graphics graphics = image.createGraphics();
-            icon.paintIcon(null, graphics, 0, 0);
-            graphics.dispose();
-            String tmpdir = System.getProperty("java.io.tmpdir");
-            path = tmpdir + "\\image.png";
-            ImageIO.write(image, "png", new File(path));
-            return path;
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao ler a foto", "Erro", JOptionPane.ERROR_MESSAGE);
-            return null;
-        }
-    }
+
 
     //Ativa um cliente selecionado da tabela
     private void ativarCliente() {
@@ -459,14 +439,6 @@ public class ClienteController {
                 }
             }
         }
-    }
-
-    //Valia String com padrao de email
-    public boolean validaEmail(String email) {
-        final Pattern VALIDA_EMAIL_REGEX
-                = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
-        Matcher matcher = VALIDA_EMAIL_REGEX.matcher(email);
-        return matcher.find();
     }
 
 }

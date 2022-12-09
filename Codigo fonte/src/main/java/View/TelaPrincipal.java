@@ -407,6 +407,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
         return jButtonEditarFunc;
     }
 
+    public JButton getjButtonPesquisarTreinoCli() {
+        return jButtonPesquisarTreinoCli;
+    }
+
+    public JTextField getjTextFieldPesquisarTreinoCli() {
+        return jTextFieldPesquisarTreinoCli;
+    }
+
+    
+    
     //Equipamento
     public JButton getjButtonSalvarEquipamento() {
         return jButtonSalvarEquipamento;
@@ -755,7 +765,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanelMenuClientLayout.setHorizontalGroup(
             jPanelMenuClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMenuClientLayout.createSequentialGroup()
-                .addGap(220, 220, 220)
+                .addGap(215, 215, 215)
                 .addGroup(jPanelMenuClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonCadastrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -763,11 +773,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanelMenuClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonListarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
-                .addGap(150, 150, 150)
+                .addGap(160, 160, 160)
                 .addGroup(jPanelMenuClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonDeletarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(220, Short.MAX_VALUE))
+                .addContainerGap(215, Short.MAX_VALUE))
         );
         jPanelMenuClientLayout.setVerticalGroup(
             jPanelMenuClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2165,15 +2175,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanelMenuTreinoLayout.setHorizontalGroup(
             jPanelMenuTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMenuTreinoLayout.createSequentialGroup()
-                .addGap(218, 218, 218)
+                .addGap(215, 215, 215)
                 .addGroup(jPanelMenuTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonCadastrarTreino, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanelMenuTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelMenuTreinoLayout.createSequentialGroup()
-                        .addGap(165, 165, 165)
+                        .addGap(160, 160, 160)
                         .addComponent(jButtonListarTreino, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(162, 162, 162))
+                        .addGap(160, 160, 160))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMenuTreinoLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2434,7 +2444,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBoxInstrutorTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonSalvarTreino)
                     .addComponent(jButtonCancelarTreino))
                 .addGap(15, 15, 15))

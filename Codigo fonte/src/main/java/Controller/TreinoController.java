@@ -320,6 +320,7 @@ public class TreinoController {
                 if (treino.getDataTrocaTreino() != null) {
                     dataTroca = formatoData.parse(treino.getDataTrocaTreino());
                 }
+                treinoInfo.getjLabelStoredID().setText(String.valueOf(treino.getId()));
                 treinoInfo.getjTextFieldCargaTreino().setText(String.valueOf(treino.getCarga()));
                 treinoInfo.getjTextFieldSeriesTreino().setText(treino.getSeries());
                 treinoInfo.getjTextFieldRepeticaoTreino().setText(String.valueOf(treino.getRepeticao()));
@@ -347,7 +348,7 @@ public class TreinoController {
         if (linhaCliEdit != -1) {
             long matricula = Long.parseLong(String.valueOf(tabelaCliEdit.getValueAt(linhaCliEdit, 0)));
         }
-
+        int idT = Integer.parseInt(treinoInfo.getjLabelStoredID().getText());
         Cliente cli = daoCliente.getCliente(matriculaCli);
         int funcID = Integer.parseInt(util.removeLetras(instrutor));
         int ExercID = Integer.parseInt(util.removeLetras(exerc));
@@ -363,10 +364,10 @@ public class TreinoController {
             dataTroca = formatoData.format(treinoInfo.getjDateChooserTrocaTreino().getDate());
         }
 
-        if (daoTreino.editarTreino(new Treino(Integer.parseInt(ordem), repeticao,
-                carga, series, tipoTreino, observacao, func, cli, exercicio, dataTroca))) {
+        if (daoTreino.editarTreino(new Treino(idT, Integer.parseInt(ordem), repeticao, carga, series,
+            tipoTreino, observacao, func, cli, exercicio, dataTroca))) {
             JOptionPane.showMessageDialog(null, "Treino atualizado Alterado "
-                    + "com sucesso", "Editar funcionário", JOptionPane.INFORMATION_MESSAGE);
+                    + "com sucesso", "Editar Treino", JOptionPane.INFORMATION_MESSAGE);
             listarTreinos();
             treinoInfo.dispose();
         }*/

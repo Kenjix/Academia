@@ -14,7 +14,7 @@ public class Treino {
     private Cliente cliente;
     private Exercicios exercicios;
     private String dataTrocaTreino;
-
+  
     public Treino(int id, int ordem, int repeticao, int carga, String series,
             String tipoTreino, String observacao, Funcionario funcionario,
             Cliente cliente, Exercicios exercicios, String dataTrocaTreino) {
@@ -45,8 +45,6 @@ public class Treino {
         this.exercicios = exercicios;
         this.dataTrocaTreino = dataTrocaTreino;
     }
-
-    
     
     public Treino(int id, int ordem, int repeticao, int carga, String series,
             String tipoTreino, String observacao, Exercicios exercicios, String dataTrocaTreino) {

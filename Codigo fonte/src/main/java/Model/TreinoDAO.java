@@ -159,7 +159,7 @@ public class TreinoDAO {
 
     public boolean editarTreino(Treino tr) {
         String query = "UPDATE treino SET ordem = ?, repeticao = ?, carga = ?, "
-                + "series = ?, tipoTreino = ?, observacao = ?, trocaTreino = ?, ativo, FK_funcionario = ?, "
+                + "series = ?, tipoTreino = ?, observacao = ?, trocaTreino = ?, FK_funcionario = ?, "
                 + "FK_cliente = ?, FK_exercicios = ? WHERE id = ?;";
         Connection con = null;
         PreparedStatement pst = null;
@@ -174,11 +174,10 @@ public class TreinoDAO {
             pst.setString(5, tr.getTipoTreino());
             pst.setString(6, tr.getObservacao());
             pst.setString(7, tr.getDataTrocaTreino());
-            pst.setBoolean(8, tr.isAtivo());
-            pst.setString(9, String.valueOf(tr.getFuncionario().getId()));
-            pst.setString(10, String.valueOf(tr.getCliente().getId()));
-            pst.setString(11, String.valueOf(tr.getExercicios().getId()));
-            pst.setString(12, String.valueOf(tr.getId()));
+            pst.setString(8, String.valueOf(tr.getFuncionario().getId()));
+            pst.setString(9, String.valueOf(tr.getCliente().getId()));
+            pst.setString(10, String.valueOf(tr.getExercicios().getId()));
+            pst.setString(11, String.valueOf(tr.getId()));
             pst.execute();
             return true;
         } catch (SQLException e) {

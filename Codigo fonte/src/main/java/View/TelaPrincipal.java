@@ -752,6 +752,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         CRUDTreino = new javax.swing.JPanel();
         inicioTreino = new javax.swing.JPanel();
+        listarTreino = new javax.swing.JPanel();
         listTreino = new javax.swing.JPanel();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         treinosAtivos = new javax.swing.JPanel();
@@ -2021,7 +2022,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanelEquipLayout.setHorizontalGroup(
             jPanelEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanelMenuEquipa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(CRUDEquipa, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(CRUDEquipa, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
         );
         jPanelEquipLayout.setVerticalGroup(
             jPanelEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2292,6 +2293,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         CRUDTreino.setLayout(new java.awt.CardLayout());
 
+        javax.swing.GroupLayout inicioTreinoLayout = new javax.swing.GroupLayout(inicioTreino);
+        inicioTreino.setLayout(inicioTreinoLayout);
+        inicioTreinoLayout.setHorizontalGroup(
+            inicioTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1021, Short.MAX_VALUE)
+        );
+        inicioTreinoLayout.setVerticalGroup(
+            inicioTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 598, Short.MAX_VALUE)
+        );
+
+        CRUDTreino.add(inicioTreino, "card2");
+
         listTreino.setBorder(javax.swing.BorderFactory.createTitledBorder("Listar Treinos"));
 
         jTableListTreinosAtivos.setModel(new javax.swing.table.DefaultTableModel(
@@ -2324,9 +2338,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtonDesativaTreino.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
         jButtonDesativaTreino.setForeground(new java.awt.Color(255, 255, 255));
         jButtonDesativaTreino.setText("Desativar");
-        jButtonDesativaTreino.setMaximumSize(new java.awt.Dimension(111, 29));
-        jButtonDesativaTreino.setMinimumSize(new java.awt.Dimension(111, 29));
-        jButtonDesativaTreino.setPreferredSize(new java.awt.Dimension(111, 29));
 
         javax.swing.GroupLayout treinosAtivosLayout = new javax.swing.GroupLayout(treinosAtivos);
         treinosAtivos.setLayout(treinosAtivosLayout);
@@ -2341,7 +2352,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addContainerGap(380, Short.MAX_VALUE)
                     .addComponent(jButtonEditarTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jButtonDesativaTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonDesativaTreino)
                     .addGap(391, 391, 391)))
         );
         treinosAtivosLayout.setVerticalGroup(
@@ -2355,7 +2366,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addContainerGap(467, Short.MAX_VALUE)
                     .addGroup(treinosAtivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButtonEditarTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButtonDesativaTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonDesativaTreino))
                     .addContainerGap()))
         );
 
@@ -2445,22 +2456,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout inicioTreinoLayout = new javax.swing.GroupLayout(inicioTreino);
-        inicioTreino.setLayout(inicioTreinoLayout);
-        inicioTreinoLayout.setHorizontalGroup(
-            inicioTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inicioTreinoLayout.createSequentialGroup()
+        javax.swing.GroupLayout listarTreinoLayout = new javax.swing.GroupLayout(listarTreino);
+        listarTreino.setLayout(listarTreinoLayout);
+        listarTreinoLayout.setHorizontalGroup(
+            listarTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listarTreinoLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(listTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        inicioTreinoLayout.setVerticalGroup(
-            inicioTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inicioTreinoLayout.createSequentialGroup()
+        listarTreinoLayout.setVerticalGroup(
+            listarTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listarTreinoLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(listTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        CRUDTreino.add(inicioTreino, "card2");
+        CRUDTreino.add(listarTreino, "card2");
 
         cadTreino.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastrar Treino"));
 
@@ -2698,7 +2709,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 768, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
         );
 
         pack();
@@ -2932,6 +2943,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel listExerc;
     private javax.swing.JPanel listFuncio;
     private javax.swing.JPanel listTreino;
+    private javax.swing.JPanel listarTreino;
     private javax.swing.JPanel treinosAtivos;
     private javax.swing.JPanel treinosInativos;
     // End of variables declaration//GEN-END:variables

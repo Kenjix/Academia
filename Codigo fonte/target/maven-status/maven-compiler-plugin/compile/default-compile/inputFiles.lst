@@ -1,22 +1,27 @@
-C:\Users\Gabriel Castagna\Desktop\Academia\Codigo fonte\src\main\java\Controller\ExercicioController.java
-C:\Users\Gabriel Castagna\Desktop\Academia\Codigo fonte\src\main\java\View\TelaPrincipal.java
-C:\Users\Gabriel Castagna\Desktop\Academia\Codigo fonte\src\main\java\Model\Exercicios.java
-C:\Users\Gabriel Castagna\Desktop\Academia\Codigo fonte\src\main\java\Model\FuncionarioDAO.java
-C:\Users\Gabriel Castagna\Desktop\Academia\Codigo fonte\src\main\java\Controller\FuncionarioController.java
-C:\Users\Gabriel Castagna\Desktop\Academia\Codigo fonte\src\main\java\Model\Cliente.java
-C:\Users\Gabriel Castagna\Desktop\Academia\Codigo fonte\src\main\java\View\FuncionarioInfo.java
-C:\Users\Gabriel Castagna\Desktop\Academia\Codigo fonte\src\main\java\Model\Pessoa.java
-C:\Users\Gabriel Castagna\Desktop\Academia\Codigo fonte\src\main\java\Controller\EquipamentoController.java
-C:\Users\Gabriel Castagna\Desktop\Academia\Codigo fonte\src\main\java\Model\Treino.java
-C:\Users\Gabriel Castagna\Desktop\Academia\Codigo fonte\src\main\java\Model\ExerciciosDAO.java
-C:\Users\Gabriel Castagna\Desktop\Academia\Codigo fonte\src\main\java\View\EquipInfo.java
-C:\Users\Gabriel Castagna\Desktop\Academia\Codigo fonte\src\main\java\Controller\ClienteController.java
-C:\Users\Gabriel Castagna\Desktop\Academia\Codigo fonte\src\main\java\Controller\App.java
-C:\Users\Gabriel Castagna\Desktop\Academia\Codigo fonte\src\main\java\ConnectionFactory\ConnectionFactory.java
-C:\Users\Gabriel Castagna\Desktop\Academia\Codigo fonte\src\main\java\Model\ClienteDAO.java
-C:\Users\Gabriel Castagna\Desktop\Academia\Codigo fonte\src\main\java\Model\EquipamentoDAO.java
-C:\Users\Gabriel Castagna\Desktop\Academia\Codigo fonte\src\main\java\Model\TreinoDAO.java
-C:\Users\Gabriel Castagna\Desktop\Academia\Codigo fonte\src\main\java\View\ClienteInfo.java
-C:\Users\Gabriel Castagna\Desktop\Academia\Codigo fonte\src\main\java\Controller\Controller.java
-C:\Users\Gabriel Castagna\Desktop\Academia\Codigo fonte\src\main\java\Model\Funcionario.java
-C:\Users\Gabriel Castagna\Desktop\Academia\Codigo fonte\src\main\java\Model\Equipamento.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\Controller\FuncionarioController.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\Controller\Controller.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\Model\ExerciciosDAO.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\Controller\App.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\ConnectionFactory\ConnectionFactory.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\Model\Equipamento.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\View\ClienteInfo.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\Model\ExercEquip.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\View\EquipInfo.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\Controller\ExercicioController.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\Model\TreinoDAO.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\Model\Exercicios.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\Model\FuncionarioDAO.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\Model\Pessoa.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\View\FuncionarioInfo.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\Model\Treino.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\Controller\TreinoController.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\Controller\Util.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\Model\EquipamentoDAO.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\Model\Funcionario.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\Controller\ClienteController.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\View\ExercicioInfo.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\View\TelaPrincipal.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\Model\ClienteDAO.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\Model\Cliente.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\Controller\EquipamentoController.java
+C:\Users\dougl\Documents\GitHub\Academia\Codigo fonte\src\main\java\Model\ExercEquipDAO.java

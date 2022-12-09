@@ -259,6 +259,80 @@ public class ClienteDAO {
             }
         }
     }
+    
+        public Cliente getCliente(int id) {
+        String query = "SELECT id, nome, cpf, matricula, telefone, celular, "
+                + "email, dataNasc, peso, altura, dataInicio, dataFim, objetivo,"
+                + "ativo, foto, observacoes FROM cliente WHERE id = ?";
+        Connection con = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        try {
+            con = new ConnectionFactory().getConnection();
+            pst = con.prepareStatement(query);
+            pst.setString(1, String.valueOf(id));
+            rs = pst.executeQuery();
+            
+            String nome = "";
+            String cpf = "";
+            long matricula = 0;
+            String telefone = "";
+            String celular = "";
+            String email = "";
+            String dataNasc = "";
+            float peso = 0;
+            float altura = 0;
+            String dataInicio = "";
+            String dataFim = "";
+            String objetivo = "";
+            Boolean ativo = null;
+            byte[] foto = null;
+            String observacoes = "";
+
+            while (rs.next()) {
+                id = Integer.parseInt(rs.getString(1));
+                nome = rs.getString(2);
+                cpf = rs.getString(3);
+                matricula = Long.parseLong(rs.getString(4));
+                telefone = rs.getString(5);
+                celular = rs.getString(6);
+                email = rs.getString(7);
+                dataNasc = rs.getString(8);
+                peso = Float.parseFloat(rs.getString(9));
+                altura = Float.parseFloat(rs.getString(10));
+                dataInicio = rs.getString(11);
+                dataFim = rs.getString(12);
+                objetivo = rs.getString(13);
+                ativo = rs.getBoolean(14);
+                foto = rs.getBytes(15);
+                observacoes = rs.getString(16);
+            }
+            Cliente cli = new Cliente(matricula, ativo, dataInicio, dataFim, foto,
+                    objetivo, id, peso, altura, nome, dataNasc, cpf, telefone, celular,
+                    email, observacoes);
+            return cli;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
+            return null;
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {}
+            }
+            if (pst != null) {
+                try {
+                    pst.close();
+                } catch (SQLException e) {}
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {}
+            }
+        }
+    }
 
     //UPDATE
     public boolean editarCliente(Cliente cliente, String path) {

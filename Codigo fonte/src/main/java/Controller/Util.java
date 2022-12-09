@@ -1,9 +1,19 @@
 package Controller;
 
+import Model.Treino;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Desktop;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -53,7 +63,7 @@ public class Util {
         }
     }
 
-    public static int calculaIdade(java.util.Date dataNasc) {
+    public int calculaIdade(java.util.Date dataNasc) {
         Calendar dataNascimento = Calendar.getInstance();
         dataNascimento.setTime(dataNasc);
         Calendar hoje = Calendar.getInstance();
@@ -67,8 +77,65 @@ public class Util {
                 idade--;
             }
         }
-
         return idade;
     }
 
+    //Remove letras das String para identificacao de IDs
+    public String removeLetras(String palavra) {
+        palavra = palavra.substring(0, 6).replaceAll("[^0-9]", "");
+        palavra = palavra.replaceAll("-", "");
+        if (palavra.equals("")) {
+            return "-1";
+        }
+        return palavra;
+    }
+
+    public void gerarPDF(ArrayList<Treino> list) {
+        Document document = new Document();
+        try {
+
+            PdfWriter.getInstance(document, new FileOutputStream("Treinos.pdf"));
+            document.open();
+            Paragraph p = new Paragraph("Treinos:");
+            p.setAlignment(1);
+            document.add(p);
+
+            PdfPTable table = new PdfPTable(6);
+            PdfPCell cell1 = new PdfPCell(new Paragraph("Nome:"));
+            PdfPCell cell2 = new PdfPCell(new Paragraph("Exercicío:"));
+            PdfPCell cell3 = new PdfPCell(new Paragraph("Ordem:"));
+            PdfPCell cell4 = new PdfPCell(new Paragraph("Carga:"));
+            PdfPCell cell5 = new PdfPCell(new Paragraph("Series:"));
+            PdfPCell cell6 = new PdfPCell(new Paragraph("Repetições:"));
+
+            table.addCell(cell1);
+            table.addCell(cell2);
+            table.addCell(cell3);
+            table.addCell(cell4);
+            table.addCell(cell5);
+            table.addCell(cell6);
+
+            for (Treino treino : list) {
+                cell1 = new PdfPCell(new Paragraph(treino.getCliente().getNome()));
+                cell2 = new PdfPCell(new Paragraph(treino.getExercicios().getNome()));
+                cell3 = new PdfPCell(new Paragraph(String.valueOf(treino.getOrdem())));
+                cell4 = new PdfPCell(new Paragraph(treino.getCarga()));
+                cell5 = new PdfPCell(new Paragraph(treino.getSeries()));
+                cell6 = new PdfPCell(new Paragraph(treino.getRepeticao()));
+                table.addCell(cell1);
+                table.addCell(cell2);
+                table.addCell(cell3);
+                table.addCell(cell4);
+                table.addCell(cell5);
+                table.addCell(cell6);
+
+            }
+
+        } catch (DocumentException de) {
+            System.err.println(de.getMessage());
+        } catch (IOException ioe) {
+            System.err.println(ioe.getMessage());
+        }
+        document.close();        
+    }
 }

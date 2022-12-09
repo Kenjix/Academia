@@ -57,6 +57,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jTextFieldNomeExercicio.setText("");
         jComboBoxGrupoMuscExercicio.setSelectedIndex(0);
     }
+    
+    public void limparCamposTreinos(){
+        jComboBoxTreinoExercicios.setSelectedIndex(0);
+        jComboBoxOrdem.setSelectedIndex(0);
+        jComboBoxInstrutorTreino.setSelectedIndex(0);
+        jTextFieldCargaTreino.setText("");
+        jTextFieldSeriesTreino.setText("");
+        jTextFieldRepeticaoTreino.setText("");
+        jTextFieldTipoTreino.setText("");
+        jTextAreaObservacaoTreino.setText("");
+        jDateChooserTrocaTreino.setCalendar(null);
+        
+    }
 
     //Cliente
     public JPanel getCRUDClient() {
@@ -362,13 +375,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public JButton getjButtonCadastrarTreino() {
         return jButtonCadastrarTreino;
     }
-    
+
     public JButton getjButtonListarTreino() {
         return jButtonListarTreino;
-    }
-
-    public JButton getjButtonDeletarTreino() {
-        return jButtonDeletarTreino;
     }
 
     public JPanel getCadTreino() {
@@ -377,10 +386,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     public JPanel getListTreino() {
         return listTreino;
-    }
-
-    public JPanel getDelTreino() {
-        return delTreino;
     }
 
     public JTabbedPane getjTabbedPaneClientes() {
@@ -407,16 +412,69 @@ public class TelaPrincipal extends javax.swing.JFrame {
         return jButtonEditarFunc;
     }
 
+    public JComboBox<String> getjComboBoxTreinoExercicios() {
+        return jComboBoxTreinoExercicios;
+    }
+
+    public JComboBox<String> getjComboBoxInstrutorTreino() {
+        return jComboBoxInstrutorTreino;
+    }
+
+    public JComboBox<String> getjComboBoxOrdem() {
+        return jComboBoxOrdem;
+    }
+
+    public JTextField getjTextFieldCargaTreino() {
+        return jTextFieldCargaTreino;
+    }
+
+    public JTextField getjTextFieldRepeticaoTreino() {
+        return jTextFieldRepeticaoTreino;
+    }
+
+    public JTextField getjTextFieldSeriesTreino() {
+        return jTextFieldSeriesTreino;
+    }
+
+    public JTextField getjTextFieldTipoTreino() {
+        return jTextFieldTipoTreino;
+    }
+
+    public JDateChooser getjDateChooserTrocaTreino() {
+        return jDateChooserTrocaTreino;
+    }
+    
     public JButton getjButtonPesquisarTreinoCli() {
         return jButtonPesquisarTreinoCli;
-    }
+    }    
 
     public JTextField getjTextFieldPesquisarTreinoCli() {
         return jTextFieldPesquisarTreinoCli;
     }
 
+    public JButton getjButtonCancelarTreino() {
+        return jButtonCancelarTreino;
+    }
+
+    public JButton getjButtonSalvarTreino() {
+        return jButtonSalvarTreino;
+    }
+
+    public JTable getjTableListTreinos() {
+        return jTableListTreinos;
+    }
+
+    public JButton getjButtonPesquisarTreino() {
+        return jButtonPesquisarTreino;
+    }
+
+    public JTextField getjTextFieldPesquisarTreino() {
+        return jTextFieldPesquisarTreino;
+    }
     
     
+    
+
     //Equipamento
     public JButton getjButtonSalvarEquipamento() {
         return jButtonSalvarEquipamento;
@@ -465,13 +523,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public JTextArea getjTextAreaObservacaoTreino() {
         return jTextAreaObservacaoTreino;
     }
-    
-    //Treino
 
+    //Treino
     public JTable getjTableTreinoClientes() {
         return jTableTreinoClientes;
     }
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -670,19 +726,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel33 = new javax.swing.JLabel();
         jButtonListarTreino = new javax.swing.JButton();
         jLabel34 = new javax.swing.JLabel();
-        jButtonDeletarTreino = new javax.swing.JButton();
-        jLabel36 = new javax.swing.JLabel();
         CRUDTreino = new javax.swing.JPanel();
         inicioTreino = new javax.swing.JPanel();
         listTreino = new javax.swing.JPanel();
-        delTreino = new javax.swing.JPanel();
+        jTextFieldPesquisarTreino = new javax.swing.JTextField();
+        jButtonPesquisarTreino = new javax.swing.JButton();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jTableListTreinos = new javax.swing.JTable();
+        jTableListTreinos.getTableHeader().setEnabled(false);
+        jButtonEditarExerc1 = new javax.swing.JButton();
+        jButtonDeletarTreino = new javax.swing.JButton();
         cadTreino = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableTreinoClientes = new javax.swing.JTable();
         jTableTreinoClientes.getTableHeader().setEnabled(false);
         jLabel37 = new javax.swing.JLabel();
-        jComboBoxExercicios = new javax.swing.JComboBox<>();
+        jComboBoxTreinoExercicios = new javax.swing.JComboBox<>();
         jLabel38 = new javax.swing.JLabel();
         jComboBoxOrdem = new javax.swing.JComboBox<>();
         jLabel39 = new javax.swing.JLabel();
@@ -695,13 +755,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jComboBoxInstrutorTreino = new javax.swing.JComboBox<>();
         jLabel43 = new javax.swing.JLabel();
         jTextFieldTipoTreino = new javax.swing.JTextField();
-        jLabel44 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextAreaObservacaoTreino = new javax.swing.JTextArea();
         jButtonCancelarTreino = new javax.swing.JButton();
         jButtonSalvarTreino = new javax.swing.JButton();
         jTextFieldPesquisarTreinoCli = new javax.swing.JTextField();
         jButtonPesquisarTreinoCli = new javax.swing.JButton();
+        jDateChooserTrocaTreino = new JDateChooser("dd/MM/yyyy", "##/##/####" , ' ');
+        jDateChooserTrocaTreino.getJCalendar().setPreferredSize(new Dimension(250, 200));
+        jDateChooserTrocaTreino.getJCalendar().setWeekOfYearVisible(false);
+        jDateChooserTrocaTreino.getJCalendar().setTodayButtonVisible(true); 
+        jDateChooserTrocaTreino.getJCalendar().getDayChooser().setDayBordersVisible(true);
+        jLabel56 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextAreaObservacaoTreino = new javax.swing.JTextArea();
         jTabbedPane2 = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -2164,33 +2230,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel34.setText("Visualizar e Editar");
 
-        jButtonDeletarTreino.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/deletar.png"))); // NOI18N
-
-        jLabel36.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel36.setText("Deletar");
-
         javax.swing.GroupLayout jPanelMenuTreinoLayout = new javax.swing.GroupLayout(jPanelMenuTreino);
         jPanelMenuTreino.setLayout(jPanelMenuTreinoLayout);
         jPanelMenuTreinoLayout.setHorizontalGroup(
             jPanelMenuTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMenuTreinoLayout.createSequentialGroup()
-                .addGap(215, 215, 215)
+                .addGap(338, 338, 338)
                 .addGroup(jPanelMenuTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonCadastrarTreino, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(161, 161, 161)
                 .addGroup(jPanelMenuTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelMenuTreinoLayout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(jButtonListarTreino, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(160, 160, 160))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMenuTreinoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(149, 149, 149)))
-                .addGroup(jPanelMenuTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonDeletarTreino, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonListarTreino, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel34))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelMenuTreinoLayout.setVerticalGroup(
@@ -2199,14 +2251,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE)
                 .addGroup(jPanelMenuTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButtonCadastrarTreino, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonDeletarTreino, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonListarTreino, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelMenuTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelMenuTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel33)
-                    .addGroup(jPanelMenuTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel36)
-                        .addComponent(jLabel34)))
+                    .addComponent(jLabel34))
                 .addContainerGap())
         );
 
@@ -2227,33 +2276,80 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         listTreino.setBorder(javax.swing.BorderFactory.createTitledBorder("Listar Treinos"));
 
+        jButtonPesquisarTreino.setText("Pesquisar");
+
+        jTableListTreinos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id:", "Nome:", "Exercicio:", "Ordem:", "Carga:", "Series:", "Repetições:"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane8.setViewportView(jTableListTreinos);
+
+        jButtonEditarExerc1.setBackground(new java.awt.Color(102, 102, 102));
+        jButtonEditarExerc1.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
+        jButtonEditarExerc1.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonEditarExerc1.setText("Editar");
+        jButtonEditarExerc1.setMaximumSize(new java.awt.Dimension(111, 29));
+        jButtonEditarExerc1.setMinimumSize(new java.awt.Dimension(111, 29));
+        jButtonEditarExerc1.setPreferredSize(new java.awt.Dimension(111, 29));
+
+        jButtonDeletarTreino.setBackground(new java.awt.Color(102, 102, 102));
+        jButtonDeletarTreino.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
+        jButtonDeletarTreino.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonDeletarTreino.setText("Deletar");
+        jButtonDeletarTreino.setMaximumSize(new java.awt.Dimension(111, 29));
+        jButtonDeletarTreino.setMinimumSize(new java.awt.Dimension(111, 29));
+        jButtonDeletarTreino.setPreferredSize(new java.awt.Dimension(111, 29));
+
         javax.swing.GroupLayout listTreinoLayout = new javax.swing.GroupLayout(listTreino);
         listTreino.setLayout(listTreinoLayout);
         listTreinoLayout.setHorizontalGroup(
             listTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1011, Short.MAX_VALUE)
+            .addGroup(listTreinoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(listTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 999, Short.MAX_VALUE)
+                    .addGroup(listTreinoLayout.createSequentialGroup()
+                        .addComponent(jTextFieldPesquisarTreino, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonPesquisarTreino)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listTreinoLayout.createSequentialGroup()
+                .addContainerGap(392, Short.MAX_VALUE)
+                .addComponent(jButtonEditarExerc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonDeletarTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(391, 391, 391))
         );
         listTreinoLayout.setVerticalGroup(
             listTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 575, Short.MAX_VALUE)
+            .addGroup(listTreinoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(listTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldPesquisarTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonPesquisarTreino))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(listTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonEditarExerc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonDeletarTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28))
         );
 
         CRUDTreino.add(listTreino, "card5");
-
-        delTreino.setBorder(javax.swing.BorderFactory.createTitledBorder("Deletar Treino"));
-
-        javax.swing.GroupLayout delTreinoLayout = new javax.swing.GroupLayout(delTreino);
-        delTreino.setLayout(delTreinoLayout);
-        delTreinoLayout.setHorizontalGroup(
-            delTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1011, Short.MAX_VALUE)
-        );
-        delTreinoLayout.setVerticalGroup(
-            delTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 575, Short.MAX_VALUE)
-        );
-
-        CRUDTreino.add(delTreino, "card3");
 
         cadTreino.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastrar Treino"));
 
@@ -2281,8 +2377,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel37.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
         jLabel37.setText("Exercício:");
 
-        jComboBoxExercicios.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
-        jComboBoxExercicios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxTreinoExercicios.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
+        jComboBoxTreinoExercicios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Item 2", "Item 3", "Item 4" }));
 
         jLabel38.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
         jLabel38.setText("Ordem de execução:");
@@ -2316,14 +2412,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jTextFieldTipoTreino.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
 
-        jLabel44.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
-        jLabel44.setText("Observação:");
-
-        jTextAreaObservacaoTreino.setColumns(20);
-        jTextAreaObservacaoTreino.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
-        jTextAreaObservacaoTreino.setRows(5);
-        jScrollPane3.setViewportView(jTextAreaObservacaoTreino);
-
         jButtonCancelarTreino.setBackground(new java.awt.Color(102, 102, 102));
         jButtonCancelarTreino.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
         jButtonCancelarTreino.setForeground(new java.awt.Color(255, 255, 255));
@@ -2335,6 +2423,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtonSalvarTreino.setText("Salvar");
 
         jButtonPesquisarTreinoCli.setText("Pesquisar");
+
+        jDateChooserTrocaTreino.setDateFormatString("dd '/' MM '/' yyyy");
+
+        jLabel56.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
+        jLabel56.setText("Previsão troca de treino:");
+
+        jLabel44.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
+        jLabel44.setText("Observação:");
+
+        jTextAreaObservacaoTreino.setColumns(20);
+        jTextAreaObservacaoTreino.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
+        jTextAreaObservacaoTreino.setRows(5);
+        jScrollPane3.setViewportView(jTextAreaObservacaoTreino);
 
         javax.swing.GroupLayout cadTreinoLayout = new javax.swing.GroupLayout(cadTreino);
         cadTreino.setLayout(cadTreinoLayout);
@@ -2355,44 +2456,53 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(cadTreinoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane2)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadTreinoLayout.createSequentialGroup()
-                .addGap(0, 206, Short.MAX_VALUE)
-                .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(cadTreinoLayout.createSequentialGroup()
                         .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(cadTreinoLayout.createSequentialGroup()
+                            .addComponent(jScrollPane2)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadTreinoLayout.createSequentialGroup()
+                                .addGap(189, 189, 189)
                                 .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBoxOrdem, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldCargaTreino, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel40)))
-                            .addComponent(jTextFieldTipoTreino, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxInstrutorTreino, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxExercicios, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel37))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(cadTreinoLayout.createSequentialGroup()
-                                .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldSeriesTreino, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldRepeticaoTreino, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(cadTreinoLayout.createSequentialGroup()
-                        .addComponent(jButtonCancelarTreino)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonSalvarTreino)))
-                .addGap(128, 128, 128))
+                                    .addGroup(cadTreinoLayout.createSequentialGroup()
+                                        .addComponent(jButtonCancelarTreino)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButtonSalvarTreino))
+                                    .addGroup(cadTreinoLayout.createSequentialGroup()
+                                        .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(cadTreinoLayout.createSequentialGroup()
+                                                .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(jComboBoxOrdem, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jTextFieldCargaTreino, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel40)))
+                                            .addComponent(jComboBoxTreinoExercicios, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel37))
+                                        .addGap(14, 14, 14)
+                                        .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(cadTreinoLayout.createSequentialGroup()
+                                                .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(jLabel39)
+                                                    .addComponent(jTextFieldSeriesTreino, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(jLabel41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(jTextFieldRepeticaoTreino, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(cadTreinoLayout.createSequentialGroup()
+                                                .addComponent(jLabel56)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jDateChooserTrocaTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(cadTreinoLayout.createSequentialGroup()
+                                        .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextFieldTipoTreino, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jComboBoxInstrutorTreino, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel42))
+                                        .addGap(25, 25, 25)
+                                        .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel44)
+                                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(128, 128, 128)))))
+                .addContainerGap())
         );
         cadTreinoLayout.setVerticalGroup(
             cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2404,50 +2514,49 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel37)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBoxExercicios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBoxTreinoExercicios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadTreinoLayout.createSequentialGroup()
-                        .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(cadTreinoLayout.createSequentialGroup()
-                                .addComponent(jLabel41)
-                                .addGap(8, 8, 8)
-                                .addComponent(jTextFieldRepeticaoTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(cadTreinoLayout.createSequentialGroup()
-                                .addComponent(jLabel39)
-                                .addGap(8, 8, 8)
-                                .addComponent(jTextFieldSeriesTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel44)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(cadTreinoLayout.createSequentialGroup()
-                        .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(cadTreinoLayout.createSequentialGroup()
-                                .addComponent(jLabel38)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBoxOrdem, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(cadTreinoLayout.createSequentialGroup()
-                                .addComponent(jLabel40)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldCargaTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel43)
+                        .addComponent(jLabel38)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxOrdem, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(cadTreinoLayout.createSequentialGroup()
+                        .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel40)
+                            .addComponent(jLabel41)
+                            .addComponent(jLabel39))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldCargaTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldSeriesTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldRepeticaoTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel43)
+                    .addComponent(jLabel44))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cadTreinoLayout.createSequentialGroup()
                         .addComponent(jTextFieldTipoTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel42)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBoxInstrutorTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBoxInstrutorTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+                .addGap(7, 7, 7)
                 .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jDateChooserTrocaTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel56))
+                .addGap(18, 18, 18)
+                .addGroup(cadTreinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSalvarTreino)
                     .addComponent(jButtonCancelarTreino))
-                .addGap(15, 15, 15))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         CRUDTreino.add(cadTreino, "card6");
@@ -2516,7 +2625,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel clienteInativo;
     private javax.swing.JPanel delCliente;
     private javax.swing.JPanel delExerc;
-    private javax.swing.JPanel delTreino;
     private javax.swing.JPanel equipamentoAtivo;
     private javax.swing.JPanel equipamentoInativo;
     private javax.swing.JPanel inicioCliente;
@@ -2545,6 +2653,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEditarCliente;
     private javax.swing.JButton jButtonEditarEquip;
     private javax.swing.JButton jButtonEditarExerc;
+    private javax.swing.JButton jButtonEditarExerc1;
     private javax.swing.JButton jButtonEditarFunc;
     private javax.swing.JButton jButtonListarCliente;
     private javax.swing.JButton jButtonListarEquipamento;
@@ -2556,6 +2665,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonPesquisarEquip;
     private javax.swing.JButton jButtonPesquisarExerc;
     private javax.swing.JButton jButtonPesquisarFunc;
+    private javax.swing.JButton jButtonPesquisarTreino;
     private javax.swing.JButton jButtonPesquisarTreinoCli;
     private javax.swing.JButton jButtonRemoverFoto;
     private javax.swing.JButton jButtonSalvarCliente;
@@ -2564,15 +2674,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSalvarFuncio;
     private javax.swing.JButton jButtonSalvarTreino;
     private javax.swing.JComboBox<String> jComboBoxCargaHorariaFuncionario;
-    private javax.swing.JComboBox<String> jComboBoxExercicios;
     private javax.swing.JComboBox<String> jComboBoxGrupoMuscExercicio;
     private javax.swing.JComboBox<String> jComboBoxInstrutorTreino;
     private javax.swing.JComboBox<String> jComboBoxOrdem;
+    private javax.swing.JComboBox<String> jComboBoxTreinoExercicios;
     private javax.swing.JComboBox<String> jComboBoxTurnoFuncionario;
     private com.toedter.calendar.JDateChooser jDateChooserDataAquisicao;
     private com.toedter.calendar.JDateChooser jDateChooserDataNasc;
     private com.toedter.calendar.JDateChooser jDateChooserDataNascFuncionario;
     private com.toedter.calendar.JDateChooser jDateChooserMatricula;
+    private com.toedter.calendar.JDateChooser jDateChooserTrocaTreino;
     private javax.swing.JFormattedTextField jFormattedTextFieldCel;
     private javax.swing.JFormattedTextField jFormattedTextFieldCelFuncionario;
     private javax.swing.JFormattedTextField jFormattedTextFieldCpf;
@@ -2607,7 +2718,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
@@ -2629,6 +2739,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -2654,6 +2765,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPaneAtivos;
     private javax.swing.JScrollPane jScrollPaneAtivos1;
     private javax.swing.JScrollPane jScrollPaneAtivos2;
@@ -2670,6 +2782,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable jTableExercicio;
     private javax.swing.JTable jTableInativosCliente;
     private javax.swing.JTable jTableInativosEquipamento;
+    private javax.swing.JTable jTableListTreinos;
     private javax.swing.JTable jTableListarFuncionario;
     private javax.swing.JTable jTableTreinoClientes;
     private javax.swing.JTextArea jTextAreaCadastroEquip;
@@ -2694,6 +2807,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldPesquisarEquip;
     private javax.swing.JTextField jTextFieldPesquisarExerc;
     private javax.swing.JTextField jTextFieldPesquisarFunc;
+    private javax.swing.JTextField jTextFieldPesquisarTreino;
     private javax.swing.JTextField jTextFieldPesquisarTreinoCli;
     private javax.swing.JTextField jTextFieldRepeticaoTreino;
     private javax.swing.JTextField jTextFieldSeriesTreino;

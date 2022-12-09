@@ -2,18 +2,21 @@ package Model;
 
 public class Treino {
 
-    private final int id;
+    private int id;
     private final int ordem;
     private final int repeticao;
     private final int carga;
     private final String series;
-    private final String tipoTreino;
-    private final String observacao;
+    private String tipoTreino;
+    private String observacao;
     private Funcionario funcionario;
     private Cliente cliente;
+    private Exercicios exercicios;
+    private String dataTrocaTreino;
 
     public Treino(int id, int ordem, int repeticao, int carga, String series,
-            String tipoTreino, String observacao, Funcionario funcionario, Cliente cliente) {
+            String tipoTreino, String observacao, Funcionario funcionario,
+            Cliente cliente, Exercicios exercicios, String dataTrocaTreino) {
         this.id = id;
         this.ordem = ordem;
         this.repeticao = repeticao;
@@ -23,10 +26,12 @@ public class Treino {
         this.observacao = observacao;
         this.funcionario = funcionario;
         this.cliente = cliente;
+        this.exercicios = exercicios;
+        this.dataTrocaTreino = dataTrocaTreino;
     }
 
     public Treino(int id, int ordem, int repeticao, int carga, String series,
-            String tipoTreino, String observacao) {
+            String tipoTreino, String observacao, Exercicios exercicios, String dataTrocaTreino) {
         this.id = id;
         this.ordem = ordem;
         this.repeticao = repeticao;
@@ -34,6 +39,42 @@ public class Treino {
         this.series = series;
         this.tipoTreino = tipoTreino;
         this.observacao = observacao;
+        this.exercicios = exercicios;
+        this.dataTrocaTreino = dataTrocaTreino;
+    }
+
+    public Treino(int ordem, int repeticao, int carga, String series,
+            String tipoTreino, String observacao, Funcionario funcionario,
+            Cliente cliente, Exercicios exercicios, String dataTrocaTreino) {
+        this.ordem = ordem;
+        this.repeticao = repeticao;
+        this.carga = carga;
+        this.series = series;
+        this.tipoTreino = tipoTreino;
+        this.observacao = observacao;
+        this.funcionario = funcionario;
+        this.cliente = cliente;
+        this.exercicios = exercicios;
+        this.dataTrocaTreino = dataTrocaTreino;
+    }
+
+    public Treino(int ordem, int repeticao, int carga, String series, Cliente cliente, Exercicios exercicios) {
+        this.ordem = ordem;
+        this.repeticao = repeticao;
+        this.carga = carga;
+        this.series = series;
+        this.cliente = cliente;
+        this.exercicios = exercicios;
+    }
+
+    public Treino(int id, int ordem, int repeticao, int carga, String series, Cliente cliente, Exercicios exercicios) {
+        this.id = id;
+        this.ordem = ordem;
+        this.repeticao = repeticao;
+        this.carga = carga;
+        this.series = series;
+        this.cliente = cliente;
+        this.exercicios = exercicios;
     }
 
     public int getId() {
@@ -72,4 +113,11 @@ public class Treino {
         return cliente;
     }
 
+    public Exercicios getExercicios() {
+        return exercicios;
+    }
+
+    public String getDataTrocaTreino() {
+        return dataTrocaTreino;
+    }
 }

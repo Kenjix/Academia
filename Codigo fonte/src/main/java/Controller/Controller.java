@@ -41,7 +41,6 @@ public class Controller {
 
         telaPrincipal.getjButtonCadastrarTreino().addActionListener(e -> exibeTela(telaPrincipal.getCRUDTreino(), telaPrincipal.getCadTreino()));
         telaPrincipal.getjButtonListarTreino().addActionListener(e -> exibeTela(telaPrincipal.getCRUDTreino(), telaPrincipal.getListTreino()));
-        telaPrincipal.getjButtonDeletarTreino().addActionListener(e -> exibeTela(telaPrincipal.getCRUDTreino(), telaPrincipal.getDelTreino()));
 
         telaPrincipal.getjButtonEditarCliente().addActionListener(e -> exibeCliente());
         telaPrincipal.getjButtonEditarFunc().addActionListener(e -> exibeFuncionario());        

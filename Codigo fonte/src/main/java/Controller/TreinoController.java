@@ -48,11 +48,11 @@ public class TreinoController {
         treinoCliente.getjButtonAtivarTreino().addActionListener(e -> statusTreino(1));
         treinoCliente.getjButtonEditarTreino().addActionListener(e -> getTreino());
         treinoCliente.getjButtonPesquisarTreinoAtivo().addActionListener(e -> listarTreinos(treinoCliente.getjTextFieldPesquisarTreinoAtivo().getText()));
+        treinoCliente.getjButtonEditarTreinoPDF().addActionListener(e -> gerarPDF());
+        treinoCliente.getjButtonListTreinoCancel().addActionListener(e -> treinoCliente.dispose());
         treinoInfo.getjButtonPesquisarTreinoCli().addActionListener(e -> listarClientes(treinoInfo.getjTextFieldPesquisarTreinoCli().getText(), 1));
         treinoInfo.getjButtonSalvarTreino().addActionListener(e -> atualizarTreino());
         treinoInfo.getjButtonCancelarTreino().addActionListener(e -> treinoInfo.dispose());
-        treinoCliente.getjButtonEditarTreinoPDF().addActionListener(e -> gerarPDF());
-        treinoCliente.getjButtonListTreinoCancel().addActionListener(e -> treinoCliente.dispose());
     }
 
     private void cadastrarTreino() {
@@ -302,7 +302,7 @@ public class TreinoController {
                             lista.get(i).getExercicios().getNome(),
                             lista.get(i).getOrdem() + " ª",
                             lista.get(i).getCarga() + " KG",
-                            lista.get(i).getSeries() + " de",
+                            lista.get(i).getSeries(),
                             lista.get(i).getRepeticao() + " Vezes",});
                     } else if (!lista.get(i).isAtivo() && lista.get(i).getCliente().getMatricula() == matriculaCli) {
                         modeloInativo.addRow(new Object[]{

@@ -53,6 +53,8 @@ public class FuncionarioController {
         String turno = String.valueOf(telaPrincipal.getjComboBoxTurnoFuncionario().getSelectedItem());
         int cargaHoraria = 0;
         final boolean editValidCpf = telaPrincipal.getjFormattedTextFieldCpfFuncionario().isEditValid();
+        final boolean editValidTel = telaPrincipal.getjFormattedTextFieldTel().isEditValid();
+        final boolean editValidCel = telaPrincipal.getjFormattedTextFieldCel().isEditValid();
 
         if (nome.isEmpty()) {
             JOptionPane.showMessageDialog(telaPrincipal, "O campo Nome é obrigatório",
@@ -81,8 +83,7 @@ public class FuncionarioController {
         } else if (!altura.matches("^[0-9]{1,2}([,.][0-9]{1,2})?$")) {
             JOptionPane.showMessageDialog(telaPrincipal, "Dados de altura inválidos",
                     "Campo inválido", JOptionPane.ERROR_MESSAGE);
-        } else if (telaPrincipal.getjFormattedTextFieldTelFuncionario().getValue() == null
-                && telaPrincipal.getjFormattedTextFieldCelFuncionario().getValue() == null) {
+        } else if (!editValidTel && !editValidCel) {
             JOptionPane.showMessageDialog(telaPrincipal, "Contato obrigatório",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             telaPrincipal.getjFormattedTextFieldTelFuncionario().requestFocus();
@@ -225,8 +226,8 @@ public class FuncionarioController {
         String peso = funcionarioInfo.getjTextFieldPeso().getText();
         String altura = funcionarioInfo.getjTextFieldAltura().getText();
         String email = funcionarioInfo.getjTextFieldEmail().getText();
-        String tel = String.valueOf(funcionarioInfo.getjFormattedTextFieldTel().getValue()).trim();
-        String cel = String.valueOf(funcionarioInfo.getjFormattedTextFieldCel().getValue()).trim();
+        String tel = String.valueOf(funcionarioInfo.getjFormattedTextFieldTel().getValue());
+        String cel = String.valueOf(funcionarioInfo.getjFormattedTextFieldCel().getValue());
         String observacao = funcionarioInfo.getjTextAreaObserva().getText();
         String cargaHoraria = String.valueOf(funcionarioInfo.getjComboBoxCargaHoraria().getSelectedItem());
         String turno = String.valueOf(funcionarioInfo.getjComboBoxTurno().getSelectedItem());
@@ -239,6 +240,8 @@ public class FuncionarioController {
 
         //Validacao de dados
         final boolean editValidCpf = funcionarioInfo.getjFormattedTextFieldCpf().isEditValid();
+        final boolean editValidTel = telaPrincipal.getjFormattedTextFieldTel().isEditValid();
+        final boolean editValidCel = telaPrincipal.getjFormattedTextFieldCel().isEditValid();
         if (nome.isEmpty()) {
             JOptionPane.showMessageDialog(funcionarioInfo, "O campo Nome é obrigatório",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
@@ -274,7 +277,7 @@ public class FuncionarioController {
             JOptionPane.showMessageDialog(funcionarioInfo, "E-mail inválido",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             funcionarioInfo.getjTextFieldEmail().requestFocus();
-        } else if (tel.contains("null") && cel.contains("null")) { //testar aqio --------------------
+        } else if (!editValidTel && !editValidCel) {
             JOptionPane.showMessageDialog(funcionarioInfo, "Contato obrigatório",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             funcionarioInfo.getjFormattedTextFieldTel().requestFocus();

@@ -181,8 +181,14 @@ public class ExerciciosDAO {
             pst.execute();
             return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
-            return false;
+            if (e.getErrorCode() == 1451) {
+                JOptionPane.showMessageDialog(null, "Impossível deletar exercicío vinculado a um treino - Erro código: " + e.getErrorCode());
+                return false;
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
+                return false;
+            }
+
         } finally {
             if (pst != null) {
                 try {

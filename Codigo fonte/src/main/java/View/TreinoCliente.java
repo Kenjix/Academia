@@ -81,7 +81,6 @@ public class TreinoCliente extends javax.swing.JDialog {
         setTitle("Listagem de treinos");
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
         listTreino.setBorder(javax.swing.BorderFactory.createTitledBorder("Listar Treinos"));
 

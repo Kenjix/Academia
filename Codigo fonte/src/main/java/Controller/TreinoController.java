@@ -193,6 +193,8 @@ public class TreinoController {
                             "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
                 }
             }
+            int linhaCliEdit = telaPrincipal.getjTableListTreinoClientes().getSelectedRow();
+            treinoInfo.getjTableTreinoClientes().addRowSelectionInterval(linhaCliEdit, linhaCliEdit);
         } else if (lista != null && controle == 2) {
             DefaultTableModel modelo = (DefaultTableModel) telaPrincipal.getjTableListTreinoClientes().getModel();
             modelo.setRowCount(0);

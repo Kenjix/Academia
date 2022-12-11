@@ -774,7 +774,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel44 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextAreaObservacaoTreino = new javax.swing.JTextArea();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jPanelConfig = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Principal");
@@ -2585,7 +2586,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Treino", jPanelTreino);
-        jTabbedPane1.addTab("Configurações", jTabbedPane2);
+
+        jPanelConfig.setLayout(null);
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Configurações de exibição"));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 990, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 687, Short.MAX_VALUE)
+        );
+
+        jPanelConfig.add(jPanel2);
+        jPanel2.setBounds(10, 10, 1000, 710);
+
+        jTabbedPane1.addTab("Configurações", jPanelConfig);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -2602,21 +2622,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jFormattedTextFieldCpfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jFormattedTextFieldCpfMouseClicked
-        jFormattedTextFieldCpf.setValue(null);
-    }//GEN-LAST:event_jFormattedTextFieldCpfMouseClicked
+    private void jFormattedTextFieldCelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jFormattedTextFieldCelMouseClicked
+        jFormattedTextFieldCel.setValue(null);
+    }//GEN-LAST:event_jFormattedTextFieldCelMouseClicked
 
     private void jFormattedTextFieldTelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jFormattedTextFieldTelMouseClicked
         jFormattedTextFieldTel.setValue(null);
     }//GEN-LAST:event_jFormattedTextFieldTelMouseClicked
 
-    private void jFormattedTextFieldCelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jFormattedTextFieldCelMouseClicked
-        jFormattedTextFieldCel.setValue(null);
-    }//GEN-LAST:event_jFormattedTextFieldCelMouseClicked
-
     private void jButtonCancelarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarClienteActionPerformed
         limparCamposCliente();
     }//GEN-LAST:event_jButtonCancelarClienteActionPerformed
+
+    private void jFormattedTextFieldCpfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jFormattedTextFieldCpfMouseClicked
+        jFormattedTextFieldCpf.setValue(null);
+    }//GEN-LAST:event_jFormattedTextFieldCpfMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CRUDClient;
@@ -2753,7 +2773,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelFoto;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelCliente;
+    private javax.swing.JPanel jPanelConfig;
     private javax.swing.JPanel jPanelEquip;
     private javax.swing.JPanel jPanelExerc;
     private javax.swing.JPanel jPanelFunc;
@@ -2779,7 +2801,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPaneInativos;
     private javax.swing.JScrollPane jScrollPaneInativos1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPaneClientes;
     private javax.swing.JTabbedPane jTabbedPessoa;

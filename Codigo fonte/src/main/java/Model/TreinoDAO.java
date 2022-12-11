@@ -282,7 +282,7 @@ public class TreinoDAO {
             pst.execute();
             return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro código: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
             return false;
         } finally {
             if (pst != null) {

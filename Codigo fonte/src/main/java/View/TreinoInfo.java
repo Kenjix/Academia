@@ -57,6 +57,8 @@ public class TreinoInfo extends javax.swing.JDialog {
         return jTableTreinoClientes;
     }
 
+
+
     public JTextArea getjTextAreaObservacaoTreino() {
         return jTextAreaObservacaoTreino;
     }

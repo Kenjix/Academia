@@ -9,6 +9,7 @@ import Model.FuncionarioDAO;
 import Model.Treino;
 import Model.TreinoDAO;
 import View.TelaPrincipal;
+import View.TreinoCliente;
 import View.TreinoInfo;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
 public class TreinoController {
 
     private final TelaPrincipal telaPrincipal;
+    private final TreinoCliente treinoCliente;
     private final TreinoInfo treinoInfo;
     Util util = new Util();
     ClienteDAO daoCliente = new ClienteDAO();
@@ -28,24 +30,29 @@ public class TreinoController {
     FuncionarioDAO daoFuncionario = new FuncionarioDAO();
     TreinoDAO daoTreino = new TreinoDAO();
 
-    public TreinoController(TelaPrincipal telaPrincipal, TreinoInfo treinoInfo) {
+    public TreinoController(TelaPrincipal telaPrincipal, TreinoInfo treinoInfo, TreinoCliente treinoCliente) {
         this.telaPrincipal = telaPrincipal;
+        this.treinoCliente = treinoCliente;
         this.treinoInfo = treinoInfo;
     }
 
     public void initTreinoController() {
         telaPrincipal.getjButtonCadastrarTreino().addActionListener(e -> inserirDados(0));
-        telaPrincipal.getjButtonPesquisarTreino().addActionListener(e -> listarTreinos(telaPrincipal.getjTextFieldPesquisarTreino().getText()));
         telaPrincipal.getjButtonSalvarTreino().addActionListener(e -> cadastrarTreino());
         telaPrincipal.getjButtonPesquisarTreinoCli().addActionListener(e -> listarClientes(telaPrincipal.getjTextFieldPesquisarTreinoCli().getText(), 0));
-        telaPrincipal.getjButtonListarTreino().addActionListener(e -> listarTreinos());
-        telaPrincipal.getjButtonDesativaTreino().addActionListener(e -> statusTreino(0));
-        telaPrincipal.getjButtonAtivarTreino().addActionListener(e -> statusTreino(1));
+        telaPrincipal.getjButtonListarTreino().addActionListener(e -> listarClientes(2));
+        telaPrincipal.getjButtonPesquisarTreinoListCli().addActionListener(e -> listarClientes(telaPrincipal.getjTextFieldPesquisarTreinoListCli().getText(), 2));
         telaPrincipal.getjButtonCancelarTreino().addActionListener(e -> telaPrincipal.limparCamposTreinos());
-        telaPrincipal.getjButtonEditarTreino().addActionListener(e -> getTreino());
+        telaPrincipal.getjButtonGetTreinos().addActionListener(e -> listarTreinos());
+        treinoCliente.getjButtonDesativaTreino().addActionListener(e -> statusTreino(0));
+        treinoCliente.getjButtonAtivarTreino().addActionListener(e -> statusTreino(1));
+        treinoCliente.getjButtonEditarTreino().addActionListener(e -> getTreino());
+        treinoCliente.getjButtonPesquisarTreinoAtivo().addActionListener(e -> listarTreinos(treinoCliente.getjTextFieldPesquisarTreinoAtivo().getText()));
         treinoInfo.getjButtonPesquisarTreinoCli().addActionListener(e -> listarClientes(treinoInfo.getjTextFieldPesquisarTreinoCli().getText(), 1));
         treinoInfo.getjButtonSalvarTreino().addActionListener(e -> atualizarTreino());
         treinoInfo.getjButtonCancelarTreino().addActionListener(e -> treinoInfo.dispose());
+        treinoCliente.getjButtonEditarTreinoPDF().addActionListener(e -> gerarPDF());
+        treinoCliente.getjButtonListTreinoCancel().addActionListener(e -> treinoCliente.dispose());
     }
 
     private void cadastrarTreino() {
@@ -118,7 +125,7 @@ public class TreinoController {
         ArrayList<Exercicios> listaExerc = daoExercicio.listarExercicios();
         ArrayList<Funcionario> listaFunc = daoFuncionario.listarFuncionarios();
         if (controle == 0) { //Popula cadastro
-            listarClientes(1);
+            listarClientes(0);
             telaPrincipal.getjComboBoxTreinoExercicios().removeAllItems();
             telaPrincipal.getjComboBoxTreinoExercicios().addItem("Selecione");
             for (int i = 0; i < listaExerc.size(); i++) {
@@ -186,6 +193,26 @@ public class TreinoController {
                             "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
                 }
             }
+        } else if (lista != null && controle == 2) {
+            DefaultTableModel modelo = (DefaultTableModel) telaPrincipal.getjTableListTreinoClientes().getModel();
+            modelo.setRowCount(0);
+            SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd");
+
+            for (int i = 0; i < lista.size(); i++) {
+                try {
+                    Date dataNasc = formatoData.parse(lista.get(i).getDataNasc());
+                    modelo.addRow(new Object[]{
+                        lista.get(i).getMatricula(),
+                        lista.get(i).getNome(),
+                        lista.get(i).getPeso() + " Kilos",
+                        lista.get(i).getAltura() + " Metros",
+                        util.calculaIdade(dataNasc) + " Anos"});
+
+                } catch (ParseException e) {
+                    JOptionPane.showMessageDialog(telaPrincipal, "Erro ao adiquirir data - Código: " + e.getMessage(),
+                            "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
+                }
+            }
         }
     }
 
@@ -231,86 +258,132 @@ public class TreinoController {
                             "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
                 }
             }
+        } else if (lista != null && controle == 2) {
+            DefaultTableModel modelo = (DefaultTableModel) telaPrincipal.getjTableListTreinoClientes().getModel();
+            modelo.setRowCount(0);
+            SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd");
+
+            for (int i = 0; i < lista.size(); i++) {
+                try {
+                    Date dataNasc = formatoData.parse(lista.get(i).getDataNasc());
+                    modelo.addRow(new Object[]{
+                        lista.get(i).getMatricula(),
+                        lista.get(i).getNome(),
+                        lista.get(i).getPeso() + " Kilos",
+                        lista.get(i).getAltura() + " Metros",
+                        util.calculaIdade(dataNasc) + " Anos"});
+
+                } catch (ParseException e) {
+                    JOptionPane.showMessageDialog(telaPrincipal, "Erro ao adiquirir data - Código: " + e.getMessage(),
+                            "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
+                }
+            }
         }
     }
 
     private void listarTreinos() {
         ArrayList<Treino> lista = daoTreino.listarTreino();
-
         if (lista != null) {
-            DefaultTableModel modeloAtivo = (DefaultTableModel) telaPrincipal.getjTableListTreinos().getModel();
-            DefaultTableModel modeloInativo = (DefaultTableModel) telaPrincipal.getjTableListTreinosInativos().getModel();
+            DefaultTableModel modeloAtivo = (DefaultTableModel) treinoCliente.getjTableListTreinosAtivos().getModel();
+            DefaultTableModel modeloInativo = (DefaultTableModel) treinoCliente.getjTableListTreinosInativos().getModel();
             modeloAtivo.setRowCount(0);
             modeloInativo.setRowCount(0);
-
-            for (int i = 0; i < lista.size(); i++) {
-                if (lista.get(i).isAtivo()) {
-                    modeloAtivo.addRow(new Object[]{
-                        lista.get(i).getId(),
-                        lista.get(i).getCliente().getNome(),
-                        lista.get(i).getExercicios().getNome(),
-                        lista.get(i).getOrdem() + " ª",
-                        lista.get(i).getCarga() + " KG",
-                        lista.get(i).getSeries(),
-                        lista.get(i).getRepeticao() + " Vezes",});
-                } else if (!lista.get(i).isAtivo()) {
-                    modeloInativo.addRow(new Object[]{
-                        lista.get(i).getId(),
-                        lista.get(i).getCliente().getNome(),
-                        lista.get(i).getExercicios().getNome(),
-                        lista.get(i).getOrdem() + " ª",
-                        lista.get(i).getCarga() + " KG",
-                        lista.get(i).getSeries(),
-                        lista.get(i).getRepeticao() + " Vezes",});
+            long matriculaCli;
+            JTable tabelaCliEdit = telaPrincipal.getjTableListTreinoClientes();
+            int linhaCliEdit = tabelaCliEdit.getSelectedRow();
+            if (linhaCliEdit != -1) {
+                matriculaCli = Long.parseLong(String.valueOf(tabelaCliEdit.getValueAt(linhaCliEdit, 0)));
+                treinoCliente.getjLabelGetStoredMatricula().setText(String.valueOf(matriculaCli));
+                for (int i = 0; i < lista.size(); i++) {
+                    if (lista.get(i).isAtivo() && lista.get(i).getCliente().getMatricula() == matriculaCli) {
+                        modeloAtivo.addRow(new Object[]{
+                            lista.get(i).getId(),
+                            lista.get(i).getCliente().getNome(),
+                            lista.get(i).getExercicios().getNome(),
+                            lista.get(i).getOrdem() + " ª",
+                            lista.get(i).getCarga() + " KG",
+                            lista.get(i).getSeries() + " de",
+                            lista.get(i).getRepeticao() + " Vezes",});
+                    } else if (!lista.get(i).isAtivo() && lista.get(i).getCliente().getMatricula() == matriculaCli) {
+                        modeloInativo.addRow(new Object[]{
+                            lista.get(i).getId(),
+                            lista.get(i).getCliente().getNome(),
+                            lista.get(i).getExercicios().getNome(),
+                            lista.get(i).getOrdem() + " ª",
+                            lista.get(i).getCarga() + " KG",
+                            lista.get(i).getSeries(),
+                            lista.get(i).getRepeticao() + " Vezes",});
+                    }
                 }
+            } else {
+                JOptionPane.showMessageDialog(telaPrincipal, "Selecione um usuário",
+                        "Erro", JOptionPane.ERROR_MESSAGE);
             }
-            util.setColumnWidths(telaPrincipal.getjTableListTreinos(), 40, 450, 450, 50, 50, 200, 70);
-            util.setColumnWidths(telaPrincipal.getjTableListTreinosInativos(), 40, 450, 450, 50, 50, 200, 70);
+            util.setColumnWidths(treinoCliente.getjTableListTreinosAtivos(), 40, 450, 450, 50, 50, 50, 70);
+            util.setColumnWidths(treinoCliente.getjTableListTreinosInativos(), 40, 450, 450, 50, 50, 50, 70);
         }
     }
 
     private void listarTreinos(String pesquisa) {
         ArrayList<Treino> lista = daoTreino.listarTreino(pesquisa);
-        DefaultTableModel modeloAtivo = (DefaultTableModel) telaPrincipal.getjTableListTreinos().getModel();
-        DefaultTableModel modeloInativo = (DefaultTableModel) telaPrincipal.getjTableListTreinosInativos().getModel();
+        DefaultTableModel modeloAtivo = (DefaultTableModel) treinoCliente.getjTableListTreinosAtivos().getModel();
+        DefaultTableModel modeloInativo = (DefaultTableModel) treinoCliente.getjTableListTreinosInativos().getModel();
         modeloAtivo.setRowCount(0);
         modeloInativo.setRowCount(0);
-        if (lista != null) {
-            for (int i = 0; i < lista.size(); i++) {
-                if (lista.get(i).isAtivo()) {
-                    modeloAtivo.addRow(new Object[]{
-                        lista.get(i).getId(),
-                        lista.get(i).getCliente().getNome(),
-                        lista.get(i).getExercicios().getNome(),
-                        lista.get(i).getOrdem() + " ª",
-                        lista.get(i).getCarga() + " KG",
-                        lista.get(i).getSeries(),
-                        lista.get(i).getRepeticao() + " Vezes",});
-                } else if (!lista.get(i).isAtivo()) {
-                    modeloInativo.addRow(new Object[]{
-                        lista.get(i).getId(),
-                        lista.get(i).getCliente().getNome(),
-                        lista.get(i).getExercicios().getNome(),
-                        lista.get(i).getOrdem() + " ª",
-                        lista.get(i).getCarga() + " KG",
-                        lista.get(i).getSeries(),
-                        lista.get(i).getRepeticao() + " Vezes",});
+        long matriculaCli;
+        JTable tabelaCliEdit = telaPrincipal.getjTableListTreinoClientes();
+        int linhaCliEdit = tabelaCliEdit.getSelectedRow();
+        if (linhaCliEdit != -1) {
+            matriculaCli = Long.parseLong(String.valueOf(tabelaCliEdit.getValueAt(linhaCliEdit, 0)));
+            if (lista != null) {
+                for (int i = 0; i < lista.size(); i++) {
+                    if (lista.get(i).isAtivo() && lista.get(i).getCliente().getMatricula() == matriculaCli) {
+                        modeloAtivo.addRow(new Object[]{
+                            lista.get(i).getId(),
+                            lista.get(i).getCliente().getNome(),
+                            lista.get(i).getExercicios().getNome(),
+                            lista.get(i).getOrdem() + " ª",
+                            lista.get(i).getCarga() + " KG",
+                            lista.get(i).getSeries(),
+                            lista.get(i).getRepeticao() + " Vezes",});
+                    } else if (!lista.get(i).isAtivo() && lista.get(i).getCliente().getMatricula() == matriculaCli) {
+                        modeloInativo.addRow(new Object[]{
+                            lista.get(i).getId(),
+                            lista.get(i).getCliente().getNome(),
+                            lista.get(i).getExercicios().getNome(),
+                            lista.get(i).getOrdem() + " ª",
+                            lista.get(i).getCarga() + " KG",
+                            lista.get(i).getSeries(),
+                            lista.get(i).getRepeticao() + " Vezes",});
+                    }
                 }
             }
-            util.setColumnWidths(telaPrincipal.getjTableListTreinos(), 40, 450, 450, 50, 50, 200, 70);
+            util.setColumnWidths(treinoCliente.getjTableListTreinosAtivos(), 40, 450, 450, 50, 50, 50, 70);
         }
-        if (!telaPrincipal.getjTextFieldPesquisarTreino().getText().isEmpty() && modeloAtivo.getRowCount() > 0) {
-            int showConfirmDialog = JOptionPane.showConfirmDialog(null, "Deseja gera PDF de exercicíos ?");
+    }
+
+    private void gerarPDF() {
+        ArrayList<Treino> lista = daoTreino.listarTreino();
+        DefaultTableModel modeloAtivo = (DefaultTableModel) treinoCliente.getjTableListTreinosAtivos().getModel();
+        long matriucula = Long.parseLong(treinoCliente.getjLabelGetStoredMatricula().getText());
+        if (modeloAtivo.getRowCount() > 0) {
+            int showConfirmDialog = JOptionPane.showConfirmDialog(null, "Deseja gerar um PDF dos exercicíos ativos?");
             if (showConfirmDialog == 0) {
+                for (int i = 0; i < lista.size(); i++) {
+                    if (lista.get(i).isAtivo() && lista.get(i).getCliente().getMatricula() != matriucula) {
+                        lista.remove(i);
+                    }
+                }
                 util.gerarPDF(lista);
             }
+
         }
     }
 
     private void getTreino() {
         listarClientes(1);
         inserirDados(1);
-        JTable tabela = telaPrincipal.getjTableListTreinosAtivos();
+        JTable tabela = treinoCliente.getjTableListTreinosAtivos();
         int linha = tabela.getSelectedRow();
         if (linha != -1) {
             try {
@@ -332,6 +405,9 @@ public class TreinoController {
                 JOptionPane.showMessageDialog(treinoInfo, "Erro ao adiquirir a data de aquisição",
                         "Erro", JOptionPane.ERROR_MESSAGE);
             }
+        } else {
+            JOptionPane.showMessageDialog(treinoCliente, "Selecione um exercício",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -390,8 +466,6 @@ public class TreinoController {
                 String observacao = treinoInfo.getjTextAreaObservacaoTreino().getText();
                 Funcionario func = daoFuncionario.getFuncionario(funcID);
                 Exercicios exercicio = daoExercicio.getExercicios(ExercID);
-
-                System.out.println("NOVO: TREINO: " + idT + "FUNC: " + funcID + " CLI: " + cli.getId());
                 if (daoTreino.editarTreino(new Treino(idT, Integer.parseInt(ordem), repeticao, carga, series,
                         tipoTreino, observacao, func, cli, exercicio, dataTroca))) {
                     JOptionPane.showMessageDialog(null, "Treino atualizado Alterado "
@@ -409,8 +483,8 @@ public class TreinoController {
 
     //Ativa e desativa equipamentos
     private void statusTreino(int controle) {
-        JTable tabelaAtivo = telaPrincipal.getjTableListTreinos();
-        JTable tabelaDesabilitado = telaPrincipal.getjTableListTreinosInativos();
+        JTable tabelaAtivo = treinoCliente.getjTableListTreinosAtivos();
+        JTable tabelaDesabilitado = treinoCliente.getjTableListTreinosInativos();
         int linhaAtivo = tabelaAtivo.getSelectedRow();
         int linhaDesabilitado = tabelaDesabilitado.getSelectedRow();
 
@@ -428,6 +502,9 @@ public class TreinoController {
                         "Ativar Treino", JOptionPane.INFORMATION_MESSAGE);
                 listarTreinos();
             }
+        } else {
+            JOptionPane.showMessageDialog(treinoCliente, "Selecione um exercício",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

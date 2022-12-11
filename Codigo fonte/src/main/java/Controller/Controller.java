@@ -5,6 +5,7 @@ import View.EquipInfo;
 import View.ExercicioInfo;
 import View.FuncionarioInfo;
 import View.TelaPrincipal;
+import View.TreinoCliente;
 import View.TreinoInfo;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -17,16 +18,18 @@ public class Controller {
     private final EquipInfo equipInfo;
     private final ExercicioInfo exercicioInfo;
     private final TreinoInfo treinoInfo;
+    private final TreinoCliente treinoCliente;
 
-    public Controller(TelaPrincipal telaPrincipal, ClienteInfo clienteInfo, 
-            FuncionarioInfo funcionarioInfo, EquipInfo equipInfo,
-            ExercicioInfo exercicioInfo, TreinoInfo treinoInfo) {
+    public Controller(TelaPrincipal telaPrincipal, ClienteInfo clienteInfo,
+            FuncionarioInfo funcionarioInfo, EquipInfo equipInfo, ExercicioInfo exercicioInfo,
+            TreinoInfo treinoInfo, TreinoCliente treinoCliente) {
         this.telaPrincipal = telaPrincipal;
         this.clienteInfo = clienteInfo;
         this.funcionarioInfo = funcionarioInfo;
         this.equipInfo = equipInfo;
         this.exercicioInfo = exercicioInfo;
         this.treinoInfo = treinoInfo;
+        this.treinoCliente = treinoCliente;
     }
 
     public void initController() {
@@ -48,10 +51,11 @@ public class Controller {
         telaPrincipal.getjButtonListarTreino().addActionListener(e -> exibeTela(telaPrincipal.getCRUDTreino(), telaPrincipal.getListTreino()));
 
         telaPrincipal.getjButtonEditarCliente().addActionListener(e -> exibeCliente());
-        telaPrincipal.getjButtonEditarFunc().addActionListener(e -> exibeFuncionario());        
+        telaPrincipal.getjButtonEditarFunc().addActionListener(e -> exibeFuncionario());
         telaPrincipal.getjButtonEditarEquip().addActionListener(e -> exibeEquip());
         telaPrincipal.getjButtonEditarExerc().addActionListener(e -> exibeExerc());
-        telaPrincipal.getjButtonEditarTreino().addActionListener(e -> exibeTreino());
+        telaPrincipal.getjButtonGetTreinos().addActionListener(e -> exibeTreino());
+        treinoCliente.getjButtonEditarTreino().addActionListener(e -> exibeUpdateTraino());
     }
 
     private void exibeTela(JPanel panel, JPanel navegacao) {
@@ -84,7 +88,7 @@ public class Controller {
             equipInfo.setVisible(true);
         }
     }
-    
+
     private void exibeExerc() {
         if (telaPrincipal.getjTableExercicio().getSelectedRow() != -1) {
             exercicioInfo.setLocationRelativeTo(telaPrincipal);
@@ -92,10 +96,18 @@ public class Controller {
             exercicioInfo.setVisible(true);
         }
     }
-    
-        private void exibeTreino() {
-        if (telaPrincipal.getjTableListTreinosAtivos().getSelectedRow() != -1) {
-            treinoInfo.setLocationRelativeTo(telaPrincipal);
+
+    private void exibeTreino() {
+        if (telaPrincipal.getjTableListTreinoClientes().getSelectedRow() != -1) {
+            treinoCliente.setLocationRelativeTo(telaPrincipal);
+            treinoCliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            treinoCliente.setVisible(true);
+        }
+    }
+
+    private void exibeUpdateTraino() {
+        if (treinoCliente.getjTableListTreinosAtivos().getSelectedRow() != -1) {
+            treinoInfo.setLocationRelativeTo(treinoCliente);
             treinoInfo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             treinoInfo.setVisible(true);
         }

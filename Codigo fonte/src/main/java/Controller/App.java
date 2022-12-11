@@ -6,6 +6,7 @@ import View.EquipInfo;
 import View.ExercicioInfo;
 import View.FuncionarioInfo;
 import View.TelaPrincipal;
+import View.TreinoCliente;
 import View.TreinoInfo;
 import javax.swing.JFrame;
 
@@ -20,9 +21,10 @@ public class App {
         FuncionarioInfo funcionarioInfo = new FuncionarioInfo((JFrame) null, true);
         EquipInfo equipInfo = new EquipInfo((JFrame) null, true);
         ExercicioInfo exercicioInfo = new ExercicioInfo((JFrame) null, true);
+        TreinoCliente treinoCliente = new TreinoCliente((JFrame) null, true);
         TreinoInfo treinoInfo = new TreinoInfo((JFrame) null, true);
 
-        Controller c = new Controller(telaPrincipal, clienteInfo, funcionarioInfo, equipInfo, exercicioInfo, treinoInfo);
+        Controller c = new Controller(telaPrincipal, clienteInfo, funcionarioInfo, equipInfo, exercicioInfo, treinoInfo, treinoCliente);
         c.initController();
 
         ClienteController cli = new ClienteController(telaPrincipal, clienteInfo);
@@ -37,7 +39,7 @@ public class App {
         ExercicioController exerc = new ExercicioController(telaPrincipal, exercicioInfo);
         exerc.initExerciciosController();
         
-        TreinoController treino = new TreinoController(telaPrincipal, treinoInfo);
+        TreinoController treino = new TreinoController(telaPrincipal, treinoInfo, treinoCliente);
         treino.initTreinoController();
     }
 

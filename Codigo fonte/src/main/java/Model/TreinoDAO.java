@@ -56,7 +56,8 @@ public class TreinoDAO {
 
     public ArrayList<Treino> listarTreino() {
         ArrayList<Treino> list = new ArrayList();
-        String query = "SELECT idTreino, ordem, carga, series, ativo, repeticao, fk_cliente, fk_exercicios FROM view_treinos_cliente;";
+        String query = "SELECT idTreino, ordem, carga, series, ativo, repeticao, "
+                + "fk_cliente, fk_exercicios FROM view_treinos_cliente ORDER BY ordem ASC;";
 
         Connection con = null;
         PreparedStatement pst = null;
@@ -107,7 +108,9 @@ public class TreinoDAO {
 
     public ArrayList<Treino> listarTreino(String pesquisa) {
         ArrayList<Treino> list = new ArrayList();
-        String query = "SELECT idTreino, ordem, carga, series, ativo, repeticao, fk_cliente, fk_exercicios FROM view_treinos_cliente WHERE clienteNome LIKE ?;";
+        String query = "SELECT idTreino, ordem, carga, series, ativo, repeticao,"
+                + " fk_cliente, fk_exercicios FROM view_treinos_cliente "
+                + "WHERE exercicioNome LIKE ? ORDER BY ordem ASC;";
 
         Connection con = null;
         PreparedStatement pst = null;

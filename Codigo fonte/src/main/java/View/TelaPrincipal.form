@@ -115,7 +115,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="10" y="30" width="1000" height="670"/>
+                  <AbsoluteConstraints x="0" y="0" width="1020" height="730"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -2968,6 +2968,9 @@
                       </Layout>
                       <SubComponents>
                         <Container class="javax.swing.JTabbedPane" name="jTabbedPane3">
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTableListTreinosAtivos.getTableHeader().setEnabled(false);"/>
+                          </AuxValues>
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
                           <SubComponents>
@@ -2983,11 +2986,7 @@
                               <Layout>
                                 <DimensionLayout dim="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jScrollPane8" pref="987" max="32767" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="jScrollPane8" alignment="0" pref="999" max="32767" attributes="0"/>
                                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
                                               <EmptySpace pref="380" max="32767" attributes="0"/>
@@ -3104,11 +3103,7 @@
                                           <EmptySpace pref="457" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jScrollPane9" pref="987" max="32767" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="jScrollPane9" alignment="1" pref="999" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -3152,7 +3147,7 @@
                                         </Property>
                                       </Properties>
                                       <AuxValues>
-                                        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="jTableListTreinosAtivos.getTableHeader().setEnabled(false);"/>
+                                        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="jTableListTreinosInativos.getTableHeader().setEnabled(false);"/>
                                       </AuxValues>
                                     </Component>
                                   </SubComponents>

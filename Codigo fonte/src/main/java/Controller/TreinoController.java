@@ -265,6 +265,7 @@ public class TreinoController {
                 }
             }
             util.setColumnWidths(telaPrincipal.getjTableListTreinos(), 40, 450, 450, 50, 50, 200, 70);
+            util.setColumnWidths(telaPrincipal.getjTableListTreinosInativos(), 40, 450, 450, 50, 50, 200, 70);
         }
     }
 
@@ -386,9 +387,11 @@ public class TreinoController {
                 String series = treinoInfo.getjTextFieldSeriesTreino().getText();
                 int repeticao = Integer.parseInt(treinoInfo.getjTextFieldRepeticaoTreino().getText());
                 String tipoTreino = treinoInfo.getjTextFieldTipoTreino().getText();
-                String observacao = treinoInfo.getjTextAreaObservacaoTreino().getText();                
+                String observacao = treinoInfo.getjTextAreaObservacaoTreino().getText();
                 Funcionario func = daoFuncionario.getFuncionario(funcID);
                 Exercicios exercicio = daoExercicio.getExercicios(ExercID);
+
+                System.out.println("NOVO: TREINO: " + idT + "FUNC: " + funcID + " CLI: " + cli.getId());
                 if (daoTreino.editarTreino(new Treino(idT, Integer.parseInt(ordem), repeticao, carga, series,
                         tipoTreino, observacao, func, cli, exercicio, dataTroca))) {
                     JOptionPane.showMessageDialog(null, "Treino atualizado Alterado "

@@ -17,6 +17,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     public TelaPrincipal() {
         initComponents();
+        System.out.println("WIDTH: " + jLabel2.getWidth());
+        System.out.println("HEIHT: " + jLabel2.getHeight());
     }
 
     public void limparCamposCliente() {
@@ -57,8 +59,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jTextFieldNomeExercicio.setText("");
         jComboBoxGrupoMuscExercicio.setSelectedIndex(0);
     }
-    
-    public void limparCamposTreinos(){
+
+    public void limparCamposTreinos() {
         jComboBoxTreinoExercicios.setSelectedIndex(0);
         jComboBoxOrdem.setSelectedIndex(0);
         jComboBoxInstrutorTreino.setSelectedIndex(0);
@@ -68,7 +70,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jTextFieldTipoTreino.setText("");
         jTextAreaObservacaoTreino.setText("");
         jDateChooserTrocaTreino.setCalendar(null);
-        
+
     }
 
     //Cliente
@@ -368,7 +370,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     //Treino
-
     public JButton getjButtonDesativaTreino() {
         return jButtonDesativaTreino;
     }
@@ -379,8 +380,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     public JButton getjButtonEditarTreino() {
         return jButtonEditarTreino;
-    }    
-    
+    }
+
     public JPanel getCRUDTreino() {
         return CRUDTreino;
     }
@@ -408,9 +409,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public JTable getjTableListTreinosInativos() {
         return jTableListTreinosInativos;
     }
-    
-    
-    
 
     public JTabbedPane getjTabbedPaneClientes() {
         return jTabbedPaneClientes;
@@ -467,10 +465,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public JDateChooser getjDateChooserTrocaTreino() {
         return jDateChooserTrocaTreino;
     }
-    
+
     public JButton getjButtonPesquisarTreinoCli() {
         return jButtonPesquisarTreinoCli;
-    }    
+    }
 
     public JTextField getjTextFieldPesquisarTreinoCli() {
         return jTextFieldPesquisarTreinoCli;
@@ -495,9 +493,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public JTextField getjTextFieldPesquisarTreino() {
         return jTextFieldPesquisarTreinoAtivo;
     }
-    
-    
-    
 
     //Equipamento
     public JButton getjButtonSalvarEquipamento() {
@@ -764,7 +759,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         treinosInativos = new javax.swing.JPanel();
         jScrollPane9 = new javax.swing.JScrollPane();
         jTableListTreinosInativos = new javax.swing.JTable();
-        jTableListTreinosAtivos.getTableHeader().setEnabled(false);
+        jTableListTreinosInativos.getTableHeader().setEnabled(false);
         jButtonAtivarTreino = new javax.swing.JButton();
         jTextFieldPesquisarTreinoAtivo = new javax.swing.JTextField();
         jButtonPesquisarTreinoAtivo = new javax.swing.JButton();
@@ -830,7 +825,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo.jpg"))); // NOI18N
         jPanelInicio.add(jLabel2);
-        jLabel2.setBounds(10, 30, 1000, 670);
+        jLabel2.setBounds(0, 0, 1020, 730);
 
         jTabbedPane1.addTab("Inicio", jPanelInicio);
 
@@ -2308,6 +2303,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         listTreino.setBorder(javax.swing.BorderFactory.createTitledBorder("Listar Treinos"));
 
+        jTableListTreinosAtivos.getTableHeader().setEnabled(false);
+
         jTableListTreinosAtivos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -2343,10 +2340,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         treinosAtivos.setLayout(treinosAtivosLayout);
         treinosAtivosLayout.setHorizontalGroup(
             treinosAtivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(treinosAtivosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 999, Short.MAX_VALUE)
             .addGroup(treinosAtivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(treinosAtivosLayout.createSequentialGroup()
                     .addContainerGap(380, Short.MAX_VALUE)
@@ -2407,10 +2401,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jButtonAtivarTreino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(457, Short.MAX_VALUE))
             .addGroup(treinosInativosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(treinosInativosLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 999, Short.MAX_VALUE))
         );
         treinosInativosLayout.setVerticalGroup(
             treinosInativosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

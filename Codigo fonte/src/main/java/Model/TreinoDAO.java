@@ -240,7 +240,7 @@ public class TreinoDAO {
             Cliente cli = daoCliente.getCliente(fkCliente);
             Exercicios exerc = daoExercicio.getExercicios(fkExercicio);
             Funcionario func = daoFunc.getFuncionario(fkFunc);
-            Treino treino = new Treino(ordem, repeticao, carga, series, tipoTreino, observacao, func, cli, exerc, dataTroca);
+            Treino treino = new Treino(id, ordem, repeticao, carga, series, tipoTreino, observacao, func, cli, exerc, dataTroca);
             return treino;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());

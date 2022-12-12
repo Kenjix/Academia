@@ -97,6 +97,8 @@ CREATE TABLE treinos (
 	FOREIGN KEY (FK_exercicios) REFERENCES exercicios (id)
 );
 
+-------------------------------------------------- PROCEDURES--------------------------------------------------
+
 -- Procedure para geracao de matriculas de clientes
 DELIMITER $$
 CREATE PROCEDURE insereCliente(	
@@ -182,6 +184,8 @@ CREATE PROCEDURE insereExercicio(
 	END$$
 DELIMITER ;
 
+-------------------------------------------------- TRIGGERS--------------------------------------------------
+
 -- Trigger para prevenir insercao de clientes duplicados.
 DELIMITER $$
 CREATE TRIGGER trigger_cliente_before
@@ -248,6 +252,8 @@ CREATE PROCEDURE insereEst(
 		END IF;
 	END$$
 DELIMITER ;
+
+-------------------------------------------------- VIEWS--------------------------------------------------
 
 -- View para listar frequencia de clientes
 CREATE VIEW view_frequencia_cliente

@@ -46,15 +46,15 @@ public class FuncionarioController {
         String peso = telaPrincipal.getjTextFieldPesoFuncionario().getText().replaceAll(",", ".");
         String altura = telaPrincipal.getjTextFieldAlturaFuncionario().getText().replaceAll(",", ".");
         String email = telaPrincipal.getjTextFieldEmailFuncionario().getText();
-        String tel = String.valueOf(telaPrincipal.getjFormattedTextFieldTelFuncionario().getValue());
-        String cel = String.valueOf(telaPrincipal.getjFormattedTextFieldCelFuncionario().getValue());
+        String tel = String.valueOf(telaPrincipal.getjFormattedTextFieldTelFuncionario().getValue()).trim();
+        String cel = String.valueOf(telaPrincipal.getjFormattedTextFieldCelFuncionario().getValue()).trim();
         String observacao = telaPrincipal.getjTextAreaObservaFuncionario().getText();
         String especialidade = telaPrincipal.getjTextFieldEspecialidadeFuncionario().getText();
         String turno = String.valueOf(telaPrincipal.getjComboBoxTurnoFuncionario().getSelectedItem());
         int cargaHoraria = 0;
         final boolean editValidCpf = telaPrincipal.getjFormattedTextFieldCpfFuncionario().isEditValid();
-        final boolean editValidTel = telaPrincipal.getjFormattedTextFieldTel().isEditValid();
-        final boolean editValidCel = telaPrincipal.getjFormattedTextFieldCel().isEditValid();
+        final boolean editValidTel = telaPrincipal.getjFormattedTextFieldTelFuncionario().isEditValid();
+        final boolean editValidCel = telaPrincipal.getjFormattedTextFieldCelFuncionario().isEditValid();
 
         if (nome.isEmpty()) {
             JOptionPane.showMessageDialog(telaPrincipal, "O campo Nome é obrigatório",

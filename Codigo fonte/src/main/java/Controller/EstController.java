@@ -53,11 +53,12 @@ public class EstController {
     }
 
     private void carregaDados() {
-        ArrayList<Estabelecimento> list = estDAO.getConfig();
-        telaPrincipal.getjLabelEstNome().setText(list.get(0).getNome());
-        telaPrincipal.getjLabelEstDesc().setText(list.get(0).getDescricao());
-        telaPrincipal.getjLabelLogo().setIcon(new ImageIcon(list.get(0).getLogo()));
-
+        ArrayList<Estabelecimento> list = estDAO.getConfig();        
+        if (list.size() > 0) {
+            telaPrincipal.getjLabelEstNome().setText(list.get(0).getNome());            
+            telaPrincipal.getjLabelEstDesc().setText(list.get(0).getDescricao());
+            telaPrincipal.getjLabelLogo().setIcon(new ImageIcon(list.get(0).getLogo()));
+        }
     }
 
     private void carregarLogoEst() {

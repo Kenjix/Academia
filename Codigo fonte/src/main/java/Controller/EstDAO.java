@@ -1,7 +1,6 @@
 package Controller;
 
 import ConnectionFactory.ConnectionFactory;
-import Model.Cliente;
 import Model.Estabelecimento;
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,8 +12,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import javax.swing.JOptionPane;
 
 public class EstDAO {
@@ -68,7 +65,7 @@ public class EstDAO {
         }
     }
 
-    public ArrayList<Estabelecimento> getConfig() {
+    public ArrayList<Estabelecimento> getConfig() {        
         String query = "SELECT nome, descricao, logo FROM estabelecimento WHERE id = 1";
         Connection con = null;
         PreparedStatement pst = null;
@@ -77,14 +74,12 @@ public class EstDAO {
         try {
             con = new ConnectionFactory().getConnection();
             pst = con.prepareStatement(query);
-            rs = pst.executeQuery();
-
+            rs = pst.executeQuery();            
             while (rs.next()) {
                 String nome = rs.getString(1);
                 String descricao = rs.getString(2);
-                byte[] logo = rs.getBytes(3);
+                byte[] logo = rs.getBytes(3);                
                 list.add(new Estabelecimento(nome, descricao, logo));
-
             }
             return list;
         } catch (SQLException e) {

@@ -253,7 +253,7 @@ CREATE PROCEDURE insereEst(
 	END$$
 DELIMITER ;
 
--------------------------------------------------- VIEWS--------------------------------------------------
+ -- ------------------------------------------------ VIEWS--------------------------------------------------
 
 -- View para listar frequencia de clientes
 CREATE VIEW view_frequencia_cliente

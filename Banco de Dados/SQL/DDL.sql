@@ -1,6 +1,13 @@
 CREATE DATABASE academia;
 USE academia;
 
+CREATE TABLE estabelecimento(
+	id INT PRIMARY KEY,
+    nome VARCHAR(60),
+    descricao VARCHAR(50),
+    logo MEDIUMBLOB
+);
+
 CREATE TABLE funcionario (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	nome VARCHAR(60) NOT NULL,
@@ -222,6 +229,23 @@ FOR EACH ROW
 		SET NEW.celular = replace(replace(replace(NEW.celular,'(',''),')',''),'-','');
 		SET NEW.telefone = replace(replace(replace(NEW.telefone,'(',''),')',''),'-','');
 		SET NEW.cpf = replace(replace(NEW.cpf,'.',''),'-','');
+	END$$
+DELIMITER ;
+
+-- Procedure para insercao e atualizacao de dados do estabelecimento
+DELIMITER $$
+CREATE PROCEDURE insereEst(
+				IN nome VARCHAR(60), 
+                IN descricao VARCHAR(50), 
+                IN logo MEDIUMBLOB)
+	BEGIN  
+		DECLARE ide INT;
+		SET ide = (SELECT MAX(id) FROM estabelecimento);
+		IF ide > 0 THEN
+			UPDATE estabelecimento SET nome = nome, descricao = descricao, logo = logo WHERE id = 1;
+        ELSEIF ide IS NULL THEN
+			INSERT INTO estabelecimento (id, nome, descricao, logo) VALUES (1, nome, descricao, logo);
+		END IF;
 	END$$
 DELIMITER ;
 

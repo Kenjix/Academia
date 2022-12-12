@@ -71,6 +71,39 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     }
 
+    //EST
+    public JLabel getjLabelLogo() {
+        return jLabelLogo;
+    }
+
+    public JLabel getjLabelEstDesc() {
+        return jLabelEstDesc;
+    }
+
+    public JLabel getjLabelEstNome() {
+        return jLabelEstNome;
+    }
+
+    public JTextField getjTextFieldDescEst() {
+        return jTextFieldDescEst;
+    }
+
+    public JButton getjButtonCarregarLogo() {
+        return jButtonCarregarLogo;
+    }
+
+    public JButton getjButtonEnviarDados() {
+        return jButtonEnviarDados;
+    }
+
+    public JTextField getjTextFieldLogoEst() {
+        return jTextFieldLogoEst;
+    }
+
+    public JTextField getjTextFieldNomeEst() {
+        return jTextFieldNomeEst;
+    }
+
     //Cliente
     public JPanel getCRUDClient() {
         return CRUDClient;
@@ -368,7 +401,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     //Treino
-
     public JButton getjButtonGetTreinos() {
         return jButtonGetTreinos;
     }
@@ -465,8 +497,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         return jButtonSalvarTreino;
     }
 
-
-
     public JButton getjButtonPesquisarTreinoListCli() {
         return jButtonPesquisarTreinoListCli;
     }
@@ -532,8 +562,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public JTable getjTableListTreinoClientes() {
         return jTableListTreinoClientes;
     }
-    
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -541,9 +569,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelInicio = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        jPanelInfo = new javax.swing.JPanel();
+        jLabelLogo = new javax.swing.JLabel();
+        jLabelEstNome = new javax.swing.JLabel();
+        jLabelEstDesc = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanelPessoa = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -776,6 +805,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jTextAreaObservacaoTreino = new javax.swing.JTextArea();
         jPanelConfig = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel32 = new javax.swing.JLabel();
+        jTextFieldNomeEst = new javax.swing.JTextField();
+        jLabel36 = new javax.swing.JLabel();
+        jTextFieldLogoEst = new javax.swing.JTextField();
+        jLabel57 = new javax.swing.JLabel();
+        jButtonCarregarLogo = new javax.swing.JButton();
+        jButtonEnviarDados = new javax.swing.JButton();
+        jLabel58 = new javax.swing.JLabel();
+        jTextFieldDescEst = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Principal");
@@ -787,21 +825,47 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanelInicio.setPreferredSize(new java.awt.Dimension(1024, 768));
         jPanelInicio.setLayout(null);
 
-        jLabel16.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 18)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("BEM - VINDO À ACADEMIA");
-        jPanelInicio.add(jLabel16);
-        jLabel16.setBounds(610, 140, 240, 25);
+        jPanelInfo.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelInfo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanelInfo.setMinimumSize(new java.awt.Dimension(450, 450));
 
-        jLabel12.setFont(new java.awt.Font("Nirmala UI Semilight", 2, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("\"Só os fortes sobrevivem...\"");
-        jPanelInicio.add(jLabel12);
-        jLabel12.setBounds(620, 370, 240, 25);
+        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo acad.png"))); // NOI18N
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo acad.png"))); // NOI18N
-        jPanelInicio.add(jLabel8);
-        jLabel8.setBounds(580, 120, 300, 300);
+        jLabelEstNome.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 18)); // NOI18N
+        jLabelEstNome.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelEstNome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelEstNome.setText("BEM - VINDO À ACADEMIA");
+
+        jLabelEstDesc.setFont(new java.awt.Font("Nirmala UI Semilight", 2, 18)); // NOI18N
+        jLabelEstDesc.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelEstDesc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelEstDesc.setText("\"Só os fortes sobrevivem...\"");
+
+        javax.swing.GroupLayout jPanelInfoLayout = new javax.swing.GroupLayout(jPanelInfo);
+        jPanelInfo.setLayout(jPanelInfoLayout);
+        jPanelInfoLayout.setHorizontalGroup(
+            jPanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInfoLayout.createSequentialGroup()
+                .addGap(76, 76, 76)
+                .addComponent(jLabelLogo)
+                .addContainerGap(72, Short.MAX_VALUE))
+            .addComponent(jLabelEstNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabelEstDesc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanelInfoLayout.setVerticalGroup(
+            jPanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInfoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelEstNome)
+                .addGap(42, 42, 42)
+                .addComponent(jLabelLogo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelEstDesc)
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
+
+        jPanelInicio.add(jPanelInfo);
+        jPanelInfo.setBounds(520, 50, 450, 450);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo.jpg"))); // NOI18N
         jPanelInicio.add(jLabel2);
@@ -2591,15 +2655,66 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Configurações de exibição"));
 
+        jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel32.setText("Nome:");
+
+        jLabel36.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel36.setText("Logo: ");
+
+        jLabel57.setText("(300x300 pixels)");
+
+        jButtonCarregarLogo.setText("Carregar");
+
+        jButtonEnviarDados.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonEnviarDados.setText("Enviar");
+
+        jLabel58.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel58.setText("Descrição:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 990, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonEnviarDados)
+                    .addComponent(jLabel57)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel58, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldNomeEst, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldLogoEst, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldDescEst, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonCarregarLogo)
+                .addContainerGap(322, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 687, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(103, 103, 103)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldNomeEst, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel58, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldDescEst, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldLogoEst, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCarregarLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel57)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonEnviarDados)
+                .addContainerGap(423, Short.MAX_VALUE))
         );
 
         jPanelConfig.add(jPanel2);
@@ -2672,6 +2787,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCancelarCliente;
     private javax.swing.JButton jButtonCancelarFuncionario;
     private javax.swing.JButton jButtonCancelarTreino;
+    private javax.swing.JButton jButtonCarregarLogo;
     private javax.swing.JButton jButtonDelCliente;
     private javax.swing.JButton jButtonDeletarCliente;
     private javax.swing.JButton jButtonDeletarExerc;
@@ -2681,6 +2797,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEditarEquip;
     private javax.swing.JButton jButtonEditarExerc;
     private javax.swing.JButton jButtonEditarFunc;
+    private javax.swing.JButton jButtonEnviarDados;
     private javax.swing.JButton jButtonGetTreinos;
     private javax.swing.JButton jButtonListarCliente;
     private javax.swing.JButton jButtonListarEquipamento;
@@ -2720,11 +2837,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -2742,9 +2857,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
@@ -2767,11 +2884,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelEstDesc;
+    private javax.swing.JLabel jLabelEstNome;
     private javax.swing.JLabel jLabelFoto;
+    private javax.swing.JLabel jLabelLogo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelCliente;
@@ -2779,6 +2900,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelEquip;
     private javax.swing.JPanel jPanelExerc;
     private javax.swing.JPanel jPanelFunc;
+    private javax.swing.JPanel jPanelInfo;
     private javax.swing.JPanel jPanelInicio;
     private javax.swing.JPanel jPanelMenuClient;
     private javax.swing.JPanel jPanelMenuEquipa;
@@ -2820,11 +2942,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldAltura;
     private javax.swing.JTextField jTextFieldAlturaFuncionario;
     private javax.swing.JTextField jTextFieldCargaTreino;
+    private javax.swing.JTextField jTextFieldDescEst;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldEmailFuncionario;
     private javax.swing.JTextField jTextFieldEspecialidadeFuncionario;
+    private javax.swing.JTextField jTextFieldLogoEst;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldNomeEquipamento;
+    private javax.swing.JTextField jTextFieldNomeEst;
     private javax.swing.JTextField jTextFieldNomeExercicio;
     private javax.swing.JTextField jTextFieldNomeFuncionario;
     private javax.swing.JTextField jTextFieldObjetivo;

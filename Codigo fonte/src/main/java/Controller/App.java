@@ -41,6 +41,9 @@ public class App {
         
         TreinoController treino = new TreinoController(telaPrincipal, treinoInfo, treinoCliente);
         treino.initTreinoController();
+        
+        EstController estController = new EstController(telaPrincipal);
+        estController.initEstController();
     }
 
     private static void carregarTema() {

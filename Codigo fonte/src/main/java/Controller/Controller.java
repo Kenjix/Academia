@@ -20,8 +20,9 @@ public class Controller {
     private final TreinoInfo treinoInfo;
     private final TreinoCliente treinoCliente;
 
-    public Controller(TelaPrincipal telaPrincipal, ClienteInfo clienteInfo,
-            FuncionarioInfo funcionarioInfo, EquipInfo equipInfo, ExercicioInfo exercicioInfo,
+
+    public Controller(TelaPrincipal telaPrincipal, ClienteInfo clienteInfo, 
+            FuncionarioInfo funcionarioInfo, EquipInfo equipInfo, ExercicioInfo exercicioInfo, 
             TreinoInfo treinoInfo, TreinoCliente treinoCliente) {
         this.telaPrincipal = telaPrincipal;
         this.clienteInfo = clienteInfo;
@@ -30,7 +31,10 @@ public class Controller {
         this.exercicioInfo = exercicioInfo;
         this.treinoInfo = treinoInfo;
         this.treinoCliente = treinoCliente;
+
     }
+
+
 
     public void initController() {
         telaPrincipal.setVisible(true);

@@ -58,7 +58,7 @@ public class Util {
             ImageIO.write(image, "png", new File(path));
             return path;
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao ler a foto", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro ao ler a imagem", "Erro", JOptionPane.ERROR_MESSAGE);
             return null;
         }
     }

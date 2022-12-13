@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 public class EquipamentoDAO {
 
     public boolean inserirEquipamento(Equipamento eq) {
-        String query = "CALL insereExercicio(?, ?, ?);";
+        String query = "CALL insereEquipamento(?, ?, ?);";
         Connection con = null;
         PreparedStatement pst = null;
         try {
@@ -23,7 +23,7 @@ public class EquipamentoDAO {
             pst.execute();
             return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro código: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
             return false;
         } finally {
             if (pst != null) {

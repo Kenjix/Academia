@@ -167,7 +167,7 @@ DELIMITER ;
 
 -- Procedure para geracao de patrimonio de equipamentos
 DELIMITER $$
-CREATE PROCEDURE insereExercicio(	
+CREATE PROCEDURE insereEquipamento(	
 				IN nome VARCHAR(50), 
 				IN dataAquisicao DATE, 
 				IN observacoes TEXT)

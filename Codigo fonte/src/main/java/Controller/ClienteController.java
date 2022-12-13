@@ -147,7 +147,7 @@ public class ClienteController {
 
                 } else if (!lista.get(i).getCelular().contains("null")) {
                     String cel = lista.get(i).getCelular();
-                    contato = "(" + cel.substring(0, 2) + ")" + cel.substring(2, 6) + "-" + cel.substring(6, 11);
+                    contato = "(" + cel.substring(0, 2) + ")" + cel.substring(2, 7) + "-" + cel.substring(7, 11);
                 }
                 if (lista.get(i).isAtivo()) {
                     String cpf = lista.get(i).getCpf();
@@ -177,7 +177,7 @@ public class ClienteController {
                     contato = "(" + tel.substring(0, 2) + ")" + tel.substring(2, 6) + "-" + tel.substring(6, 10);
                 } else if (!lista.get(i).getCelular().contains("null")) {
                     String cel = lista.get(i).getCelular();
-                    contato = "(" + cel.substring(0, 2) + ")" + cel.substring(2, 6) + "-" + cel.substring(6, 11);
+                    contato = "(" + cel.substring(0, 2) + ")" + cel.substring(2, 7) + "-" + cel.substring(7, 11);
                 }
                 String cpf = lista.get(i).getCpf();
                 modelodeletar.addRow(new Object[]{
@@ -208,7 +208,7 @@ public class ClienteController {
                     contato = "(" + tel.substring(0, 2) + ")" + tel.substring(2, 6) + "-" + tel.substring(6, 10);
                 } else if (!lista.get(i).getCelular().contains("null")) {
                     String cel = lista.get(i).getCelular();
-                    contato = "(" + cel.substring(0, 2) + ")" + cel.substring(2, 6) + "-" + cel.substring(6, 11);
+                    contato = "(" + cel.substring(0, 2) + ")" + cel.substring(2, 7) + "-" + cel.substring(7, 11);
                 }
 
                 if (lista.get(i).isAtivo()) {
@@ -239,7 +239,7 @@ public class ClienteController {
                     contato = "(" + tel.substring(0, 2) + ")" + tel.substring(2, 6) + "-" + tel.substring(6, 10);
                 } else if (!lista.get(i).getCelular().contains("null")) {
                     String cel = lista.get(i).getCelular();
-                    contato = "(" + cel.substring(0, 2) + ")" + cel.substring(2, 6) + "-" + cel.substring(6, 11);
+                    contato = "(" + cel.substring(0, 2) + ")" + cel.substring(2, 7) + "-" + cel.substring(7, 11);
                 }
                 String cpf = lista.get(i).getCpf();
                 modeloDeletar.addRow(new Object[]{
@@ -268,7 +268,9 @@ public class ClienteController {
                 if (cli.getDataFim() != null) {
                     dataFimMatricula = formatoData.parse(cli.getDataFim());
                 }
-                clienteInfo.getjLabelClienteFoto().setIcon(new ImageIcon(cli.getFoto()));
+                if(cli.getFoto() != null){
+                    clienteInfo.getjLabelClienteFoto().setIcon(new ImageIcon(cli.getFoto()));
+                }                
                 clienteInfo.getjTextFieldClienteNome().setText(cli.getNome());
                 clienteInfo.getjDateChooserDataNasc().setDate(dataNasc);
                 clienteInfo.getjDateChooserDataMatricula().setDate(dataMatricula);

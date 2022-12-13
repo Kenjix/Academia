@@ -1,3 +1,4 @@
+-- DROP DATABASE academia;
 CREATE DATABASE academia;
 USE academia;
 
@@ -97,7 +98,7 @@ CREATE TABLE treinos (
 	FOREIGN KEY (FK_exercicios) REFERENCES exercicios (id)
 );
 
--------------------------------------------------- PROCEDURES--------------------------------------------------
+-- ------------------------------------------------ PROCEDURES--------------------------------------------------
 
 -- Procedure para geracao de matriculas de clientes
 DELIMITER $$
@@ -132,8 +133,8 @@ CREATE PROCEDURE insereCliente(
 			ELSE			
 				SET matriculaGerada = (SELECT MAX(matricula)+1 FROM cliente WHERE YEAR(updated) = YEAR(CURDATE()));   
 			END IF;
-			INSERT INTO cliente (matricula, nome, cpf, telefone, celular, email, dataNasc, peso, altura, dataInicio, objetivo, observacoes, foto) 
-			VALUES (matriculaGerada, nome, cpfFormatado, telFormatado, celFormatado, email, dataNasc, peso, altura, dataInicio, objetivo, observacoes, foto);
+			INSERT INTO cliente (matricula, nome, cpf, telefone, celular, email, dataNasc, peso, altura, dataInicio, dataFim, objetivo, observacoes, foto) 
+			VALUES (matriculaGerada, nome, cpfFormatado, telFormatado, celFormatado, email, dataNasc, peso, altura, dataInicio, dataFim, objetivo, observacoes, foto);
 	END$$
 DELIMITER ;
 
@@ -184,7 +185,7 @@ CREATE PROCEDURE insereExercicio(
 	END$$
 DELIMITER ;
 
--------------------------------------------------- TRIGGERS--------------------------------------------------
+-- ------------------------------------------------ TRIGGERS--------------------------------------------------
 
 -- Trigger para prevenir insercao de clientes duplicados.
 DELIMITER $$

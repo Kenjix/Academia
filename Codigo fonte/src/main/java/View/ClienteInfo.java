@@ -206,6 +206,7 @@ public class ClienteInfo extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
         jLabel2.setText("Foto:");
 
+        jLabelClienteFotoEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/userplaceholder.png"))); // NOI18N
         jLabelClienteFotoEdit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         try {

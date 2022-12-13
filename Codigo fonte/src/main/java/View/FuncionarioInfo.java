@@ -173,6 +173,11 @@ public class FuncionarioInfo extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFormattedTextFieldTel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jFormattedTextFieldTelMouseClicked(evt);
+            }
+        });
 
         jLabel49.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
         jLabel49.setText("Celular:");
@@ -182,6 +187,11 @@ public class FuncionarioInfo extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFormattedTextFieldCel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jFormattedTextFieldCelMouseClicked(evt);
+            }
+        });
 
         jLabel46.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
         jLabel46.setText("Email:");
@@ -367,6 +377,14 @@ public class FuncionarioInfo extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jFormattedTextFieldTelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jFormattedTextFieldTelMouseClicked
+        jFormattedTextFieldTel.setValue(null);
+    }//GEN-LAST:event_jFormattedTextFieldTelMouseClicked
+
+    private void jFormattedTextFieldCelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jFormattedTextFieldCelMouseClicked
+        jFormattedTextFieldCel.setValue(null);
+    }//GEN-LAST:event_jFormattedTextFieldCelMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

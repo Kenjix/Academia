@@ -135,7 +135,7 @@ public class FuncionarioController {
                     contato = "(" + tel.substring(0, 2) + ")" + tel.substring(2, 6) + "-" + tel.substring(6, 10);
                 } else if (!lista.get(i).getCelular().contains("null")) {
                     String cel = lista.get(i).getCelular();
-                    contato = "(" + cel.substring(0, 2) + ")" + cel.substring(2, 6) + "-" + cel.substring(6, 11);
+                    contato = "(" + cel.substring(0, 2) + ")" + cel.substring(2, 7) + "-" + cel.substring(7, 11);
                 }
                 modelo.addRow(new Object[]{
                     lista.get(i).getId(),
@@ -207,7 +207,7 @@ public class FuncionarioController {
                     contato = "(" + tel.substring(0, 2) + ")" + tel.substring(2, 6) + "-" + tel.substring(6, 10);
                 } else if (!lista.get(i).getCelular().contains("null")) {
                     String cel = lista.get(i).getCelular();
-                    contato = "(" + cel.substring(0, 2) + ")" + cel.substring(2, 6) + "-" + cel.substring(6, 11);
+                    contato = "(" + cel.substring(0, 2) + ")" + cel.substring(2, 7) + "-" + cel.substring(7, 11);
                 }
                 modelo.addRow(new Object[]{
                     lista.get(i).getId(),
@@ -240,8 +240,6 @@ public class FuncionarioController {
 
         //Validacao de dados
         final boolean editValidCpf = funcionarioInfo.getjFormattedTextFieldCpf().isEditValid();
-        final boolean editValidTel = telaPrincipal.getjFormattedTextFieldTel().isEditValid();
-        final boolean editValidCel = telaPrincipal.getjFormattedTextFieldCel().isEditValid();
         if (nome.isEmpty()) {
             JOptionPane.showMessageDialog(funcionarioInfo, "O campo Nome é obrigatório",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
@@ -258,7 +256,7 @@ public class FuncionarioController {
             JOptionPane.showMessageDialog(funcionarioInfo, "O campo Peso é obrigatório",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             funcionarioInfo.getjTextFieldPeso().requestFocus();
-        } else if (!peso.matches("^[0-9]{1,2}([,.][0-9]{1,2})?$")) {
+        } else if (!peso.matches("^[0-9]{1,3}([,.][0-9]{1,2})?$")) {
             JOptionPane.showMessageDialog(funcionarioInfo, "Dados de peso inválidos",
                     "Campo inválido", JOptionPane.ERROR_MESSAGE);
             funcionarioInfo.getjTextFieldPeso().requestFocus();
@@ -277,7 +275,7 @@ public class FuncionarioController {
             JOptionPane.showMessageDialog(funcionarioInfo, "E-mail inválido",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             funcionarioInfo.getjTextFieldEmail().requestFocus();
-        } else if (!editValidTel && !editValidCel) {
+        } else if (tel.contains("null") && cel.contains("null")) {
             JOptionPane.showMessageDialog(funcionarioInfo, "Contato obrigatório",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             funcionarioInfo.getjFormattedTextFieldTel().requestFocus();

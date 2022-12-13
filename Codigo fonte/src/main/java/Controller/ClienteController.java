@@ -99,7 +99,7 @@ public class ClienteController {
             JOptionPane.showMessageDialog(telaPrincipal, "O campo Altura é obrigatório",
                     "Campo obrigatório", JOptionPane.ERROR_MESSAGE);
             telaPrincipal.getjTextFieldAltura().requestFocus();
-        } else if (!altura.matches("^[0-9]{1,2}([,.][0-9]{1,2})?$")) {
+        } else if (!altura.matches("^[0-9]{1,3}([,.][0-9]{1,2})?$")) {
             JOptionPane.showMessageDialog(telaPrincipal, "Dados de altura inválidos",
                     "Campo inválido", JOptionPane.ERROR_MESSAGE);
         } else if (dataMatricula.isEmpty()) {

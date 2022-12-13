@@ -9,3 +9,8 @@ CALL insereCliente('Ian Elias da Cunha', 36886185306,'1954-11-11', 81, '1.61', '
 CALL insereCliente('Lavínia Sophia Pinto', 80002570505,'1988-03-13', 64, 1.84, '2021-08-20', '2022-01-20', 'Musculação', null, 'laviniasophiapinto@tirel.com.br', 9635089718, 96985720245, 'Foco em pernas');
 CALL insereCliente('Oliver Renan da Silva', 86515575580,'1956-09-06', 88, 1.93, '2022-11-10', '2022-12-10', 'Emagrecer', null, 'oliver.renan.dasilva@opusvp.com.br', 9239006080, 92988178118, 'Pode comparecer 2 vezes por semana');
 
+CALL insereFunc('Raul Antonio Farias', 44647273016, 5125567051, 51988400431, 'raulantoniofarias@spires.com.br', '1957-03-01', 92, 1.61, null, 8, 'Manhã', 'Musculação');
+CALL insereFunc('Fernanda Mariah Dias', 67423229008, 5363310152, 53997612499, 'fernanda-dias97@lavabit.com', '1987-10-13', 77, 1.82, null, 8, 'Tarde', 'Zumba');
+CALL insereFunc('Igor Emanuel Mendes', 57437856000, 51366864453, 51985679702, 'igor_mendes@supracolor.com.br', '2002-07-12', 95, 1.94, null, 40, 'Tarde', 'Corrida');
+CALL insereFunc('Bruno Caio Silveira', 67112053080, 54264054960, 54984892706, 'bruno.caio.silveira@bom.com.br', '1974-05-10', 77, 1.66, null, 20, 'Manhã', 'Musculação');
+CALL insereFunc('Cecília Marina Clara de Paula', 36212369060, 5429924394, 54994086037, 'cecilia_depaula@iq.unesp.br', '1974-12-08', 86, 1.80, null, 4, 'Noite', 'Musculação');

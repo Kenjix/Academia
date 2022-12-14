@@ -24,9 +24,9 @@ public class TreinoDAO {
             con = new ConnectionFactory().getConnection();
             pst = con.prepareStatement(query);
             pst.setString(1, String.valueOf(tr.getOrdem()));
-            pst.setString(4, String.valueOf(tr.getSeries()));
-            pst.setString(2, String.valueOf(tr.getRepeticao()));
-            pst.setString(3, String.valueOf(tr.getCarga()));
+            pst.setString(2, String.valueOf(tr.getSeries()));
+            pst.setString(3, String.valueOf(tr.getRepeticao()));
+            pst.setString(4, String.valueOf(tr.getCarga()));
             pst.setString(5, tr.getTipoTreino());
             pst.setString(6, tr.getDataTrocaTreino());
             pst.setString(7, tr.getObservacao());

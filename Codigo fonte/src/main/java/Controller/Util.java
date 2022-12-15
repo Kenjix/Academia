@@ -92,11 +92,11 @@ public class Util {
     }
 
     //Rebece uma lista que poula uma tabala e gera um aquivo PDF a partir dos dados dela
-    public void gerarPDF(ArrayList<Treino> list) {
+    public void gerarPDF(ArrayList<Treino> list) {        
         Document document = new Document();
         try {
 
-            PdfWriter.getInstance(document, new FileOutputStream("Treinos.pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream("Treinos de " + list.get(0).getCliente().getNome() + ".pdf", true));
             document.open();
             Paragraph p = new Paragraph("Treinos:");
             p.setAlignment(1);

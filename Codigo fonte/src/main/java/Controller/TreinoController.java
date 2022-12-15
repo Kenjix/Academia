@@ -15,6 +15,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -365,20 +366,24 @@ public class TreinoController {
     }
 
     private void gerarPDF() {
-        ArrayList<Treino> lista = daoTreino.listarTreino();
         DefaultTableModel modeloAtivo = (DefaultTableModel) treinoCliente.getjTableListTreinosAtivos().getModel();
         long matriucula = Long.parseLong(treinoCliente.getjLabelGetStoredMatricula().getText());
         if (modeloAtivo.getRowCount() > 0) {
-            int showConfirmDialog = JOptionPane.showConfirmDialog(null, "Deseja gerar um PDF dos exercicíos ativos?");
+            int showConfirmDialog = JOptionPane.showConfirmDialog(treinoCliente, "Deseja gerar um PDF dos exercicíos ativos?");            
             if (showConfirmDialog == 0) {
-                for (int i = 0; i < lista.size(); i++) {
-                    if (lista.get(i).isAtivo() && lista.get(i).getCliente().getMatricula() != matriucula) {
-                        lista.remove(i);
+                ArrayList<Treino> lista = daoTreino.listarTreino();
+                Iterator<Treino> iter = lista.iterator();
+                while (iter.hasNext()) {
+                    Treino t = iter.next();
+                    if (t.isAtivo() && t.getCliente().getMatricula() != matriucula) {
+                        iter.remove();
                     }
                 }
                 util.gerarPDF(lista);
             }
-
+        } else {
+            JOptionPane.showMessageDialog(treinoCliente, "Sem treinos cadastrados",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 

@@ -23,10 +23,14 @@ public class App {
         ExercicioInfo exercicioInfo = new ExercicioInfo((JFrame) null, true);
         TreinoCliente treinoCliente = new TreinoCliente((JFrame) null, true);
         TreinoInfo treinoInfo = new TreinoInfo((JFrame) null, true);
-
+        
+        EstController estController = new EstController(telaPrincipal);
+        estController.initEstController();    
+        estController.carregaDados();
+        
         Controller c = new Controller(telaPrincipal, clienteInfo, funcionarioInfo, equipInfo, exercicioInfo, treinoInfo, treinoCliente);
         c.initController();
-
+        
         ClienteController cli = new ClienteController(telaPrincipal, clienteInfo);
         cli.initClienteController();
         
@@ -41,9 +45,6 @@ public class App {
         
         TreinoController treino = new TreinoController(telaPrincipal, treinoInfo, treinoCliente);
         treino.initTreinoController();
-        
-        EstController estController = new EstController(telaPrincipal);
-        estController.initEstController();
     }
 
     private static void carregarTema() {

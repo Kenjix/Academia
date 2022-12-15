@@ -4,6 +4,7 @@ import Model.Estabelecimento;
 import View.TelaPrincipal;
 import java.awt.Image;
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,12 +21,11 @@ public class EstController {
     EstDAO estDAO = new EstDAO();
     Util util = new Util();
 
-    public EstController(TelaPrincipal telaPrincipal) {
+    public EstController(TelaPrincipal telaPrincipal) {        
         this.telaPrincipal = telaPrincipal;
-        carregaDados();
     }
 
-    public void initEstController() {
+    public void initEstController() {        
         telaPrincipal.getjButtonCarregarLogo().addActionListener(e -> carregarLogoEst());
         telaPrincipal.getjButtonEnviarDados().addActionListener(e -> enviarDados());
     }
@@ -43,7 +43,9 @@ public class EstController {
             String nome = telaPrincipal.getjTextFieldNomeEst().getText();
             String descricao = telaPrincipal.getjTextFieldDescEst().getText();
             String imgPath = telaPrincipal.getjTextFieldLogoEst().getText();
-
+            if(telaPrincipal.getjTextFieldLogoEst().getText().isEmpty()){                
+                imgPath = "./src/main/resources/img/logo acad.png";               
+            }
             if (estDAO.inserirDados(nome, descricao, imgPath)) {
                 JOptionPane.showMessageDialog(telaPrincipal, "Configurações enviadas"
                         + " com sucesso", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
@@ -52,12 +54,14 @@ public class EstController {
         carregaDados();
     }
 
-    private void carregaDados() {
+    public void carregaDados() {
         ArrayList<Estabelecimento> list = estDAO.getConfig();        
-        if (list.size() > 0) {
+        if (!list.isEmpty()) {
             telaPrincipal.getjLabelEstNome().setText(list.get(0).getNome());            
             telaPrincipal.getjLabelEstDesc().setText(list.get(0).getDescricao());
-            telaPrincipal.getjLabelLogo().setIcon(new ImageIcon(list.get(0).getLogo()));
+            if(list.get(0).getLogo() != null){
+                telaPrincipal.getjLabelLogo().setIcon(new ImageIcon(list.get(0).getLogo()));
+            }
         }
     }
 

@@ -27,19 +27,14 @@ public class EstDAO {
             pst = con.prepareStatement(query);
 
             pst.setString(1, nome);
-            pst.setString(2, descricao);
+            pst.setString(2, descricao);                 
             is = new FileInputStream(new File(imgPath));
             pst.setBinaryStream(3, is);
-
             pst.execute();
             is.close();
             return true;
         } catch (SQLException e) {
-            if (e.getErrorCode() == 1062) {
-                JOptionPane.showMessageDialog(null, "Erro: " + e.getErrorCode() + " - CPF já existe");
-            } else {
-                JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
-            }
+            JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
             return false;
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Imagem não foi encontrada",
@@ -65,7 +60,7 @@ public class EstDAO {
         }
     }
 
-    public ArrayList<Estabelecimento> getConfig() {        
+    public ArrayList<Estabelecimento> getConfig() {
         String query = "SELECT nome, descricao, logo FROM estabelecimento WHERE id = 1";
         Connection con = null;
         PreparedStatement pst = null;
@@ -74,16 +69,16 @@ public class EstDAO {
         try {
             con = new ConnectionFactory().getConnection();
             pst = con.prepareStatement(query);
-            rs = pst.executeQuery();            
+            rs = pst.executeQuery();
             while (rs.next()) {
                 String nome = rs.getString(1);
                 String descricao = rs.getString(2);
-                byte[] logo = rs.getBytes(3);                
+                byte[] logo = rs.getBytes(3);
                 list.add(new Estabelecimento(nome, descricao, logo));
             }
             return list;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro código: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro código: " + e.getErrorCode());
             return null;
         } finally {
             if (rs != null) {

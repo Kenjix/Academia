@@ -10,3 +10,4 @@ Alunos:
 - Arthur Spironello
 - Douglas Kenji Kihara
 - Gabriel Castagna Henrique
+# academia
